@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "317468278038",
+    "project_id": "ainotebuddy",
+    "storage_bucket": "ainotebuddy.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317468278038:android:c07a3d40b5acf89a68e437",
+        "android_client_info": {
+          "package_name": "com.ainotebuddy.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "317468278038-fvn4brdr1miu86sde5ppef0p9m97hp1i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ainotebuddy.app",
+            "certificate_hash": "75ac27fd2dbc778ad7b467c57f1f3c8868c0e27f"
+          }
+        },
+        {
+          "client_id": "317468278038-le8kmvj2an741f9q987n65c7c0vi28gv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS6HkI4ucjOsNM0BH7JRaVl4QcacWDcVM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317468278038-le8kmvj2an741f9q987n65c7c0vi28gv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

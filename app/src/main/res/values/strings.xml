@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">AI NoteBuddy</string>
+    <string name="shortcut_new_note">New Note</string>
+    <string name="shortcut_create_new_note">Create a new note</string>
+    <string name="shortcut_unavailable">Unavailable</string>
+    <string name="shortcut_search">Search</string>
+    <string name="shortcut_search_notes">Search notes</string>
+    <string name="shortcut_scan">Scan</string>
+    <string name="shortcut_scan_doc">Scan document or image</string>
+    <string name="new_note_shortcut">New Note</string>
+    <string name="new_note_shortcut_long">Create a new note</string>
+    <string name="voice_note_shortcut">Voice Note</string>
+    <string name="voice_note_shortcut_long">Create a voice note</string>
+</resources>
