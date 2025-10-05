@@ -1,14 +1,14 @@
 [versions]
-activityCompose = "1.8.2"
-androidGradlePlugin = "8.2.2"
+activityCompose = "1.10.1"
+androidGradlePlugin = "8.11.1"
 billing = "6.1.0"
-composeBomVersion = "2024.02.00"
-coreKtx = "1.12.0"
+composeBomVersion = "2024.12.01"
+coreKtx = "1.15.0"
 espressoCore = "3.5.1"
 junit = "1.1.5"
-kotlin = "1.9.22"
-kotlinCompilerExtension = "1.5.10"
-ksp = "1.0.19"
+kotlin = "2.1.0"
+kotlinCompilerExtension = "1.5.15"
+ksp = "2.1.0-1.0.29"
 lifecycleRuntimeKtx = "2.7.0"
 navigationCompose = "2.7.7"
 playServicesAds = "22.6.0"
@@ -24,15 +24,15 @@ gson = "2.10.1"
 
 [plugins]
 android-application = { id = "com.android.application", version = "8.11.1" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version = "1.9.22" }
-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version = "1.9.22" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 google-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "googleFirebaseCrashlytics" }
 
 [libraries]
-androidx-activity-compose-v1101 = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
+androidx-activity-compose-v1101 = { module = "androidx.activity:activity-compose", version = "1.12.0-alpha05" }
 androidx-compose-bom-v20240200 = { module = "androidx.compose:compose-bom", version.ref = "composeBomVersion" }
 androidx-core-ktx-v1160 = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 androidx-espresso-core-v361 = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
@@ -47,7 +47,7 @@ ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
-material3 = { module = "androidx.compose.material3:material3" }
+material3 = { module = "androidx.compose.material3:material3", version = "1.1.2" }
 play-services-ads = { module = "com.google.android.gms:play-services-ads", version.ref = "playServicesAds" }
 billing = { module = "com.android.billingclient:billing", version.ref = "billing" }
 google-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "googleAuth" }

@@ -1,0 +1,248 @@
+kotlin version: 2.1.0
+error message: java.lang.IllegalStateException: <MESSAGES><info>[ksp] loaded provider(s): [androidx.room.RoomKspProcessor$Provider, dagger.hilt.processor.internal.uninstallmodules.KspUninstallModulesProcessor$Provider, dagger.hilt.processor.internal.earlyentrypoint.KspEarlyEntryPointProcessor$Provider, dagger.hilt.processor.internal.root.KspComponentTreeDepsProcessor$Provider, dagger.hilt.android.processor.internal.bindvalue.KspBindValueProcessor$Provider, dagger.hilt.processor.internal.generatesrootinput.KspGeneratesRootInputProcessor$Provider, dagger.hilt.processor.internal.aliasof.KspAliasOfProcessor$Provider, dagger.hilt.processor.internal.aggregateddeps.KspAggregatedDepsProcessor$Provider, dagger.hilt.processor.internal.root.KspRootProcessor$Provider, dagger.hilt.processor.internal.originatingelement.KspOriginatingElementProcessor$Provider, dagger.hilt.processor.internal.definecomponent.KspDefineComponentProcessor$Provider, dagger.hilt.android.processor.internal.viewmodel.KspViewModelProcessor$Provider, dagger.hilt.android.processor.internal.customtestapplication.KspCustomTestApplicationProcessor$Provider, dagger.hilt.android.processor.internal.androidentrypoint.KspAndroidEntryPointProcessor$Provider, dagger.internal.codegen.KspComponentProcessor$Provider]</info>
+
+<error>[ksp] [Hilt] @InstallIn, &#39;value&#39; class is invalid or missing: @dagger.hilt.InstallIn({})
+[1;31m[Hilt] Processing did not complete. See error above for details.[0m - dagger.hilt.InstallIn</error>
+
+<error>[ksp] [MissingType]: Element &#39;com.ainotebuddy.app.data.local.AppDatabase&#39; references a type that is not present</error>
+
+<error>[ksp] InjectProcessingStep was unable to process &#39;AISmartOrganizationService(com.ainotebuddy.app.data.repository.NoteRepository,com.ainotebuddy.app.data.repository.OrganizationRepository,error.NonExistentClass)&#39; because &#39;error.NonExistentClass&#39; could not be resolved.
+
+Dependency trace:
+    =&gt; element (CLASS): com.ainotebuddy.app.data.ai.AISmartOrganizationService
+    =&gt; element (CONSTRUCTOR): AISmartOrganizationService(com.ainotebuddy.app.data.repository.NoteRepository,com.ainotebuddy.app.data.repository.OrganizationRepository,error.NonExistentClass)
+    =&gt; type (EXECUTABLE constructor): (com.ainotebuddy.app.data.repository.NoteRepository,com.ainotebuddy.app.data.repository.OrganizationRepository,error.NonExistentClass)void
+    =&gt; type (ERROR parameter type): error.NonExistentClass
+
+If type &#39;error.NonExistentClass&#39; is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type &#39;error.NonExistentClass&#39; is on your classpath.</error>
+
+<error>[ksp] ModuleProcessingStep was unable to process &#39;com.ainotebuddy.app.di.TemplateViewModelModule&#39; because &#39;error.NonExistentClass&#39; could not be resolved.
+
+Dependency trace:
+    =&gt; element (OBJECT): com.ainotebuddy.app.di.TemplateViewModelModule
+    =&gt; element (METHOD): provideTemplateEditorViewModel(com.ainotebuddy.app.data.repository.TemplateRepository)
+    =&gt; annotation type: ViewModelScoped
+    =&gt; type (ERROR annotation type): error.NonExistentClass
+
+If type &#39;error.NonExistentClass&#39; is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type &#39;error.NonExistentClass&#39; is on your classpath.</error>
+
+<error>[ksp] BindingMethodProcessingStep was unable to process &#39;provideTemplateEditorViewModel(com.ainotebuddy.app.data.repository.TemplateRepository)&#39; because &#39;error.NonExistentClass&#39; could not be resolved.
+
+Dependency trace:
+    =&gt; element (OBJECT): com.ainotebuddy.app.di.TemplateViewModelModule
+    =&gt; element (METHOD): provideTemplateEditorViewModel(com.ainotebuddy.app.data.repository.TemplateRepository)
+    =&gt; annotation type: ViewModelScoped
+    =&gt; type (ERROR annotation type): error.NonExistentClass
+
+If type &#39;error.NonExistentClass&#39; is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type &#39;error.NonExistentClass&#39; is on your classpath.</error>
+
+<error>Error occurred in KSP, check log for detail</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\MainActivity.kt" line="1130" column="2">Expecting &#39;}&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\MainActivity.kt" line="1130" column="2">Expecting &#39;)&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\MainActivity.kt" line="1130" column="2">Missing &#39;}</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ModernCards.kt" line="701" column="2">Expecting &#39;}&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\AIAssistantPanel.kt" line="529" column="1">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\AIAssistantPanel.kt" line="529" column="8">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\AIAssistantPanel.kt" line="529" column="10">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\AIAssistantPanel.kt" line="529" column="17">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\AIAssistantPanel.kt" line="529" column="18">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\AISuggestionsBar.kt" line="200" column="1">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\AISuggestionsBar.kt" line="200" column="8">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\AISuggestionsBar.kt" line="200" column="10">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\AISuggestionsBar.kt" line="200" column="17">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\AISuggestionsBar.kt" line="200" column="18">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\AITagGenerator.kt" line="329" column="1">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\AITagGenerator.kt" line="329" column="8">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\AITagGenerator.kt" line="329" column="10">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\AITagGenerator.kt" line="329" column="17">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\AITagGenerator.kt" line="329" column="18">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\SentimentIndicator.kt" line="159" column="1">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\SentimentIndicator.kt" line="159" column="8">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\SentimentIndicator.kt" line="159" column="10">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\SentimentIndicator.kt" line="159" column="17">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\SentimentIndicator.kt" line="159" column="18">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\VoiceCommandUI.kt" line="258" column="1">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\VoiceCommandUI.kt" line="258" column="8">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\VoiceCommandUI.kt" line="258" column="10">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\VoiceCommandUI.kt" line="258" column="17">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\VoiceCommandUI.kt" line="258" column="18">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="126" column="52">Expecting &#39;)&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="126" column="52">Unexpected tokens (use &#39;;&#39; to separate expressions on the same line)</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="237" column="77">Expecting &#39;)&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="237" column="77">Unexpected tokens (use &#39;;&#39; to separate expressions on the same line)</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="239" column="95">Expecting &#39;)&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="239" column="95">Expecting &#39;-&gt;&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="240" column="16">Expecting an expression, is-condition or in-condition</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="240" column="46">Expecting &#39;)&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="240" column="46">Expecting &#39;-&gt;&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="241" column="20">Expecting a when-condition</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="241" column="78">Expecting &#39;)&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="241" column="78">Expecting &#39;-&gt;&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="241" column="79">Expecting an element</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="242" column="81">Expecting &#39;)&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="242" column="81">Expecting &#39;-&gt;&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="242" column="82">Expecting an element</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\template\TemplatePreview.kt" line="445" column="77">Expecting &#39;)&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\template\TemplatePreview.kt" line="445" column="78">Expecting &#39;)&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\template\TemplatePreview.kt" line="445" column="91">Expecting an element</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\template\TemplatePreview.kt" line="445" column="98">Expecting an element</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\template\TemplatePreview.kt" line="445" column="98">Unexpected tokens (use &#39;;&#39; to separate expressions on the same line)</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\template\TemplatePreview.kt" line="447" column="33">Expecting an element</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\screens\AISettingsScreen.kt" line="246" column="5">Expecting an expression</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\screens\ModernOnboardingScreen.kt" line="517" column="2">Expecting &#39;}&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\screens\template\TemplateEditorScreen.kt" line="972" column="2">Expecting &#39;}&#39;</error>
+
+</MESSAGES>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ion</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\SentimentIndicator.kt" line="159" column="8">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\SentimentIndicator.kt" line="159" column="10">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\SentimentIndicator.kt" line="159" column="17">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\SentimentIndicator.kt" line="159" column="18">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\VoiceCommandUI.kt" line="258" column="1">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\VoiceCommandUI.kt" line="258" column="8">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\VoiceCommandUI.kt" line="258" column="10">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\VoiceCommandUI.kt" line="258" column="17">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\ai\VoiceCommandUI.kt" line="258" column="18">Expecting a top level declaration</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="126" column="52">Expecting &#39;)&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="126" column="52">Unexpected tokens (use &#39;;&#39; to separate expressions on the same line)</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="237" column="77">Expecting &#39;)&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="237" column="77">Unexpected tokens (use &#39;;&#39; to separate expressions on the same line)</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="239" column="95">Expecting &#39;)&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="239" column="95">Expecting &#39;-&gt;&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="240" column="16">Expecting an expression, is-condition or in-condition</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="240" column="46">Expecting &#39;)&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="240" column="46">Expecting &#39;-&gt;&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="241" column="20">Expecting a when-condition</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="241" column="78">Expecting &#39;)&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="241" column="78">Expecting &#39;-&gt;&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="241" column="79">Expecting an element</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="242" column="81">Expecting &#39;)&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="242" column="81">Expecting &#39;-&gt;&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\organization\SmartFolderRulesEditor.kt" line="242" column="82">Expecting an element</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\template\TemplatePreview.kt" line="445" column="77">Expecting &#39;)&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\template\TemplatePreview.kt" line="445" column="78">Expecting &#39;)&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\template\TemplatePreview.kt" line="445" column="91">Expecting an element</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\template\TemplatePreview.kt" line="445" column="98">Expecting an element</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\template\TemplatePreview.kt" line="445" column="98">Unexpected tokens (use &#39;;&#39; to separate expressions on the same line)</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\template\TemplatePreview.kt" line="447" column="33">Expecting an element</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\screens\AISettingsScreen.kt" line="246" column="5">Expecting an expression</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\screens\ModernOnboardingScreen.kt" line="517" column="2">Expecting &#39;}&#39;</error>
+
+<error path="C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\screens\template\TemplateEditorScreen.kt" line="972" column="2">Expecting &#39;}&#39;</error>
+
+</MESSAGES>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+	at org.jetbrains.kotlin.compilerRunner.CompilerOutputParser.parseCompilerMessagesFromReader(CompilerOutputParser.kt:76)
+	at org.jetbrains.kotlin.compilerRunner.UtilsKt.processCompilerOutput(utils.kt:34)
+	at org.jetbrains.kotlin.compilerRunner.GradleKotlinCompilerWork.compileInProcessImpl(GradleKotlinCompilerWork.kt:393)
+	at org.jetbrains.kotlin.compilerRunner.GradleKotlinCompilerWork.access$compileInProcessImpl(GradleKotlinCompilerWork.kt:85)
+	at org.jetbrains.kotlin.compilerRunner.GradleKotlinCompilerWork$compileInProcess$future$1.call(GradleKotlinCompilerWork.kt:364)
+	at org.jetbrains.kotlin.compilerRunner.GradleKotlinCompilerWork$compileInProcess$future$1.call(GradleKotlinCompilerWork.kt:363)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 1; An invalid XML character (Unicode: 0x1b) was found in the element content of the document.
+	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:204)
+	at java.xml/com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:178)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1465)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2854)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:605)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:542)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:889)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:825)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1224)
+	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:637)
+	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:326)
+	at org.jetbrains.kotlin.compilerRunner.CompilerOutputParser.parseCompilerMessagesFromReader(CompilerOutputParser.kt:65)
+	... 9 more
+
+

@@ -26,5 +26,11 @@ data class NoteEntity(
     val collaborators: String = "", // JSON array of user IDs
     val version: Int = 1, // For conflict resolution
     val isInVault: Boolean = false, // Add this line for encrypted vaults
-    val reminderTime: Long? = null
+    val reminderTime: Long? = null,
+    val imagePaths: String = "", // JSON array of image file paths
+    
+    // Encryption fields
+    val isEncrypted: Boolean = false,
+    val encryptionMetadata: String? = null, // JSON string with encryption metadata (IV, algorithm, etc.)
+    val encryptedContent: String? = null // Encrypted content (if encrypted, content field will be empty)
 )

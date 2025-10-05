@@ -1,0 +1,657 @@
+Initialized native services in: C:\Users\Diganta1\.gradle\native
+Initialized jansi services in: C:\Users\Diganta1\.gradle\native
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.13/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Starting process 'Gradle build daemon'. Working directory: C:\Users\Diganta1\.gradle\daemon\8.13 Command: C:\Program Files\Eclipse Adoptium\jdk-17.0.15.6-hotspot\bin\java.exe --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.xml/javax.xml.namespace=ALL-UNNAMED -Xmx4096m -Dfile.encoding=UTF-8 -Duser.country=IN -Duser.language=en -Duser.variant -cp C:\Users\Diganta1\.gradle\wrapper\dists\gradle-8.13-bin\5xuhj0ry160q40clulazy9h7d\gradle-8.13\lib\gradle-daemon-main-8.13.jar -javaagent:C:\Users\Diganta1\.gradle\wrapper\dists\gradle-8.13-bin\5xuhj0ry160q40clulazy9h7d\gradle-8.13\lib\agents\gradle-instrumentation-agent-8.13.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 8.13
+Successfully started process 'Gradle build daemon'
+An attempt to start the daemon took 1.45 secs.
+The client will now receive all logging from the daemon (pid: 14348). The daemon log file: C:\Users\Diganta1\.gradle\daemon\8.13\daemon-14348.out.log
+Daemon will be stopped at the end of the build 
+Using 6 worker leases.
+Received JVM installation metadata from 'C:\Program Files\Eclipse Adoptium\jdk-17.0.15.6-hotspot': {JAVA_HOME=C:\Program Files\Eclipse Adoptium\jdk-17.0.15.6-hotspot, JAVA_VERSION=17.0.15, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=17.0.15+6, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=17.0.15+6, VM_VENDOR=Eclipse Adoptium, OS_ARCH=amd64}
+Reusing configuration cache.
+Watching the file system is configured to be enabled if available
+Now considering [C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy] as hierarchies to watch
+File system watching is active
+Using local directory build cache for the root build (location = C:\Users\Diganta1\.gradle\caches\build-cache-1, remove unused entries = after 7 days).
+Tasks to be executed: [task ':app:preBuild', task ':app:preDebugBuild', task ':app:mergeDebugNativeDebugMetadata', task ':app:checkKotlinGradlePluginConfigurationErrors', task ':app:generateDebugBuildConfig', task ':app:checkDebugAarMetadata', task ':app:generateDebugResValues', task ':app:processDebugGoogleServices', task ':app:mapDebugSourceSetPaths', task ':app:generateDebugResources', task ':app:mergeDebugResources', task ':app:packageDebugResources', task ':app:parseDebugLocalResources', task ':app:createDebugCompatibleScreenManifests', task ':app:extractDeepLinksDebug', task ':app:processDebugMainManifest', task ':app:processDebugManifest', task ':app:processDebugManifestForPackage', task ':app:processDebugResources', task ':app:kspDebugKotlin', task ':app:compileDebugKotlin', task ':app:javaPreCompileDebug', task ':app:compileDebugJavaWithJavac', task ':app:mergeDebugShaders', task ':app:compileDebugShaders', task ':app:generateDebugAssets', task ':app:mergeDebugAssets', task ':app:compressDebugAssets', task ':app:desugarDebugFileDependencies', task ':app:hiltAggregateDepsDebug', task ':app:hiltJavaCompileDebug', task ':app:transformDebugClassesWithAsm', task ':app:dexBuilderDebug', task ':app:mergeDebugGlobalSynthetics', task ':app:processDebugJavaRes', task ':app:mergeDebugJavaResource', task ':app:checkDebugDuplicateClasses', task ':app:mergeExtDexDebug', task ':app:mergeLibDexDebug', task ':app:mergeProjectDexDebug', task ':app:mergeDebugJniLibFolders', task ':app:mergeDebugNativeLibs', task ':app:stripDebugDebugSymbols', task ':app:validateSigningDebug', task ':app:writeDebugAppMetadata', task ':app:writeDebugSigningConfigVersions', task ':app:packageDebug', task ':app:createDebugApkListingFileRedirect', task ':app:assembleDebug']
+Tasks that were excluded: []
+Resolve mutations for :app:preBuild (Thread[Execution worker,5,main]) started.
+Resolve mutations for :app:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker Thread 2,5,main]) started.
+Resolve mutations for :app:processDebugGoogleServices (Thread[Execution worker Thread 4,5,main]) started.
+:app:preBuild (Thread[Execution worker,5,main]) started.
+:app:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker Thread 2,5,main]) started.
+:app:processDebugGoogleServices (Thread[Execution worker Thread 4,5,main]) started.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':app:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+
+> Task :app:preBuild UP-TO-DATE
+Skipping task ':app:preBuild' as it has no actions.
+Resolve mutations for :app:preDebugBuild (Thread[Execution worker,5,main]) started.
+:app:preDebugBuild (Thread[Execution worker,5,main]) started.
+
+> Task :app:preDebugBuild UP-TO-DATE
+Skipping task ':app:preDebugBuild' as it has no actions.
+Resolve mutations for :app:mergeDebugNativeDebugMetadata (Thread[Execution worker,5,main]) started.
+Resolve mutations for :app:generateDebugBuildConfig (Thread[Execution worker Thread 2,5,main]) started.
+Resolve mutations for :app:checkDebugAarMetadata (Thread[included builds,5,main]) started.
+:app:generateDebugBuildConfig (Thread[included builds,5,main]) started.
+:app:mergeDebugNativeDebugMetadata (Thread[Execution worker,5,main]) started.
+:app:checkDebugAarMetadata (Thread[Execution worker Thread 3,5,main]) started.
+Resolve mutations for :app:generateDebugResValues (Thread[Execution worker Thread 5,5,main]) started.
+Resolve mutations for :app:createDebugCompatibleScreenManifests (Thread[Execution worker Thread 2,5,main]) started.
+:app:generateDebugResValues (Thread[Execution worker Thread 5,5,main]) started.
+:app:createDebugCompatibleScreenManifests (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+Skipping task ':app:mergeDebugNativeDebugMetadata' as it has no source files and no previous output files.
+Resolve mutations for :app:javaPreCompileDebug (Thread[Execution worker,5,main]) started.
+:app:javaPreCompileDebug (Thread[Execution worker,5,main]) started.
+
+> Task :app:generateDebugResValues UP-TO-DATE
+Build cache key for task ':app:generateDebugResValues' is 9cb3c08669d3fd9619af3ddf02fe300c
+Skipping task ':app:generateDebugResValues' as it is up-to-date.
+Resolve mutations for :app:generateDebugResources (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:processDebugGoogleServices UP-TO-DATE
+Build cache key for task ':app:processDebugGoogleServices' is dc947736813c57c2db5b2c4a9331e307
+Skipping task ':app:processDebugGoogleServices' as it is up-to-date.
+
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+Caching disabled for task ':app:createDebugCompatibleScreenManifests' because:
+  Caching has been disabled for the task
+Skipping task ':app:createDebugCompatibleScreenManifests' as it is up-to-date.
+
+> Task :app:javaPreCompileDebug UP-TO-DATE
+Build cache key for task ':app:javaPreCompileDebug' is 5473fb1b3c8b9fb18c23a596ed7d3773
+Skipping task ':app:javaPreCompileDebug' as it is up-to-date.
+
+> Task :app:generateDebugBuildConfig UP-TO-DATE
+Build cache key for task ':app:generateDebugBuildConfig' is 6f23102f16cdb74504350377089b8d42
+Skipping task ':app:generateDebugBuildConfig' as it is up-to-date.
+Resolve mutations for :app:mapDebugSourceSetPaths (Thread[Execution worker Thread 4,5,main]) started.
+Resolve mutations for :app:mergeDebugShaders (Thread[Execution worker Thread 2,5,main]) started.
+Resolve mutations for :app:desugarDebugFileDependencies (Thread[included builds,5,main]) started.
+Resolve mutations for :app:extractDeepLinksDebug (Thread[Execution worker,5,main]) started.
+:app:extractDeepLinksDebug (Thread[Execution worker,5,main]) started.
+:app:mapDebugSourceSetPaths (Thread[Execution worker Thread 4,5,main]) started.
+:app:desugarDebugFileDependencies (Thread[included builds,5,main]) started.
+:app:mergeDebugShaders (Thread[Execution worker Thread 2,5,main]) started.
+:app:generateDebugResources (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+Build cache key for task ':app:desugarDebugFileDependencies' is 634166fcb88624d49a0ce1b9eeddad38
+Skipping task ':app:desugarDebugFileDependencies' as it is up-to-date.
+Resolve mutations for :app:checkDebugDuplicateClasses (Thread[included builds,5,main]) started.
+:app:checkDebugDuplicateClasses (Thread[included builds,5,main]) started.
+
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+Build cache key for task ':app:extractDeepLinksDebug' is 97bb5ab9f90fc190c176147e8155e278
+Skipping task ':app:extractDeepLinksDebug' as it is up-to-date.
+Resolve mutations for :app:processDebugMainManifest (Thread[Execution worker,5,main]) started.
+:app:processDebugMainManifest (Thread[Execution worker,5,main]) started.
+
+> Task :app:generateDebugResources UP-TO-DATE
+Build cache key for task ':app:generateDebugResources' is 2b745e37acf12b44ef20c49f2dff4a64
+Skipping task ':app:generateDebugResources' as it is up-to-date.
+Resolve mutations for :app:mergeDebugResources (Thread[Execution worker Thread 5,5,main]) started.
+:app:mergeDebugResources (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:mergeDebugShaders UP-TO-DATE
+Caching disabled for task ':app:mergeDebugShaders' because:
+  Simple merging task
+Skipping task ':app:mergeDebugShaders' as it is up-to-date.
+Resolve mutations for :app:packageDebugResources (Thread[Execution worker Thread 2,5,main]) started.
+:app:packageDebugResources (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :app:packageDebugResources UP-TO-DATE
+Build cache key for task ':app:packageDebugResources' is d0452eb344821c9a5c5ef11bb27217ec
+Skipping task ':app:packageDebugResources' as it is up-to-date.
+Resolve mutations for :app:parseDebugLocalResources (Thread[Execution worker Thread 2,5,main]) started.
+:app:parseDebugLocalResources (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :app:parseDebugLocalResources UP-TO-DATE
+Build cache key for task ':app:parseDebugLocalResources' is 99b6a9925d5dc78314a1b952c763e97d
+Skipping task ':app:parseDebugLocalResources' as it is up-to-date.
+Resolve mutations for :app:compileDebugShaders (Thread[Execution worker Thread 2,5,main]) started.
+:app:compileDebugShaders (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :app:compileDebugShaders NO-SOURCE
+Skipping task ':app:compileDebugShaders' as it has no source files and no previous output files.
+Resolve mutations for :app:generateDebugAssets (Thread[Execution worker Thread 2,5,main]) started.
+:app:generateDebugAssets (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :app:generateDebugAssets UP-TO-DATE
+Skipping task ':app:generateDebugAssets' as it has no actions.
+Resolve mutations for :app:mergeDebugAssets (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :app:mergeDebugResources UP-TO-DATE
+Build cache key for task ':app:mergeDebugResources' is 2b5acf6f539c65d673038451816872fd
+Skipping task ':app:mergeDebugResources' as it is up-to-date.
+Resolve mutations for :app:mergeDebugJniLibFolders (Thread[Execution worker Thread 5,5,main]) started.
+:app:mergeDebugJniLibFolders (Thread[Execution worker Thread 5,5,main]) started.
+:app:mergeDebugAssets (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :app:mergeDebugJniLibFolders UP-TO-DATE
+Caching disabled for task ':app:mergeDebugJniLibFolders' because:
+  Simple merging task
+Skipping task ':app:mergeDebugJniLibFolders' as it is up-to-date.
+Resolve mutations for :app:mergeDebugNativeLibs (Thread[Execution worker Thread 5,5,main]) started.
+:app:mergeDebugNativeLibs (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+Caching disabled for task ':app:checkDebugAarMetadata' because:
+  Caching has been disabled for the task
+Skipping task ':app:checkDebugAarMetadata' as it is up-to-date.
+Resolve mutations for :app:validateSigningDebug (Thread[Execution worker Thread 3,5,main]) started.
+:app:validateSigningDebug (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :app:validateSigningDebug UP-TO-DATE
+Caching disabled for task ':app:validateSigningDebug' because:
+  Caching has been disabled for the task
+Skipping task ':app:validateSigningDebug' as it is up-to-date.
+Resolve mutations for :app:writeDebugAppMetadata (Thread[Execution worker Thread 3,5,main]) started.
+:app:writeDebugAppMetadata (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :app:writeDebugAppMetadata UP-TO-DATE
+Caching disabled for task ':app:writeDebugAppMetadata' because:
+  Caching has been disabled for the task
+Skipping task ':app:writeDebugAppMetadata' as it is up-to-date.
+Resolve mutations for :app:writeDebugSigningConfigVersions (Thread[Execution worker Thread 3,5,main]) started.
+:app:writeDebugSigningConfigVersions (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+Caching disabled for task ':app:writeDebugSigningConfigVersions' because:
+  Caching has been disabled for the task
+Skipping task ':app:writeDebugSigningConfigVersions' as it is up-to-date.
+
+> Task :app:checkDebugDuplicateClasses UP-TO-DATE
+Caching disabled for task ':app:checkDebugDuplicateClasses' because:
+  Caching has been disabled for the task
+Skipping task ':app:checkDebugDuplicateClasses' as it is up-to-date.
+Resolve mutations for :app:mergeExtDexDebug (Thread[included builds,5,main]) started.
+:app:mergeExtDexDebug (Thread[included builds,5,main]) started.
+
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+Caching disabled for task ':app:mapDebugSourceSetPaths' because:
+  Caching has been disabled for the task
+Skipping task ':app:mapDebugSourceSetPaths' as it is up-to-date.
+Resolve mutations for :app:mergeLibDexDebug (Thread[Execution worker Thread 4,5,main]) started.
+:app:mergeLibDexDebug (Thread[Execution worker Thread 4,5,main]) started.
+
+> Task :app:processDebugMainManifest UP-TO-DATE
+Build cache key for task ':app:processDebugMainManifest' is 76954f9553bbcba242217ab6ebf11434
+Skipping task ':app:processDebugMainManifest' as it is up-to-date.
+Resolve mutations for :app:processDebugManifest (Thread[Execution worker,5,main]) started.
+:app:processDebugManifest (Thread[Execution worker,5,main]) started.
+
+> Task :app:mergeExtDexDebug UP-TO-DATE
+Build cache key for task ':app:mergeExtDexDebug' is 4a897ad9c50d33e63c1ec4c6f2bc0fb2
+Skipping task ':app:mergeExtDexDebug' as it is up-to-date.
+
+> Task :app:processDebugManifest UP-TO-DATE
+Build cache key for task ':app:processDebugManifest' is eff5af0c76a7b7552781690e374097de
+Skipping task ':app:processDebugManifest' as it is up-to-date.
+Resolve mutations for :app:processDebugManifestForPackage (Thread[Execution worker,5,main]) started.
+:app:processDebugManifestForPackage (Thread[Execution worker,5,main]) started.
+
+> Task :app:mergeLibDexDebug UP-TO-DATE
+Build cache key for task ':app:mergeLibDexDebug' is c1923291947d91d517b1c14d2b4a60f2
+Skipping task ':app:mergeLibDexDebug' as it is up-to-date.
+
+> Task :app:mergeDebugAssets UP-TO-DATE
+Caching disabled for task ':app:mergeDebugAssets' because:
+  Simple merging task
+Skipping task ':app:mergeDebugAssets' as it is up-to-date.
+Resolve mutations for :app:compressDebugAssets (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+Build cache key for task ':app:processDebugManifestForPackage' is a19716df9214ad49d60218dc3027242e
+Skipping task ':app:processDebugManifestForPackage' as it is up-to-date.
+:app:compressDebugAssets (Thread[Execution worker Thread 2,5,main]) started.
+Resolve mutations for :app:processDebugResources (Thread[Execution worker,5,main]) started.
+:app:processDebugResources (Thread[Execution worker,5,main]) started.
+
+> Task :app:mergeDebugNativeLibs UP-TO-DATE
+Caching disabled for task ':app:mergeDebugNativeLibs' because:
+  Caching has been disabled for the task
+Skipping task ':app:mergeDebugNativeLibs' as it is up-to-date.
+Resolve mutations for :app:stripDebugDebugSymbols (Thread[Execution worker Thread 5,5,main]) started.
+:app:stripDebugDebugSymbols (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:stripDebugDebugSymbols UP-TO-DATE
+Caching disabled for task ':app:stripDebugDebugSymbols' because:
+  Caching has been disabled for the task
+Skipping task ':app:stripDebugDebugSymbols' as it is up-to-date.
+
+> Task :app:compressDebugAssets UP-TO-DATE
+Build cache key for task ':app:compressDebugAssets' is 0b216a869abd5819b25c07e79c6a6473
+Skipping task ':app:compressDebugAssets' as it is up-to-date.
+
+> Task :app:processDebugResources UP-TO-DATE
+Build cache key for task ':app:processDebugResources' is d1058eaf1b34fb3789562961d1bbbebc
+Skipping task ':app:processDebugResources' as it is up-to-date.
+Resolve mutations for :app:kspDebugKotlin (Thread[Execution worker,5,main]) started.
+:app:kspDebugKotlin (Thread[Execution worker,5,main]) started.
+
+> Task :app:kspDebugKotlin
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+Build cache key for task ':app:kspDebugKotlin' is d2fa3c9c9104bf6cbfc6a9c2e25bc1e8
+Task ':app:kspDebugKotlin' is not up-to-date because:
+  Task has failed previously.
+The input changes require a full rebuild for incremental task ':app:kspDebugKotlin'.
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+Kotlin source files: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ads\AdConstants.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ads\AdManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ads\AdState.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ads\AppOpenAdManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ads\BannerAdManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ads\InterstitialAdManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ads\RewardedAdManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\ActionItemExtractor.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\AIAnalysisEngine.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\AIApiClient.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\AIInsightsScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\AIProcessingService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\AIService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\AITestActivity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\AndroidAIService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\ContentSummarizer.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\EnhancedNoteBuddyAIService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\EntityRecognizer.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\NoteBuddyAIService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\OpenAIService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\SentimentAnalyzer.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\TopicModeler.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\VoiceAIExtensions.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\VoiceRecordingService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\AINoteBuddyApplication.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\auth\GoogleAuthService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\auth\LoginActivity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\billing\BillingManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\collaboration\CollaborationModels.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\collaboration\CollaborativeEditingViewModel.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\collaboration\FirebaseCollaborationService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\collaboration\OperationalTransformEngine.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\collaboration\PresenceManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\collaboration\ui\CollaborativeEditingComponents.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\collaboration\ui\EditingModeDialog.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\AIProvider.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\AppDatabase.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\CategoryDao.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\CategoryEntity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\ChecklistItemDao.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\ChecklistItemEntity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\DataIntegrityDao.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\FolderDao.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\FolderEntity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\NoteDao.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\NoteEntity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\NoteVersionDao.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\NoteVersionEntity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\PreferencesManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\TagDao.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\TagEntity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\TemplateDao.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\TemplateEntity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\AISettingsActivity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\ApiKeySettingsActivity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\APIKeySetupScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\ClipboardManagerScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\CodeEditorScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\CollaborativeNoteEditorScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\CollaborativeNotesScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\FolderManagerScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\ImportNotesScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\MarkdownEditorScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\NoteEditorActivity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\NoteEditorScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\ShareReceiverActivity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\SmartTemplatesScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\VaultScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\VersionHistoryScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\WebClipperService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\integration\IntegrationModels.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\integration\IntelligenceOrchestrator.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\integration\PerformanceModels.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\integration\UnifiedPerformanceOptimizer.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\location\LocationService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\MainActivity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\ConflictResolutionEngine.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\DataIntegrityManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\NetworkStateManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\OfflineAICapabilities.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\OfflineFirstModule.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\OfflineOperationDao.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\OfflineOperationManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\OfflineOperationModels.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\OfflineWorkers.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\ui\ConflictResolutionComponents.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\ui\SyncStatusComponents.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\onboarding\OnboardingScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\personalization\AIEnhancedPersonalizationEngine.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\personalization\AIPersonalizationModels.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\premium\PremiumScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\QuickActionService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\repository\AdvancedNoteRepository.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\repository\NoteRepository.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\repository\OfflineFirstNoteRepository.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\search\AIEnhancedSearchEngine.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\search\AISearchModels.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\search\SavedSearchManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\search\SearchAnalyticsManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\search\SearchIndexManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\search\SmartSearchEngine.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\search\SmartSearchScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\search\SmartSearchViewModel.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\security\BiometricAuthService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\settings\BackupRestoreManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\settings\PrivacyPolicyScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\settings\SettingsDialogs.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\settings\SettingsScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\settings\TermsOfServiceScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\StickyNoteWidgetProvider.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\sync\GoogleDriveSyncService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\sync\GoogleDriveSyncServiceImpl.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\sync\WearNoteSyncService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\testing\APIKeyTestingUtility.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\calendar\CalendarNotesScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\canvas\InfiniteCanvasScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\BannerAdView.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\GlassCard.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\RichTextEditor.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\SmartAssistDialog.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\AdvancedDashboardScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\DashboardCustomizationScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\DashboardScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\DashboardWidget.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\DashboardWidgetManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\EnhancedDashboardScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\fab\CustomizableFAB.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\fab\FABAction.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\fab\FABConfigurationManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\fab\FABCustomizationScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\presets\CustomPresetCreationDialog.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\presets\DashboardPreset.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\presets\DashboardPresetManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\presets\DashboardPresetScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\presets\PresetSuccessDialog.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\widgets\DashboardWidgets.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\widgets\EnhancedAISuggestionsWidget.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\widgets\SearchShortcutsWidget.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\settings\AISettingsScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\theme\MaterialYouTheme.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\theme\NoteScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\theme\Theme.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\theme\ThemeManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\voice\VoiceNoteScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\voice\VoiceNoteViewModel.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\utils\AdConstants.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\viewmodel\AISettingsViewModel.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\viewmodel\NoteEditorViewModel.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\viewmodel\NoteViewModel.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\views\DynamicSmartViewsEngine.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\views\DynamicSmartViewsScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\views\DynamicViewsModels.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\views\DynamicViewsViewModel.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\views\ParadigmSelectorDialog.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\views\SuggestionsBottomSheet.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\voice\VoiceEngine.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\voice\VoiceModels.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\voice\VoiceRecognitionService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\workers\ReminderWorker.kt
+Java source files: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\generated\source\buildConfig\debug\com\ainotebuddy\app\BuildConfig.java
+Script source files: 
+Script file extensions: 
+[KOTLIN] Kotlin compilation 'jdkHome' argument: null
+Finished executing kotlin compiler using IN_PROCESS strategy
+i: [ksp] loaded provider(s): [androidx.room.RoomKspProcessor$Provider, dagger.hilt.processor.internal.uninstallmodules.KspUninstallModulesProcessor$Provider, dagger.hilt.processor.internal.earlyentrypoint.KspEarlyEntryPointProcessor$Provider, dagger.hilt.processor.internal.root.KspComponentTreeDepsProcessor$Provider, dagger.hilt.android.processor.internal.bindvalue.KspBindValueProcessor$Provider, dagger.hilt.processor.internal.generatesrootinput.KspGeneratesRootInputProcessor$Provider, dagger.hilt.processor.internal.aliasof.KspAliasOfProcessor$Provider, dagger.hilt.processor.internal.aggregateddeps.KspAggregatedDepsProcessor$Provider, dagger.hilt.processor.internal.root.KspRootProcessor$Provider, dagger.hilt.processor.internal.originatingelement.KspOriginatingElementProcessor$Provider, dagger.hilt.processor.internal.definecomponent.KspDefineComponentProcessor$Provider, dagger.hilt.android.processor.internal.viewmodel.KspViewModelProcessor$Provider, dagger.hilt.android.processor.internal.customtestapplication.KspCustomTestApplicationProcessor$Provider, dagger.hilt.android.processor.internal.androidentrypoint.KspAndroidEntryPointProcessor$Provider, dagger.internal.codegen.KspComponentProcessor$Provider]
+e: [ksp] InjectProcessingStep was unable to process 'CollaborativeEditingViewModel(error.NonExistentClass,com.ainotebuddy.app.collaboration.FirebaseCollaborationService,com.ainotebuddy.app.collaboration.PresenceManager,com.ainotebuddy.app.collaboration.OperationalTransformEngine)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.collaboration.CollaborativeEditingViewModel
+    => element (CONSTRUCTOR): CollaborativeEditingViewModel(error.NonExistentClass,com.ainotebuddy.app.collaboration.FirebaseCollaborationService,com.ainotebuddy.app.collaboration.PresenceManager,com.ainotebuddy.app.collaboration.OperationalTransformEngine)
+    => type (EXECUTABLE constructor): (error.NonExistentClass,com.ainotebuddy.app.collaboration.FirebaseCollaborationService,com.ainotebuddy.app.collaboration.PresenceManager,com.ainotebuddy.app.collaboration.OperationalTransformEngine)void
+    => type (ERROR parameter type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] InjectProcessingStep was unable to process 'IntelligenceOrchestrator(android.content.Context,com.ainotebuddy.app.ai.AIAnalysisEngine,com.ainotebuddy.app.search.SmartSearchEngine,error.NonExistentClass)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.integration.IntelligenceOrchestrator
+    => element (CONSTRUCTOR): IntelligenceOrchestrator(android.content.Context,com.ainotebuddy.app.ai.AIAnalysisEngine,com.ainotebuddy.app.search.SmartSearchEngine,error.NonExistentClass)
+    => type (EXECUTABLE constructor): (android.content.Context,com.ainotebuddy.app.ai.AIAnalysisEngine,com.ainotebuddy.app.search.SmartSearchEngine,error.NonExistentClass)void
+    => type (ERROR parameter type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] InjectProcessingStep was unable to process 'AIEnhancedPersonalizationEngine(android.content.Context,com.ainotebuddy.app.ai.AIAnalysisEngine,error.NonExistentClass)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.personalization.AIEnhancedPersonalizationEngine
+    => element (CONSTRUCTOR): AIEnhancedPersonalizationEngine(android.content.Context,com.ainotebuddy.app.ai.AIAnalysisEngine,error.NonExistentClass)
+    => type (EXECUTABLE constructor): (android.content.Context,com.ainotebuddy.app.ai.AIAnalysisEngine,error.NonExistentClass)void
+    => type (ERROR parameter type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] InjectProcessingStep was unable to process 'VoiceNoteViewModel(com.ainotebuddy.app.voice.VoiceEngine,com.ainotebuddy.app.integration.IntelligenceOrchestrator,com.ainotebuddy.app.personalization.AIEnhancedPersonalizationEngine,error.NonExistentClass)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.ui.voice.VoiceNoteViewModel
+    => element (CONSTRUCTOR): VoiceNoteViewModel(com.ainotebuddy.app.voice.VoiceEngine,com.ainotebuddy.app.integration.IntelligenceOrchestrator,com.ainotebuddy.app.personalization.AIEnhancedPersonalizationEngine,error.NonExistentClass)
+    => type (EXECUTABLE constructor): (com.ainotebuddy.app.voice.VoiceEngine,com.ainotebuddy.app.integration.IntelligenceOrchestrator,com.ainotebuddy.app.personalization.AIEnhancedPersonalizationEngine,error.NonExistentClass)void
+    => type (ERROR parameter type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] InjectProcessingStep was unable to process 'OfflineSyncWorker(android.content.Context,androidx.work.WorkerParameters,com.ainotebuddy.app.offline.OfflineOperationManager,com.ainotebuddy.app.offline.NetworkStateManager)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.OfflineSyncWorker
+    => annotation: @HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] InjectProcessingStep was unable to process 'OfflineCleanupWorker(android.content.Context,androidx.work.WorkerParameters,com.ainotebuddy.app.offline.OfflineOperationDao,com.ainotebuddy.app.offline.ConflictHistoryDao,com.ainotebuddy.app.offline.DataIntegrityManager)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.OfflineCleanupWorker
+    => annotation: @HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] InjectProcessingStep was unable to process 'DataIntegrityWorker(android.content.Context,androidx.work.WorkerParameters,com.ainotebuddy.app.offline.DataIntegrityManager)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.DataIntegrityWorker
+    => annotation: @HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] InjectProcessingStep was unable to process 'ConflictResolutionWorker(android.content.Context,androidx.work.WorkerParameters,com.ainotebuddy.app.offline.ConflictResolutionEngine,com.ainotebuddy.app.offline.OfflineOperationManager)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.ConflictResolutionWorker
+    => annotation: @HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedInjectProcessingStep was unable to process 'OfflineSyncWorker(android.content.Context,androidx.work.WorkerParameters,com.ainotebuddy.app.offline.OfflineOperationManager,com.ainotebuddy.app.offline.NetworkStateManager)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.OfflineSyncWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedInjectProcessingStep was unable to process 'OfflineCleanupWorker(android.content.Context,androidx.work.WorkerParameters,com.ainotebuddy.app.offline.OfflineOperationDao,com.ainotebuddy.app.offline.ConflictHistoryDao,com.ainotebuddy.app.offline.DataIntegrityManager)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.OfflineCleanupWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedInjectProcessingStep was unable to process 'DataIntegrityWorker(android.content.Context,androidx.work.WorkerParameters,com.ainotebuddy.app.offline.DataIntegrityManager)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.DataIntegrityWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedInjectProcessingStep was unable to process 'ConflictResolutionWorker(android.content.Context,androidx.work.WorkerParameters,com.ainotebuddy.app.offline.ConflictResolutionEngine,com.ainotebuddy.app.offline.OfflineOperationManager)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.ConflictResolutionWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedProcessingStep was unable to process 'context' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.OfflineSyncWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedProcessingStep was unable to process 'workerParams' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.OfflineSyncWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedProcessingStep was unable to process 'context' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.OfflineCleanupWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedProcessingStep was unable to process 'workerParams' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.OfflineCleanupWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedProcessingStep was unable to process 'context' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.DataIntegrityWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedProcessingStep was unable to process 'workerParams' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.DataIntegrityWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedProcessingStep was unable to process 'context' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.ConflictResolutionWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedProcessingStep was unable to process 'workerParams' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.ConflictResolutionWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: Error occurred in KSP, check log for detail
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/search/SmartSearchEngine.kt:391:43 Expecting an expression
+
+> Task :app:kspDebugKotlin FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:kspDebugKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+* Exception is:
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:kspDebugKotlin'.
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:130)
+	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:293)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:128)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:40)
+	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+Caused by: org.gradle.workers.internal.DefaultWorkerExecutor$WorkExecutionException: A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+	at org.gradle.workers.internal.DefaultWorkerExecutor$WorkItemExecution.waitForCompletion(DefaultWorkerExecutor.java:287)
+	at org.gradle.internal.work.DefaultAsyncWorkTracker.lambda$waitForItemsAndGatherFailures$2(DefaultAsyncWorkTracker.java:130)
+	at org.gradle.internal.Factories$1.create(Factories.java:31)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLocks(DefaultWorkerLeaseService.java:335)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLocks(DefaultWorkerLeaseService.java:318)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLock(DefaultWorkerLeaseService.java:323)
+	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForItemsAndGatherFailures(DefaultAsyncWorkTracker.java:126)
+	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForItemsAndGatherFailures(DefaultAsyncWorkTracker.java:92)
+	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForAll(DefaultAsyncWorkTracker.java:78)
+	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForCompletion(DefaultAsyncWorkTracker.java:66)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:252)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:30)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:27)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:48)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:229)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:212)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:195)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:162)
+	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
+	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
+	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
+	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
+	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:67)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:37)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:40)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:29)
+	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
+	at org.gradle.internal.execution.steps.BuildCacheStep.executeAndStoreInCache(BuildCacheStep.java:145)
+	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$executeWithCache$4(BuildCacheStep.java:101)
+	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$executeWithCache$5(BuildCacheStep.java:101)
+	at org.gradle.internal.Try$Success.map(Try.java:175)
+	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithCache(BuildCacheStep.java:85)
+	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$0(BuildCacheStep.java:74)
+	at org.gradle.internal.Either$Left.fold(Either.java:115)
+	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
+	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:65)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:36)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:107)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:56)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:64)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:61)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:289)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:48)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:35)
+	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:61)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:127)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:40)
+	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+Caused by: org.jetbrains.kotlin.gradle.tasks.CompilationErrorException: Compilation error. See log for more details
+	at org.jetbrains.kotlin.gradle.tasks.TasksUtilsKt.throwExceptionIfCompilationFailed(tasksUtils.kt:21)
+	at org.jetbrains.kotlin.compilerRunner.GradleKotlinCompilerWork.run(GradleKotlinCompilerWork.kt:119)
+	at org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction.execute(GradleCompilerRunnerWithWorkers.kt:76)
+	at org.gradle.workers.internal.DefaultWorkerServer.execute(DefaultWorkerServer.java:63)
+	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:66)
+	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:62)
+	at org.gradle.internal.classloader.ClassLoaderUtils.executeInClassloader(ClassLoaderUtils.java:100)
+	at org.gradle.workers.internal.NoIsolationWorkerFactory$1.lambda$execute$0(NoIsolationWorkerFactory.java:62)
+	at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:44)
+	at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:41)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.workers.internal.AbstractWorker.executeWrappedInBuildOperation(AbstractWorker.java:41)
+	at org.gradle.workers.internal.NoIsolationWorkerFactory$1.execute(NoIsolationWorkerFactory.java:59)
+	at org.gradle.workers.internal.DefaultWorkerExecutor.lambda$submitWork$0(DefaultWorkerExecutor.java:174)
+30 actionable tasks: 1 executed, 29 up-to-date
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runExecution(DefaultConditionalExecutionQueue.java:194)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.access$700(DefaultConditionalExecutionQueue.java:127)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner$1.run(DefaultConditionalExecutionQueue.java:169)
+	at org.gradle.internal.Factories$1.create(Factories.java:31)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:263)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:127)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:132)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runBatch(DefaultConditionalExecutionQueue.java:164)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.run(DefaultConditionalExecutionQueue.java:133)
+	... 2 more
+
+
+BUILD FAILED in 25s
+Watched directory hierarchies: [C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy]
+Configuration cache entry reused.

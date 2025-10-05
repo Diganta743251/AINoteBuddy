@@ -3,16 +3,14 @@
     <cloud-backup>
         <include domain="database" path="." />
         <include domain="sharedpref" path="." />
-        <include domain="file" path="notes" />
-        <include domain="file" path="images" />
+        <include domain="file" path="." />
         <exclude domain="file" path="temp" />
         <exclude domain="file" path="cache" />
     </cloud-backup>
     <device-transfer>
         <include domain="database" path="." />
         <include domain="sharedpref" path="." />
-        <include domain="file" path="notes" />
-        <include domain="file" path="images" />
+        <include domain="file" path="." />
         <exclude domain="file" path="temp" />
         <exclude domain="file" path="cache" />
     </device-transfer>

@@ -2,8 +2,7 @@
 <full-backup-content>
     <include domain="database" path="." />
     <include domain="sharedpref" path="." />
-    <include domain="file" path="notes" />
-    <include domain="file" path="images" />
+    <include domain="file" path="." />
     <exclude domain="file" path="temp" />
     <exclude domain="file" path="cache" />
 </full-backup-content>

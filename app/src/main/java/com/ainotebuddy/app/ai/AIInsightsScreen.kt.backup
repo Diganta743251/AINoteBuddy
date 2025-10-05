@@ -1,0 +1,717 @@
+package com.ainotebuddy.app.ai
+
+import androidx.compose.animation.*
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.ainotebuddy.app.ui.components.GlassCard
+import com.ainotebuddy.app.viewmodel.NoteViewModel
+import kotlinx.coroutines.launch
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun AIInsightsScreen(
+    onBackClick: () -> Unit,
+    onSuggestionApply: (SmartSuggestion) -> Unit,
+    viewModel: NoteViewModel = viewModel()
+) {
+    val context = LocalContext.current
+    val aiAnalysisEngine = remember { AIAnalysisEngine(context) }
+    val scope = rememberCoroutineScope()
+    
+    val notes by viewModel.notes.collectAsState()
+    var contentInsights by remember { mutableStateOf<ContentInsights?>(null) }
+    var smartSuggestions by remember { mutableStateOf<List<SmartSuggestion>>(emptyList()) }
+    var isAnalyzing by remember { mutableStateOf(false) }
+    var selectedCategory by remember { mutableStateOf(InsightCategory.OVERVIEW) }
+    
+    // Perform comprehensive analysis
+    LaunchedEffect(notes) {
+        if (notes.isNotEmpty()) {
+            isAnalyzing = true
+            try {
+                val insights = aiAnalysisEngine.generateContentInsights(notes)
+                contentInsights = insights
+                
+                // Generate comprehensive suggestions
+                val allSuggestions = mutableListOf<SmartSuggestion>()
+                notes.forEach { note ->
+                    val analysis = aiAnalysisEngine.analyzeNote(note)
+                    val suggestions = aiAnalysisEngine.generateSmartSuggestions(note, analysis, notes)
+                    allSuggestions.addAll(suggestions)
+                }
+                
+                smartSuggestions = allSuggestions.distinctBy { it.title }
+                    .sortedByDescending { it.confidence }
+                    .take(20)
+            } catch (e: Exception) {
+                // Handle error
+            } finally {
+                isAnalyzing = false
+            }
+        }
+    }
+    
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        Color(0xFF0f0f23),
+                        Color(0xFF1a1a2e),
+                        Color(0xFF16213e)
+                    )
+                )
+            )
+    ) {
+        // Header
+        AIInsightsHeader(
+            onBackClick = onBackClick,
+            isAnalyzing = isAnalyzing,
+            totalNotes = notes.size
+        )
+        
+        // Category Tabs
+        InsightCategoryTabs(
+            selectedCategory = selectedCategory,
+            onCategorySelected = { selectedCategory = it }
+        )
+        
+        // Content
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            when (selectedCategory) {
+                InsightCategory.OVERVIEW -> {
+                    item {
+                        OverviewSection(
+                            insights = contentInsights,
+                            isAnalyzing = isAnalyzing
+                        )
+                    }
+                }
+                InsightCategory.SUGGESTIONS -> {
+                    item {
+                        Text(
+                            text = "Smart Suggestions",
+                            style = MaterialTheme.typography.headlineSmall,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.White,
+                            modifier = Modifier.padding(bottom = 8.dp)
+                        )
+                    }
+                    
+                    items(smartSuggestions) { suggestion ->
+                        DetailedSuggestionCard(
+                            suggestion = suggestion,
+                            onApply = { onSuggestionApply(suggestion) }
+                        )
+                    }
+                }
+                InsightCategory.SENTIMENT -> {
+                    item {
+                        SentimentAnalysisSection(
+                            insights = contentInsights,
+                            isAnalyzing = isAnalyzing
+                        )
+                    }
+                }
+                InsightCategory.TOPICS -> {
+                    item {
+                        TopicAnalysisSection(
+                            insights = contentInsights,
+                            isAnalyzing = isAnalyzing
+                        )
+                    }
+                }
+                InsightCategory.PATTERNS -> {
+                    item {
+                        PatternAnalysisSection(
+                            insights = contentInsights,
+                            isAnalyzing = isAnalyzing
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+enum class InsightCategory {
+    OVERVIEW, SUGGESTIONS, SENTIMENT, TOPICS, PATTERNS
+}
+
+@Composable
+fun AIInsightsHeader(
+    onBackClick: () -> Unit,
+    isAnalyzing: Boolean,
+    totalNotes: Int
+) {
+    GlassCard(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            IconButton(
+                onClick = onBackClick,
+                modifier = Modifier.size(40.dp)
+            ) {
+                Icon(
+                    Icons.Filled.ArrowBack,
+                    contentDescription = "Back",
+                    tint = Color.White
+                )
+            }
+            
+            Spacer(modifier = Modifier.width(12.dp))
+            
+            Column(
+                modifier = Modifier.weight(1f)
+            ) {
+                Text(
+                    text = "AI Insights",
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White
+                )
+                
+                Text(
+                    text = if (isAnalyzing) "Analyzing $totalNotes notes..." else "Analysis of $totalNotes notes",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = Color.White.copy(alpha = 0.7f)
+                )
+            }
+            
+            if (isAnalyzing) {
+                CircularProgressIndicator(
+                    modifier = Modifier.size(24.dp),
+                    strokeWidth = 2.dp,
+                    color = Color(0xFF9C27B0)
+                )
+            } else {
+                Icon(
+                    Icons.Filled.Psychology,
+                    contentDescription = null,
+                    tint = Color(0xFF9C27B0),
+                    modifier = Modifier.size(24.dp)
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun InsightCategoryTabs(
+    selectedCategory: InsightCategory,
+    onCategorySelected: (InsightCategory) -> Unit
+) {
+    LazyRow(
+        modifier = Modifier.fillMaxWidth(),
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        items(InsightCategory.values()) { category ->
+            val isSelected = selectedCategory == category
+            
+            Card(
+                onClick = { onCategorySelected(category) },
+                colors = CardDefaults.cardColors(
+                    containerColor = if (isSelected) 
+                        Color(0xFF9C27B0).copy(alpha = 0.3f) 
+                    else 
+                        Color.White.copy(alpha = 0.1f)
+                ),
+                shape = RoundedCornerShape(20.dp)
+            ) {
+                Row(
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        category.icon,
+                        contentDescription = null,
+                        tint = if (isSelected) Color(0xFF9C27B0) else Color.White.copy(alpha = 0.7f),
+                        modifier = Modifier.size(16.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = category.displayName,
+                        style = MaterialTheme.typography.labelMedium,
+                        color = if (isSelected) Color(0xFF9C27B0) else Color.White.copy(alpha = 0.7f),
+                        fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun OverviewSection(
+    insights: ContentInsights?,
+    isAnalyzing: Boolean
+) {
+    if (isAnalyzing) {
+        AnalyzingOverviewState()
+    } else if (insights == null) {
+        EmptyInsightsState()
+    } else {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            Text(
+                text = "Overview",
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.Bold,
+                color = Color.White
+            )
+            
+            // Key Metrics Cards
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                MetricCard(
+                    title = "Notes Analyzed",
+                    value = insights.totalNotesAnalyzed.toString(),
+                    icon = Icons.Filled.Description,
+                    color = Color(0xFF2196F3),
+                    modifier = Modifier.weight(1f)
+                )
+                
+                MetricCard(
+                    title = "Topics Found",
+                    value = insights.topTopics.size.toString(),
+                    icon = Icons.Filled.Topic,
+                    color = Color(0xFF4CAF50),
+                    modifier = Modifier.weight(1f)
+                )
+            }
+            
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                MetricCard(
+                    title = "Action Items",
+                    value = insights.actionItemStats.totalActionItems.toString(),
+                    icon = Icons.Filled.Assignment,
+                    color = Color(0xFFFF9800),
+                    modifier = Modifier.weight(1f)
+                )
+                
+                MetricCard(
+                    title = "Key Entities",
+                    value = insights.topEntities.size.toString(),
+                    icon = Icons.Filled.Person,
+                    color = Color(0xFF9C27B0),
+                    modifier = Modifier.weight(1f)
+                )
+            }
+            
+            // Quick Insights
+            QuickInsightsCard(insights)
+        }
+    }
+}
+
+@Composable
+fun SentimentAnalysisSection(
+    insights: ContentInsights?,
+    isAnalyzing: Boolean
+) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        Text(
+            text = "Sentiment Analysis",
+            style = MaterialTheme.typography.headlineSmall,
+            fontWeight = FontWeight.Bold,
+            color = Color.White
+        )
+        
+        if (isAnalyzing) {
+            AnalyzingState("Analyzing emotional tone and sentiment patterns...")
+        } else if (insights == null) {
+            EmptyInsightsState()
+        } else {
+            // Sentiment Overview
+            SentimentOverviewCard(insights.sentimentTrend)
+            
+            // Sentiment Distribution Chart
+            SentimentDistributionCard(insights.sentimentTrend)
+        }
+    }
+}
+
+@Composable
+fun TopicAnalysisSection(
+    insights: ContentInsights?,
+    isAnalyzing: Boolean
+) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        Text(
+            text = "Topic Analysis",
+            style = MaterialTheme.typography.headlineSmall,
+            fontWeight = FontWeight.Bold,
+            color = Color.White
+        )
+        
+        if (isAnalyzing) {
+            AnalyzingState("Extracting topics and themes from your notes...")
+        } else if (insights == null) {
+            EmptyInsightsState()
+        } else {
+            // Top Topics
+            TopTopicsDetailCard(insights.topTopics)
+            
+            // Topic Trends (if available)
+            if (insights.topTopics.isNotEmpty()) {
+                TopicTrendsCard(insights.topTopics)
+            }
+        }
+    }
+}
+
+@Composable
+fun PatternAnalysisSection(
+    insights: ContentInsights?,
+    isAnalyzing: Boolean
+) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        Text(
+            text = "Pattern Analysis",
+            style = MaterialTheme.typography.headlineSmall,
+            fontWeight = FontWeight.Bold,
+            color = Color.White
+        )
+        
+        if (isAnalyzing) {
+            AnalyzingState("Identifying patterns in your writing and note-taking...")
+        } else if (insights == null) {
+            EmptyInsightsState()
+        } else {
+            // Writing Patterns
+            WritingPatternsDetailCard(insights.writingPatterns)
+            
+            // Entity Patterns
+            EntityPatternsCard(insights.topEntities)
+        }
+    }
+}
+
+@Composable
+fun DetailedSuggestionCard(
+    suggestion: SmartSuggestion,
+    onApply: () -> Unit
+) {
+    GlassCard {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.Top
+            ) {
+                Icon(
+                    suggestion.type.icon,
+                    contentDescription = null,
+                    tint = suggestion.type.color,
+                    modifier = Modifier.size(24.dp)
+                )
+                
+                Spacer(modifier = Modifier.width(12.dp))
+                
+                Column(
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(
+                        text = suggestion.title,
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White
+                    )
+                    
+                    Spacer(modifier = Modifier.height(4.dp))
+                    
+                    Text(
+                        text = suggestion.description,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = Color.White.copy(alpha = 0.8f)
+                    )
+                    
+                    Spacer(modifier = Modifier.height(8.dp))
+                    
+                    // Confidence and type info
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        ConfidenceChip(suggestion.confidence)
+                        Spacer(modifier = Modifier.width(8.dp))
+                        TypeChip(suggestion.type)
+                    }
+                }
+                
+                Button(
+                    onClick = onApply,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = suggestion.type.color,
+                        contentColor = Color.White
+                    ),
+                    shape = RoundedCornerShape(8.dp)
+                ) {
+                    Text("Apply")
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun MetricCard(
+    title: String,
+    value: String,
+    icon: ImageVector,
+    color: Color,
+    modifier: Modifier = Modifier
+) {
+    GlassCard(
+        modifier = modifier
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Icon(
+                icon,
+                contentDescription = null,
+                tint = color,
+                modifier = Modifier.size(24.dp)
+            )
+            
+            Spacer(modifier = Modifier.height(8.dp))
+            
+            Text(
+                text = value,
+                style = MaterialTheme.typography.headlineMedium,
+                fontWeight = FontWeight.Bold,
+                color = Color.White
+            )
+            
+            Text(
+                text = title,
+                style = MaterialTheme.typography.bodySmall,
+                color = Color.White.copy(alpha = 0.7f),
+                textAlign = TextAlign.Center
+            )
+        }
+    }
+}
+
+@Composable
+fun QuickInsightsCard(insights: ContentInsights) {
+    GlassCard {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Text(
+                text = "Quick Insights",
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold,
+                color = Color.White,
+                modifier = Modifier.padding(bottom = 12.dp)
+            )
+            
+            val quickInsights = generateQuickInsights(insights)
+            
+            quickInsights.forEach { insight ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 4.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        Icons.Filled.Lightbulb,
+                        contentDescription = null,
+                        tint = Color(0xFFFFD700),
+                        modifier = Modifier.size(16.dp)
+                    )
+                    
+                    Spacer(modifier = Modifier.width(8.dp))
+                    
+                    Text(
+                        text = insight,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = Color.White.copy(alpha = 0.8f)
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun AnalyzingState(message: String = "Analyzing your notes...") {
+    GlassCard {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(32.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            CircularProgressIndicator(
+                color = Color(0xFF9C27B0),
+                strokeWidth = 3.dp,
+                modifier = Modifier.size(48.dp)
+            )
+            
+            Spacer(modifier = Modifier.height(16.dp))
+            
+            Text(
+                text = message,
+                style = MaterialTheme.typography.bodyLarge,
+                color = Color.White.copy(alpha = 0.8f),
+                textAlign = TextAlign.Center
+            )
+        }
+    }
+}
+
+@Composable
+fun AnalyzingOverviewState() {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        Text(
+            text = "Overview",
+            style = MaterialTheme.typography.headlineSmall,
+            fontWeight = FontWeight.Bold,
+            color = Color.White
+        )
+        
+        AnalyzingState("Generating comprehensive insights from your notes...")
+    }
+}
+
+@Composable
+fun EmptyInsightsState() {
+    GlassCard {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(32.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Icon(
+                Icons.Filled.Psychology,
+                contentDescription = null,
+                tint = Color.White.copy(alpha = 0.3f),
+                modifier = Modifier.size(64.dp)
+            )
+            
+            Spacer(modifier = Modifier.height(16.dp))
+            
+            Text(
+                text = "No insights available",
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.Bold,
+                color = Color.White.copy(alpha = 0.7f)
+            )
+            
+            Text(
+                text = "Create some notes and AI will analyze them to provide intelligent insights",
+                style = MaterialTheme.typography.bodyMedium,
+                color = Color.White.copy(alpha = 0.5f),
+                textAlign = TextAlign.Center
+            )
+        }
+    }
+}
+
+// Helper functions and extensions
+val InsightCategory.displayName: String
+    get() = when (this) {
+        InsightCategory.OVERVIEW -> "Overview"
+        InsightCategory.SUGGESTIONS -> "Suggestions"
+        InsightCategory.SENTIMENT -> "Sentiment"
+        InsightCategory.TOPICS -> "Topics"
+        InsightCategory.PATTERNS -> "Patterns"
+    }
+
+val InsightCategory.icon: ImageVector
+    get() = when (this) {
+        InsightCategory.OVERVIEW -> Icons.Filled.Dashboard
+        InsightCategory.SUGGESTIONS -> Icons.Filled.Lightbulb
+        InsightCategory.SENTIMENT -> Icons.Filled.Mood
+        InsightCategory.TOPICS -> Icons.Filled.Topic
+        InsightCategory.PATTERNS -> Icons.Filled.TrendingUp
+    }
+
+private fun generateQuickInsights(insights: ContentInsights): List<String> {
+    val quickInsights = mutableListOf<String>()
+    
+    // Sentiment insights
+    val sentiment = insights.sentimentTrend
+    when {
+        sentiment.positiveCount > sentiment.negativeCount * 2 -> 
+            quickInsights.add("Your notes have a predominantly positive tone")
+        sentiment.negativeCount > sentiment.positiveCount * 2 -> 
+            quickInsights.add("Consider reviewing notes with negative sentiment for stress patterns")
+        else -> 
+            quickInsights.add("Your notes show balanced emotional content")
+    }
+    
+    // Topic insights
+    if (insights.topTopics.isNotEmpty()) {
+        val topTopic = insights.topTopics.first()
+        quickInsights.add("'${topTopic.topic}' is your most frequent topic (${topTopic.frequency} mentions)")
+    }
+    
+    // Action item insights
+    val actionStats = insights.actionItemStats
+    if (actionStats.totalActionItems > 0) {
+        val urgentRatio = actionStats.highPriorityCount.toFloat() / actionStats.totalActionItems
+        if (urgentRatio > 0.3f) {
+            quickInsights.add("${(urgentRatio * 100).toInt()}% of your action items are high priority")
+        }
+    }
+    
+    // Writing pattern insights
+    val patterns = insights.writingPatterns
+    if (patterns.averageNoteLength > 200) {
+        quickInsights.add("You tend to write detailed notes (avg ${patterns.averageNoteLength.toInt()} words)")
+    } else if (patterns.averageNoteLength < 50) {
+        quickInsights.add("You prefer concise notes (avg ${patterns.averageNoteLength.toInt()} words)")
+    }
+    
+    return quickInsights.take(4)
+}

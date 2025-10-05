@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "317468278038-rnqmt9742spttj4r193he7381kodfo9p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ainotebuddy.app",
+            "certificate_hash": "7154c3ab93d5d05ed58acec37579bda83910e0f6"
+          }
+        },
+        {
           "client_id": "317468278038-le8kmvj2an741f9q987n65c7c0vi28gv.apps.googleusercontent.com",
           "client_type": 3
         }

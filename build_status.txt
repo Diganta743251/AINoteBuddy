@@ -1,0 +1,1164 @@
+Initialized native services in: C:\Users\Diganta1\.gradle\native
+Initialized jansi services in: C:\Users\Diganta1\.gradle\native
+The client will now receive all logging from the daemon (pid: 10100). The daemon log file: C:\Users\Diganta1\.gradle\daemon\8.13\daemon-10100.out.log
+Starting 7th build in daemon [uptime: 6 mins 33.304 secs, performance: 100%, GC rate: 0.00/s, heap usage: 0% of 4 GiB]
+Using 6 worker leases.
+Invalidating in-memory cache of C:\Users\Diganta1\.gradle\caches\journal-1\file-access.bin
+Now considering [C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy] as hierarchies to watch
+Reusing configuration cache.
+Now considering [C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Using local directory build cache for the root build (location = C:\Users\Diganta1\.gradle\caches\build-cache-1, remove unused entries = after 7 days).
+Tasks to be executed: [task ':app:preBuild', task ':app:preDebugBuild', task ':app:mergeDebugNativeDebugMetadata', task ':app:checkKotlinGradlePluginConfigurationErrors', task ':app:generateDebugBuildConfig', task ':app:checkDebugAarMetadata', task ':app:generateDebugResValues', task ':app:processDebugGoogleServices', task ':app:mapDebugSourceSetPaths', task ':app:generateDebugResources', task ':app:mergeDebugResources', task ':app:packageDebugResources', task ':app:parseDebugLocalResources', task ':app:createDebugCompatibleScreenManifests', task ':app:extractDeepLinksDebug', task ':app:processDebugMainManifest', task ':app:processDebugManifest', task ':app:processDebugManifestForPackage', task ':app:processDebugResources', task ':app:kspDebugKotlin', task ':app:compileDebugKotlin', task ':app:javaPreCompileDebug', task ':app:compileDebugJavaWithJavac', task ':app:mergeDebugShaders', task ':app:compileDebugShaders', task ':app:generateDebugAssets', task ':app:mergeDebugAssets', task ':app:compressDebugAssets', task ':app:desugarDebugFileDependencies', task ':app:hiltAggregateDepsDebug', task ':app:hiltJavaCompileDebug', task ':app:transformDebugClassesWithAsm', task ':app:dexBuilderDebug', task ':app:mergeDebugGlobalSynthetics', task ':app:processDebugJavaRes', task ':app:mergeDebugJavaResource', task ':app:checkDebugDuplicateClasses', task ':app:mergeExtDexDebug', task ':app:mergeLibDexDebug', task ':app:mergeProjectDexDebug', task ':app:mergeDebugJniLibFolders', task ':app:mergeDebugNativeLibs', task ':app:stripDebugDebugSymbols', task ':app:validateSigningDebug', task ':app:writeDebugAppMetadata', task ':app:writeDebugSigningConfigVersions', task ':app:packageDebug', task ':app:createDebugApkListingFileRedirect', task ':app:assembleDebug', task ':wear:preBuild', task ':wear:preDebugBuild', task ':wear:mergeDebugNativeDebugMetadata', task ':wear:checkKotlinGradlePluginConfigurationErrors', task ':wear:checkDebugAarMetadata', task ':wear:generateDebugResValues', task ':wear:mapDebugSourceSetPaths', task ':wear:generateDebugResources', task ':wear:mergeDebugResources', task ':wear:packageDebugResources', task ':wear:parseDebugLocalResources', task ':wear:createDebugCompatibleScreenManifests', task ':wear:extractDeepLinksDebug', task ':wear:processDebugMainManifest', task ':wear:processDebugManifest', task ':wear:processDebugManifestForPackage', task ':wear:processDebugResources', task ':wear:compileDebugKotlin', task ':wear:javaPreCompileDebug', task ':wear:compileDebugJavaWithJavac', task ':wear:mergeDebugShaders', task ':wear:compileDebugShaders', task ':wear:generateDebugAssets', task ':wear:mergeDebugAssets', task ':wear:compressDebugAssets', task ':wear:desugarDebugFileDependencies', task ':wear:dexBuilderDebug', task ':wear:mergeDebugGlobalSynthetics', task ':wear:processDebugJavaRes', task ':wear:mergeDebugJavaResource', task ':wear:checkDebugDuplicateClasses', task ':wear:mergeExtDexDebug', task ':wear:mergeLibDexDebug', task ':wear:mergeProjectDexDebug', task ':wear:mergeDebugJniLibFolders', task ':wear:mergeDebugNativeLibs', task ':wear:stripDebugDebugSymbols', task ':wear:validateSigningDebug', task ':wear:writeDebugAppMetadata', task ':wear:writeDebugSigningConfigVersions', task ':wear:packageDebug', task ':wear:createDebugApkListingFileRedirect', task ':wear:assembleDebug']
+Tasks that were excluded: []
+Resolve mutations for :app:preBuild (Thread[included builds,5,main]) started.
+Resolve mutations for :app:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker Thread 5,5,main]) started.
+Resolve mutations for :app:processDebugGoogleServices (Thread[Execution worker Thread 2,5,main]) started.
+Resolve mutations for :wear:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker Thread 4,5,main]) started.
+Resolve mutations for :wear:preBuild (Thread[Execution worker,5,main]) started.
+:wear:preBuild (Thread[Execution worker,5,main]) started.
+:app:preBuild (Thread[included builds,5,main]) started.
+:app:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker Thread 5,5,main]) started.
+:wear:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker Thread 4,5,main]) started.
+
+> Task :wear:preBuild UP-TO-DATE
+Skipping task ':wear:preBuild' as it has no actions.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':app:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+
+> Task :app:preBuild UP-TO-DATE
+Skipping task ':app:preBuild' as it has no actions.
+
+> Task :wear:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':wear:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :app:preDebugBuild (Thread[included builds,5,main]) started.
+:app:processDebugGoogleServices (Thread[Execution worker Thread 2,5,main]) started.
+Resolve mutations for :wear:preDebugBuild (Thread[Execution worker,5,main]) started.
+:wear:preDebugBuild (Thread[Execution worker,5,main]) started.
+
+> Task :wear:preDebugBuild UP-TO-DATE
+Skipping task ':wear:preDebugBuild' as it has no actions.
+Resolve mutations for :wear:mergeDebugNativeDebugMetadata (Thread[Execution worker,5,main]) started.
+:app:preDebugBuild (Thread[included builds,5,main]) started.
+Resolve mutations for :wear:checkDebugAarMetadata (Thread[Execution worker Thread 4,5,main]) started.
+Resolve mutations for :wear:generateDebugResValues (Thread[Execution worker Thread 5,5,main]) started.
+Resolve mutations for :wear:createDebugCompatibleScreenManifests (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :app:preDebugBuild UP-TO-DATE
+Skipping task ':app:preDebugBuild' as it has no actions.
+Resolve mutations for :app:mergeDebugNativeDebugMetadata (Thread[included builds,5,main]) started.
+:app:mergeDebugNativeDebugMetadata (Thread[included builds,5,main]) started.
+Resolve mutations for :app:generateDebugBuildConfig (Thread[Execution worker,5,main]) started.
+:app:generateDebugBuildConfig (Thread[Execution worker,5,main]) started.
+Resolve mutations for :app:checkDebugAarMetadata (Thread[Execution worker Thread 3,5,main]) started.
+Resolve mutations for :app:generateDebugResValues (Thread[Execution worker Thread 5,5,main]) started.
+:app:checkDebugAarMetadata (Thread[Execution worker Thread 3,5,main]) started.
+Resolve mutations for :app:createDebugCompatibleScreenManifests (Thread[Execution worker Thread 4,5,main]) started.
+:app:generateDebugResValues (Thread[Execution worker Thread 5,5,main]) started.
+:app:createDebugCompatibleScreenManifests (Thread[Execution worker Thread 4,5,main]) started.
+
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+Skipping task ':app:mergeDebugNativeDebugMetadata' as it has no source files and no previous output files.
+Resolve mutations for :app:javaPreCompileDebug (Thread[included builds,5,main]) started.
+:app:javaPreCompileDebug (Thread[included builds,5,main]) started.
+
+> Task :app:processDebugGoogleServices
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\gmpAppId.txt
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\generated\res\processDebugGoogleServices
+Build cache key for task ':app:processDebugGoogleServices' is dc947736813c57c2db5b2c4a9331e307
+Task ':app:processDebugGoogleServices' is not up-to-date because:
+  Output property 'gmpAppId' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\gmpAppId.txt has been removed.
+  Output property 'outputDirectory' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\generated\res\processDebugGoogleServices has been removed.
+  Output property 'outputDirectory' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\generated\res\processDebugGoogleServices\values has been removed.
+  and more...
+
+> Task :app:createDebugCompatibleScreenManifests
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\compatible_screen_manifest\debug\createDebugCompatibleScreenManifests
+Caching disabled for task ':app:createDebugCompatibleScreenManifests' because:
+  Caching has been disabled for the task
+Task ':app:createDebugCompatibleScreenManifests' is not up-to-date because:
+  Output property 'outputFolder' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\compatible_screen_manifest\debug\createDebugCompatibleScreenManifests has been removed.
+  Output property 'outputFolder' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\compatible_screen_manifest\debug\createDebugCompatibleScreenManifests\output-metadata.json has been removed.
+Resolve mutations for :app:mergeDebugShaders (Thread[Execution worker Thread 4,5,main]) started.
+
+> Task :app:generateDebugBuildConfig
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\generated\source\buildConfig\debug
+Build cache key for task ':app:generateDebugBuildConfig' is 6f23102f16cdb74504350377089b8d42
+Task ':app:generateDebugBuildConfig' is not up-to-date because:
+  Output property 'sourceOutputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\generated\source\buildConfig\debug has been removed.
+  Output property 'sourceOutputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\generated\source\buildConfig\debug\com has been removed.
+  Output property 'sourceOutputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\generated\source\buildConfig\debug\com\ainotebuddy has been removed.
+  and more...
+
+:app:mergeDebugShaders (Thread[Execution worker Thread 4,5,main]) started.
+
+> Task :app:checkDebugAarMetadata
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\aar_metadata_check\debug\checkDebugAarMetadata
+
+> Task :app:javaPreCompileDebug FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\annotation_processor_list\debug\javaPreCompileDebug\annotationProcessors.json
+Build cache key for task ':app:javaPreCompileDebug' is 5473fb1b3c8b9fb18c23a596ed7d3773
+Task ':app:javaPreCompileDebug' is not up-to-date because:
+  Output property 'annotationProcessorListFile' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\annotation_processor_list\debug\javaPreCompileDebug\annotationProcessors.json has been removed.
+Loaded cache entry for task ':app:javaPreCompileDebug' with cache key 5473fb1b3c8b9fb18c23a596ed7d3773
+
+> Task :app:processDebugGoogleServices FROM-CACHE
+Loaded cache entry for task ':app:processDebugGoogleServices' with cache key dc947736813c57c2db5b2c4a9331e307
+Resolve mutations for :app:desugarDebugFileDependencies (Thread[included builds,5,main]) started.
+Resolve mutations for :app:checkDebugDuplicateClasses (Thread[Execution worker Thread 2,5,main]) started.
+:app:checkDebugDuplicateClasses (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :app:generateDebugResValues
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\generated\res\resValues\debug
+Build cache key for task ':app:generateDebugResValues' is 9cb3c08669d3fd9619af3ddf02fe300c
+Task ':app:generateDebugResValues' is not up-to-date because:
+  Output property 'outputDirectory' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\generated\res\resValues\debug has been removed.
+Loaded cache entry for task ':app:generateDebugResValues' with cache key 9cb3c08669d3fd9619af3ddf02fe300c
+
+:app:desugarDebugFileDependencies (Thread[included builds,5,main]) started.
+
+> Task :app:generateDebugResValues FROM-CACHE
+Resolve mutations for :app:mapDebugSourceSetPaths (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:generateDebugBuildConfig FROM-CACHE
+Loaded cache entry for task ':app:generateDebugBuildConfig' with cache key 6f23102f16cdb74504350377089b8d42
+Resolve mutations for :app:generateDebugResources (Thread[Execution worker,5,main]) started.
+:app:mapDebugSourceSetPaths (Thread[Execution worker Thread 5,5,main]) started.
+:app:generateDebugResources (Thread[Execution worker,5,main]) started.
+
+> Task :app:desugarDebugFileDependencies FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\external_file_lib_dex_archives\debug\desugarDebugFileDependencies
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\global_synthetics_file_lib\debug\desugarDebugFileDependencies
+Build cache key for task ':app:desugarDebugFileDependencies' is 634166fcb88624d49a0ce1b9eeddad38
+Task ':app:desugarDebugFileDependencies' is not up-to-date because:
+  Output property 'outputDirectory' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\external_file_lib_dex_archives\debug\desugarDebugFileDependencies has been removed.
+  Output property 'outputGlobalSynthetics' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\global_synthetics_file_lib\debug\desugarDebugFileDependencies has been removed.
+Loaded cache entry for task ':app:desugarDebugFileDependencies' with cache key 634166fcb88624d49a0ce1b9eeddad38
+Resolve mutations for :app:extractDeepLinksDebug (Thread[included builds,5,main]) started.
+:app:extractDeepLinksDebug (Thread[included builds,5,main]) started.
+
+> Task :app:extractDeepLinksDebug FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\navigation_json\debug\extractDeepLinksDebug\navigation.json
+Build cache key for task ':app:extractDeepLinksDebug' is 97bb5ab9f90fc190c176147e8155e278
+Task ':app:extractDeepLinksDebug' is not up-to-date because:
+  Output property 'navigationJson' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\navigation_json\debug\extractDeepLinksDebug\navigation.json has been removed.
+Loaded cache entry for task ':app:extractDeepLinksDebug' with cache key 97bb5ab9f90fc190c176147e8155e278
+Resolve mutations for :app:processDebugMainManifest (Thread[included builds,5,main]) started.
+:app:processDebugMainManifest (Thread[included builds,5,main]) started.
+
+> Task :app:generateDebugResources FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\nested_resources_validation_report\debug\generateDebugResources\nestedResourcesValidationReport.txt
+Build cache key for task ':app:generateDebugResources' is 2b745e37acf12b44ef20c49f2dff4a64
+Task ':app:generateDebugResources' is not up-to-date because:
+  Output property 'validationReportFile' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\nested_resources_validation_report\debug\generateDebugResources\nestedResourcesValidationReport.txt has been removed.
+Loaded cache entry for task ':app:generateDebugResources' with cache key 2b745e37acf12b44ef20c49f2dff4a64
+Resolve mutations for :app:mergeDebugResources (Thread[Execution worker,5,main]) started.
+:app:mergeDebugResources (Thread[Execution worker,5,main]) started.
+
+> Task :app:mergeDebugShaders
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_shaders\debug\mergeDebugShaders\out
+Caching disabled for task ':app:mergeDebugShaders' because:
+  Simple merging task
+Task ':app:mergeDebugShaders' is not up-to-date because:
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_shaders\debug\mergeDebugShaders\out has been removed.
+The input changes require a full rebuild for incremental task ':app:mergeDebugShaders'.
+
+> Task :app:mapDebugSourceSetPaths
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\source_set_path_map\debug\mapDebugSourceSetPaths\file-map.txt
+Caching disabled for task ':app:mapDebugSourceSetPaths' because:
+  Caching has been disabled for the task
+Task ':app:mapDebugSourceSetPaths' is not up-to-date because:
+  Output property 'filepathMappingFile' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\source_set_path_map\debug\mapDebugSourceSetPaths\file-map.txt has been removed.
+Resolve mutations for :app:packageDebugResources (Thread[Execution worker Thread 5,5,main]) started.
+:app:packageDebugResources (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:checkDebugAarMetadata
+Caching disabled for task ':app:checkDebugAarMetadata' because:
+  Caching has been disabled for the task
+Task ':app:checkDebugAarMetadata' is not up-to-date because:
+  Output property 'dummyOutputDirectory' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\aar_metadata_check\debug\checkDebugAarMetadata has been removed.
+
+> Task :app:packageDebugResources FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\data_binding_layout_info_type_package\debug\packageDebugResources\out
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\incremental\debug\packageDebugResources
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\packaged_res\debug\packageDebugResources
+Build cache key for task ':app:packageDebugResources' is d0452eb344821c9a5c5ef11bb27217ec
+Task ':app:packageDebugResources' is not up-to-date because:
+  Output property 'dataBindingLayoutInfoOutFolder' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\data_binding_layout_info_type_package\debug\packageDebugResources\out has been removed.
+  Output property 'incrementalFolder' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\incremental\debug\packageDebugResources has been removed.
+  Output property 'incrementalFolder' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\incremental\debug\packageDebugResources\compile-file-map.properties has been removed.
+  and more...
+Loaded cache entry for task ':app:packageDebugResources' with cache key d0452eb344821c9a5c5ef11bb27217ec
+Resolve mutations for :app:parseDebugLocalResources (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:checkDebugDuplicateClasses
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\duplicate_classes_check\debug\checkDebugDuplicateClasses
+Caching disabled for task ':app:checkDebugDuplicateClasses' because:
+  Caching has been disabled for the task
+Task ':app:checkDebugDuplicateClasses' is not up-to-date because:
+  Output property 'dummyOutputDirectory' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\duplicate_classes_check\debug\checkDebugDuplicateClasses has been removed.
+
+:app:parseDebugLocalResources (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:processDebugMainManifest
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\outputs\logs\manifest-merger-debug-report.txt
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\manifest_merge_blame_file\debug\processDebugMainManifest\manifest-merger-blame-debug-report.txt
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_manifest\debug\processDebugMainManifest\AndroidManifest.xml
+
+Resolve mutations for :app:mergeDebugJniLibFolders (Thread[Execution worker Thread 3,5,main]) started.
+:app:mergeDebugJniLibFolders (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :app:mergeDebugResources
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\data_binding_layout_info_type_merge\debug\mergeDebugResources\out
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\generated\res\pngs\debug
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\incremental\debug\mergeDebugResources
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_res_blame_folder\debug\mergeDebugResources\out
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_res\debug\mergeDebugResources
+Build cache key for task ':app:mergeDebugResources' is 2b5acf6f539c65d673038451816872fd
+Task ':app:mergeDebugResources' is not up-to-date because:
+  Output property 'blameLogOutputFolder' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_res_blame_folder\debug\mergeDebugResources\out has been removed.
+  Output property 'blameLogOutputFolder' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_res_blame_folder\debug\mergeDebugResources\out\multi-v2 has been removed.
+  Output property 'blameLogOutputFolder' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_res_blame_folder\debug\mergeDebugResources\out\multi-v2\mergeDebugResources.json has been removed.
+  and more...
+
+> Task :app:parseDebugLocalResources FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\local_only_symbol_list\debug\parseDebugLocalResources\R-def.txt
+Build cache key for task ':app:parseDebugLocalResources' is 99b6a9925d5dc78314a1b952c763e97d
+Task ':app:parseDebugLocalResources' is not up-to-date because:
+  Output property 'librarySymbolsFile' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\local_only_symbol_list\debug\parseDebugLocalResources\R-def.txt has been removed.
+Loaded cache entry for task ':app:parseDebugLocalResources' with cache key 99b6a9925d5dc78314a1b952c763e97d
+Resolve mutations for :app:validateSigningDebug (Thread[Execution worker Thread 5,5,main]) started.
+:app:validateSigningDebug (Thread[Execution worker Thread 5,5,main]) started.
+Resolve mutations for :app:mergeExtDexDebug (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :app:processDebugMainManifest FROM-CACHE
+Build cache key for task ':app:processDebugMainManifest' is 76954f9553bbcba242217ab6ebf11434
+Task ':app:processDebugMainManifest' is not up-to-date because:
+  Output property 'mergeBlameFile' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\manifest_merge_blame_file\debug\processDebugMainManifest\manifest-merger-blame-debug-report.txt has been removed.
+  Output property 'mergedManifest' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_manifest\debug\processDebugMainManifest\AndroidManifest.xml has been removed.
+  Output property 'reportFile' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\outputs\logs\manifest-merger-debug-report.txt has been removed.
+Loaded cache entry for task ':app:processDebugMainManifest' with cache key 76954f9553bbcba242217ab6ebf11434
+Resolve mutations for :app:processDebugManifest (Thread[included builds,5,main]) started.
+:app:processDebugManifest (Thread[included builds,5,main]) started.
+
+> Task :app:mergeDebugJniLibFolders
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_jni_libs\debug\mergeDebugJniLibFolders\out
+Caching disabled for task ':app:mergeDebugJniLibFolders' because:
+  Simple merging task
+Task ':app:mergeDebugJniLibFolders' is not up-to-date because:
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_jni_libs\debug\mergeDebugJniLibFolders\out has been removed.
+The input changes require a full rebuild for incremental task ':app:mergeDebugJniLibFolders'.
+
+:app:mergeExtDexDebug (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :app:validateSigningDebug
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\validate_signing_config\debug\validateSigningDebug
+Caching disabled for task ':app:validateSigningDebug' because:
+  Caching has been disabled for the task
+Task ':app:validateSigningDebug' is not up-to-date because:
+  Output property 'dummyOutputDirectory' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\validate_signing_config\debug\validateSigningDebug has been removed.
+
+Resolve mutations for :app:compileDebugShaders (Thread[Execution worker Thread 4,5,main]) started.
+
+> Task :app:processDebugManifest FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_manifests\debug\processDebugManifest
+Build cache key for task ':app:processDebugManifest' is eff5af0c76a7b7552781690e374097de
+Task ':app:processDebugManifest' is not up-to-date because:
+  Output property 'multiApkManifestOutputDirectory' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_manifests\debug\processDebugManifest has been removed.
+  Output property 'multiApkManifestOutputDirectory' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_manifests\debug\processDebugManifest\AndroidManifest.xml has been removed.
+  Output property 'multiApkManifestOutputDirectory' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_manifests\debug\processDebugManifest\output-metadata.json has been removed.
+Loaded cache entry for task ':app:processDebugManifest' with cache key eff5af0c76a7b7552781690e374097de
+Resolve mutations for :app:processDebugManifestForPackage (Thread[included builds,5,main]) started.
+Resolve mutations for :app:mergeLibDexDebug (Thread[Execution worker Thread 3,5,main]) started.
+:app:mergeLibDexDebug (Thread[Execution worker Thread 3,5,main]) started.
+:app:processDebugManifestForPackage (Thread[included builds,5,main]) started.
+:app:compileDebugShaders (Thread[Execution worker Thread 4,5,main]) started.
+Resolve mutations for :app:mergeDebugNativeLibs (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:mergeExtDexDebug
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\dex\debug\mergeExtDexDebug
+
+:app:mergeDebugNativeLibs (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:processDebugManifestForPackage FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\packaged_manifests\debug\processDebugManifestForPackage
+Build cache key for task ':app:processDebugManifestForPackage' is a19716df9214ad49d60218dc3027242e
+Task ':app:processDebugManifestForPackage' is not up-to-date because:
+  Output property 'packageManifests' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\packaged_manifests\debug\processDebugManifestForPackage has been removed.
+  Output property 'packageManifests' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\packaged_manifests\debug\processDebugManifestForPackage\AndroidManifest.xml has been removed.
+  Output property 'packageManifests' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\packaged_manifests\debug\processDebugManifestForPackage\output-metadata.json has been removed.
+Loaded cache entry for task ':app:processDebugManifestForPackage' with cache key a19716df9214ad49d60218dc3027242e
+Resolve mutations for :app:writeDebugAppMetadata (Thread[included builds,5,main]) started.
+
+> Task :app:compileDebugShaders NO-SOURCE
+Skipping task ':app:compileDebugShaders' as it has no source files and no previous output files.
+Resolve mutations for :app:generateDebugAssets (Thread[Execution worker Thread 4,5,main]) started.
+:app:generateDebugAssets (Thread[Execution worker Thread 4,5,main]) started.
+
+> Task :app:generateDebugAssets UP-TO-DATE
+Skipping task ':app:generateDebugAssets' as it has no actions.
+Resolve mutations for :app:mergeDebugAssets (Thread[Execution worker Thread 4,5,main]) started.
+:app:mergeDebugAssets (Thread[Execution worker Thread 4,5,main]) started.
+:app:writeDebugAppMetadata (Thread[included builds,5,main]) started.
+
+> Task :app:writeDebugAppMetadata
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\app_metadata\debug\writeDebugAppMetadata\app-metadata.properties
+Caching disabled for task ':app:writeDebugAppMetadata' because:
+  Caching has been disabled for the task
+Task ':app:writeDebugAppMetadata' is not up-to-date because:
+  Output property 'outputFile' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\app_metadata\debug\writeDebugAppMetadata\app-metadata.properties has been removed.
+Resolve mutations for :app:writeDebugSigningConfigVersions (Thread[included builds,5,main]) started.
+:app:writeDebugSigningConfigVersions (Thread[included builds,5,main]) started.
+
+> Task :app:mergeLibDexDebug FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\dex\debug\mergeLibDexDebug
+Build cache key for task ':app:mergeLibDexDebug' is c1923291947d91d517b1c14d2b4a60f2
+Task ':app:mergeLibDexDebug' is not up-to-date because:
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\dex\debug\mergeLibDexDebug has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\dex\debug\mergeLibDexDebug\0 has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\dex\debug\mergeLibDexDebug\1 has been removed.
+  and more...
+Loaded cache entry for task ':app:mergeLibDexDebug' with cache key c1923291947d91d517b1c14d2b4a60f2
+:wear:mergeDebugNativeDebugMetadata (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :wear:mergeDebugNativeDebugMetadata NO-SOURCE
+Skipping task ':wear:mergeDebugNativeDebugMetadata' as it has no source files and no previous output files.
+:wear:checkDebugAarMetadata (Thread[Execution worker Thread 3,5,main]) started.
+Detected overflow for C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy
+Detected overflow for C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy
+Overflow detected (type: OPERATING_SYSTEM) for watched path 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy', invalidating
+Not watching anything anymore
+Overflow detected (type: OPERATING_SYSTEM) for watched path 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy', invalidating
+
+> Task :app:mergeDebugResources FROM-CACHE
+Loaded cache entry for task ':app:mergeDebugResources' with cache key 2b5acf6f539c65d673038451816872fd
+Resolve mutations for :app:processDebugResources (Thread[Execution worker,5,main]) started.
+:app:processDebugResources (Thread[Execution worker,5,main]) started.
+
+> Task :app:mergeDebugNativeLibs
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_test_only_native_libs\debug\mergeDebugNativeLibs\out
+
+> Task :app:writeDebugSigningConfigVersions
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\signing_config_versions\debug\writeDebugSigningConfigVersions\signing-config-versions.json
+Caching disabled for task ':app:writeDebugSigningConfigVersions' because:
+  Caching has been disabled for the task
+Task ':app:writeDebugSigningConfigVersions' is not up-to-date because:
+  Output property 'outputFile' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\signing_config_versions\debug\writeDebugSigningConfigVersions\signing-config-versions.json has been removed.
+:wear:generateDebugResValues (Thread[included builds,5,main]) started.
+
+> Task :wear:checkDebugAarMetadata
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\aar_metadata_check\debug\checkDebugAarMetadata
+Caching disabled for task ':wear:checkDebugAarMetadata' because:
+  Caching has been disabled for the task
+Task ':wear:checkDebugAarMetadata' is not up-to-date because:
+  Output property 'dummyOutputDirectory' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\aar_metadata_check\debug\checkDebugAarMetadata has been removed.
+:wear:createDebugCompatibleScreenManifests (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :wear:createDebugCompatibleScreenManifests
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\compatible_screen_manifest\debug\createDebugCompatibleScreenManifests
+Caching disabled for task ':wear:createDebugCompatibleScreenManifests' because:
+  Caching has been disabled for the task
+Task ':wear:createDebugCompatibleScreenManifests' is not up-to-date because:
+  Output property 'outputFolder' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\compatible_screen_manifest\debug\createDebugCompatibleScreenManifests has been removed.
+  Output property 'outputFolder' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\compatible_screen_manifest\debug\createDebugCompatibleScreenManifests\output-metadata.json has been removed.
+Resolve mutations for :wear:javaPreCompileDebug (Thread[Execution worker Thread 3,5,main]) started.
+:wear:javaPreCompileDebug (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :app:mergeDebugAssets
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\assets\debug\mergeDebugAssets
+Caching disabled for task ':app:mergeDebugAssets' because:
+  Simple merging task
+Task ':app:mergeDebugAssets' is not up-to-date because:
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\assets\debug\mergeDebugAssets has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\assets\debug\mergeDebugAssets\mlkit-google-ocr-models has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\assets\debug\mergeDebugAssets\mlkit-google-ocr-models\aksara has been removed.
+  and more...
+The input changes require a full rebuild for incremental task ':app:mergeDebugAssets'.
+
+> Task :wear:generateDebugResValues FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\generated\res\resValues\debug
+Build cache key for task ':wear:generateDebugResValues' is 9cb3c08669d3fd9619af3ddf02fe300c
+Task ':wear:generateDebugResValues' is not up-to-date because:
+  Output property 'outputDirectory' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\generated\res\resValues\debug has been removed.
+Loaded cache entry for task ':wear:generateDebugResValues' with cache key 9cb3c08669d3fd9619af3ddf02fe300c
+Resolve mutations for :wear:mapDebugSourceSetPaths (Thread[included builds,5,main]) started.
+:wear:mapDebugSourceSetPaths (Thread[included builds,5,main]) started.
+
+> Task :wear:javaPreCompileDebug FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\annotation_processor_list\debug\javaPreCompileDebug\annotationProcessors.json
+Build cache key for task ':wear:javaPreCompileDebug' is 646fd3c8781785e6d04765ef12777ddb
+Task ':wear:javaPreCompileDebug' is not up-to-date because:
+  Output property 'annotationProcessorListFile' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\annotation_processor_list\debug\javaPreCompileDebug\annotationProcessors.json has been removed.
+Loaded cache entry for task ':wear:javaPreCompileDebug' with cache key 646fd3c8781785e6d04765ef12777ddb
+Resolve mutations for :wear:generateDebugResources (Thread[Execution worker Thread 3,5,main]) started.
+:wear:generateDebugResources (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :wear:generateDebugResources FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\nested_resources_validation_report\debug\generateDebugResources\nestedResourcesValidationReport.txt
+Build cache key for task ':wear:generateDebugResources' is 0e4e583c683fd6046be57ad36a7822aa
+Task ':wear:generateDebugResources' is not up-to-date because:
+  Output property 'validationReportFile' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\nested_resources_validation_report\debug\generateDebugResources\nestedResourcesValidationReport.txt has been removed.
+Loaded cache entry for task ':wear:generateDebugResources' with cache key 0e4e583c683fd6046be57ad36a7822aa
+Resolve mutations for :wear:mergeDebugResources (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :app:mergeExtDexDebug
+Build cache key for task ':app:mergeExtDexDebug' is 4a897ad9c50d33e63c1ec4c6f2bc0fb2
+Task ':app:mergeExtDexDebug' is not up-to-date because:
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\dex\debug\mergeExtDexDebug has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\dex\debug\mergeExtDexDebug\classes.dex has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\dex\debug\mergeExtDexDebug\classes2.dex has been removed.
+  and more...
+
+:wear:mergeDebugResources (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :app:mergeDebugNativeLibs
+Caching disabled for task ':app:mergeDebugNativeLibs' because:
+  Caching has been disabled for the task
+Task ':app:mergeDebugNativeLibs' is not up-to-date because:
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\arm64-v8a has been removed.
+  and more...
+
+Detected overflow for C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy
+Overflow detected (type: OPERATING_SYSTEM) for watched path 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy', invalidating
+Not watching anything anymore
+
+> Task :wear:mapDebugSourceSetPaths
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\source_set_path_map\debug\mapDebugSourceSetPaths\file-map.txt
+Caching disabled for task ':wear:mapDebugSourceSetPaths' because:
+  Caching has been disabled for the task
+Task ':wear:mapDebugSourceSetPaths' is not up-to-date because:
+  Output property 'filepathMappingFile' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\source_set_path_map\debug\mapDebugSourceSetPaths\file-map.txt has been removed.
+Resolve mutations for :wear:packageDebugResources (Thread[included builds,5,main]) started.
+:wear:packageDebugResources (Thread[included builds,5,main]) started.
+
+> Task :wear:packageDebugResources FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\incremental\debug\packageDebugResources
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\data_binding_layout_info_type_package\debug\packageDebugResources\out
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\packaged_res\debug\packageDebugResources
+Build cache key for task ':wear:packageDebugResources' is 44563c451fccfb12e3fa98dea1728b2c
+Task ':wear:packageDebugResources' is not up-to-date because:
+  Output property 'dataBindingLayoutInfoOutFolder' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\data_binding_layout_info_type_package\debug\packageDebugResources\out has been removed.
+  Output property 'incrementalFolder' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\incremental\debug\packageDebugResources has been removed.
+  Output property 'incrementalFolder' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\incremental\debug\packageDebugResources\compile-file-map.properties has been removed.
+  and more...
+Loaded cache entry for task ':wear:packageDebugResources' with cache key 44563c451fccfb12e3fa98dea1728b2c
+Resolve mutations for :wear:parseDebugLocalResources (Thread[included builds,5,main]) started.
+:wear:parseDebugLocalResources (Thread[included builds,5,main]) started.
+
+> Task :wear:parseDebugLocalResources FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\local_only_symbol_list\debug\parseDebugLocalResources\R-def.txt
+Build cache key for task ':wear:parseDebugLocalResources' is 952eaa19df58e99b91c0552959690168
+Task ':wear:parseDebugLocalResources' is not up-to-date because:
+  Output property 'librarySymbolsFile' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\local_only_symbol_list\debug\parseDebugLocalResources\R-def.txt has been removed.
+Loaded cache entry for task ':wear:parseDebugLocalResources' with cache key 952eaa19df58e99b91c0552959690168
+
+> Task :app:mergeExtDexDebug FROM-CACHE
+Loaded cache entry for task ':app:mergeExtDexDebug' with cache key 4a897ad9c50d33e63c1ec4c6f2bc0fb2
+Resolve mutations for :wear:extractDeepLinksDebug (Thread[included builds,5,main]) started.
+Resolve mutations for :wear:mergeDebugShaders (Thread[Execution worker Thread 2,5,main]) started.
+:wear:mergeDebugShaders (Thread[Execution worker Thread 2,5,main]) started.
+:wear:extractDeepLinksDebug (Thread[included builds,5,main]) started.
+
+> Task :wear:extractDeepLinksDebug FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\navigation_json\debug\extractDeepLinksDebug\navigation.json
+Build cache key for task ':wear:extractDeepLinksDebug' is 5f5c1dc4137e8693bfe51092b764b7f7
+Task ':wear:extractDeepLinksDebug' is not up-to-date because:
+  Output property 'navigationJson' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\navigation_json\debug\extractDeepLinksDebug\navigation.json has been removed.
+Loaded cache entry for task ':wear:extractDeepLinksDebug' with cache key 5f5c1dc4137e8693bfe51092b764b7f7
+Resolve mutations for :wear:processDebugMainManifest (Thread[included builds,5,main]) started.
+:wear:processDebugMainManifest (Thread[included builds,5,main]) started.
+
+> Task :wear:mergeDebugResources
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_res_blame_folder\debug\mergeDebugResources\out
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\data_binding_layout_info_type_merge\debug\mergeDebugResources\out
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\incremental\debug\mergeDebugResources
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\generated\res\pngs\debug
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_res\debug\mergeDebugResources
+Build cache key for task ':wear:mergeDebugResources' is d77c41b7f9a7baef6582794b1620c365
+Task ':wear:mergeDebugResources' is not up-to-date because:
+  Output property 'blameLogOutputFolder' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_res_blame_folder\debug\mergeDebugResources\out has been removed.
+  Output property 'blameLogOutputFolder' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_res_blame_folder\debug\mergeDebugResources\out\multi-v2 has been removed.
+  Output property 'blameLogOutputFolder' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_res_blame_folder\debug\mergeDebugResources\out\multi-v2\mergeDebugResources.json has been removed.
+  and more...
+
+Detected overflow for C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy
+Overflow detected (type: OPERATING_SYSTEM) for watched path 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy', invalidating
+Not watching anything anymore
+
+> Task :wear:mergeDebugResources FROM-CACHE
+Loaded cache entry for task ':wear:mergeDebugResources' with cache key d77c41b7f9a7baef6582794b1620c365
+Resolve mutations for :wear:desugarDebugFileDependencies (Thread[Execution worker Thread 3,5,main]) started.
+:wear:desugarDebugFileDependencies (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :wear:mergeDebugShaders
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_shaders\debug\mergeDebugShaders\out
+Caching disabled for task ':wear:mergeDebugShaders' because:
+  Simple merging task
+Task ':wear:mergeDebugShaders' is not up-to-date because:
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_shaders\debug\mergeDebugShaders\out has been removed.
+The input changes require a full rebuild for incremental task ':wear:mergeDebugShaders'.
+Resolve mutations for :wear:compileDebugShaders (Thread[Execution worker Thread 2,5,main]) started.
+:wear:compileDebugShaders (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :wear:compileDebugShaders NO-SOURCE
+Skipping task ':wear:compileDebugShaders' as it has no source files and no previous output files.
+Resolve mutations for :wear:generateDebugAssets (Thread[Execution worker Thread 2,5,main]) started.
+:wear:generateDebugAssets (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :wear:generateDebugAssets UP-TO-DATE
+Skipping task ':wear:generateDebugAssets' as it has no actions.
+Resolve mutations for :wear:mergeDebugAssets (Thread[Execution worker Thread 2,5,main]) started.
+:wear:mergeDebugAssets (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :wear:desugarDebugFileDependencies FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\external_file_lib_dex_archives\debug\desugarDebugFileDependencies
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\global_synthetics_file_lib\debug\desugarDebugFileDependencies
+Build cache key for task ':wear:desugarDebugFileDependencies' is 26cdca61b35edde390c8bd70943be1fc
+Task ':wear:desugarDebugFileDependencies' is not up-to-date because:
+  Output property 'outputDirectory' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\external_file_lib_dex_archives\debug\desugarDebugFileDependencies has been removed.
+  Output property 'outputGlobalSynthetics' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\global_synthetics_file_lib\debug\desugarDebugFileDependencies has been removed.
+Loaded cache entry for task ':wear:desugarDebugFileDependencies' with cache key 26cdca61b35edde390c8bd70943be1fc
+Resolve mutations for :wear:checkDebugDuplicateClasses (Thread[Execution worker Thread 3,5,main]) started.
+:wear:checkDebugDuplicateClasses (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :wear:processDebugMainManifest
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\outputs\logs\manifest-merger-debug-report.txt
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_manifest\debug\processDebugMainManifest\AndroidManifest.xml
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\manifest_merge_blame_file\debug\processDebugMainManifest\manifest-merger-blame-debug-report.txt
+Build cache key for task ':wear:processDebugMainManifest' is 995cc2ba690caae781d8341cecc63fa1
+Task ':wear:processDebugMainManifest' is not up-to-date because:
+  Output property 'mergeBlameFile' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\manifest_merge_blame_file\debug\processDebugMainManifest\manifest-merger-blame-debug-report.txt has been removed.
+  Output property 'mergedManifest' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_manifest\debug\processDebugMainManifest\AndroidManifest.xml has been removed.
+  Output property 'reportFile' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\outputs\logs\manifest-merger-debug-report.txt has been removed.
+Loaded cache entry for task ':wear:processDebugMainManifest' with cache key 995cc2ba690caae781d8341cecc63fa1
+
+> Task :wear:processDebugMainManifest FROM-CACHE
+Resolve mutations for :wear:processDebugManifest (Thread[included builds,5,main]) started.
+:wear:processDebugManifest (Thread[included builds,5,main]) started.
+
+> Task :wear:processDebugManifest FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_manifests\debug\processDebugManifest
+Build cache key for task ':wear:processDebugManifest' is e7ade9a7c8fa6d892ac6b280c5ded402
+Task ':wear:processDebugManifest' is not up-to-date because:
+  Output property 'multiApkManifestOutputDirectory' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_manifests\debug\processDebugManifest has been removed.
+  Output property 'multiApkManifestOutputDirectory' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_manifests\debug\processDebugManifest\AndroidManifest.xml has been removed.
+  Output property 'multiApkManifestOutputDirectory' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_manifests\debug\processDebugManifest\output-metadata.json has been removed.
+Loaded cache entry for task ':wear:processDebugManifest' with cache key e7ade9a7c8fa6d892ac6b280c5ded402
+Resolve mutations for :wear:processDebugManifestForPackage (Thread[included builds,5,main]) started.
+:wear:processDebugManifestForPackage (Thread[included builds,5,main]) started.
+
+> Task :wear:processDebugManifestForPackage FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\packaged_manifests\debug\processDebugManifestForPackage
+Build cache key for task ':wear:processDebugManifestForPackage' is 1df492c1bb273035aa4d7a2c3e4db21e
+Task ':wear:processDebugManifestForPackage' is not up-to-date because:
+  Output property 'packageManifests' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\packaged_manifests\debug\processDebugManifestForPackage has been removed.
+  Output property 'packageManifests' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\packaged_manifests\debug\processDebugManifestForPackage\AndroidManifest.xml has been removed.
+  Output property 'packageManifests' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\packaged_manifests\debug\processDebugManifestForPackage\output-metadata.json has been removed.
+Loaded cache entry for task ':wear:processDebugManifestForPackage' with cache key 1df492c1bb273035aa4d7a2c3e4db21e
+Resolve mutations for :wear:processDebugResources (Thread[included builds,5,main]) started.
+:wear:processDebugResources (Thread[included builds,5,main]) started.
+
+> Task :wear:checkDebugDuplicateClasses
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\duplicate_classes_check\debug\checkDebugDuplicateClasses
+Caching disabled for task ':wear:checkDebugDuplicateClasses' because:
+  Caching has been disabled for the task
+Task ':wear:checkDebugDuplicateClasses' is not up-to-date because:
+  Output property 'dummyOutputDirectory' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\duplicate_classes_check\debug\checkDebugDuplicateClasses has been removed.
+Resolve mutations for :wear:mergeExtDexDebug (Thread[Execution worker Thread 3,5,main]) started.
+:wear:mergeExtDexDebug (Thread[Execution worker Thread 3,5,main]) started.
+Resolve mutations for :app:compressDebugAssets (Thread[Execution worker Thread 4,5,main]) started.
+:app:compressDebugAssets (Thread[Execution worker Thread 4,5,main]) started.
+
+> Task :wear:mergeDebugAssets
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\assets\debug\mergeDebugAssets
+Caching disabled for task ':wear:mergeDebugAssets' because:
+  Simple merging task
+Task ':wear:mergeDebugAssets' is not up-to-date because:
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\assets\debug\mergeDebugAssets has been removed.
+The input changes require a full rebuild for incremental task ':wear:mergeDebugAssets'.
+Resolve mutations for :wear:compressDebugAssets (Thread[Execution worker Thread 2,5,main]) started.
+:wear:compressDebugAssets (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :wear:compressDebugAssets FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\compressed_assets\debug\compressDebugAssets\out
+Build cache key for task ':wear:compressDebugAssets' is 3ae6f3b2fbeae8e561e4c718d49c29b8
+Task ':wear:compressDebugAssets' is not up-to-date because:
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\compressed_assets\debug\compressDebugAssets\out has been removed.
+Loaded cache entry for task ':wear:compressDebugAssets' with cache key 3ae6f3b2fbeae8e561e4c718d49c29b8
+Resolve mutations for :wear:mergeLibDexDebug (Thread[Execution worker Thread 2,5,main]) started.
+:wear:mergeLibDexDebug (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :wear:mergeLibDexDebug FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\dex\debug\mergeLibDexDebug
+Build cache key for task ':wear:mergeLibDexDebug' is 5d78a5604110622eb974750b6b5e8424
+Task ':wear:mergeLibDexDebug' is not up-to-date because:
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\dex\debug\mergeLibDexDebug has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\dex\debug\mergeLibDexDebug\0 has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\dex\debug\mergeLibDexDebug\1 has been removed.
+  and more...
+Loaded cache entry for task ':wear:mergeLibDexDebug' with cache key 5d78a5604110622eb974750b6b5e8424
+Resolve mutations for :wear:mergeDebugJniLibFolders (Thread[Execution worker Thread 2,5,main]) started.
+:wear:mergeDebugJniLibFolders (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :wear:mergeDebugJniLibFolders
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_jni_libs\debug\mergeDebugJniLibFolders\out
+Caching disabled for task ':wear:mergeDebugJniLibFolders' because:
+  Simple merging task
+Task ':wear:mergeDebugJniLibFolders' is not up-to-date because:
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_jni_libs\debug\mergeDebugJniLibFolders\out has been removed.
+The input changes require a full rebuild for incremental task ':wear:mergeDebugJniLibFolders'.
+Resolve mutations for :wear:mergeDebugNativeLibs (Thread[Execution worker Thread 2,5,main]) started.
+:wear:mergeDebugNativeLibs (Thread[Execution worker Thread 2,5,main]) started.
+Resolve mutations for :app:stripDebugDebugSymbols (Thread[Execution worker Thread 5,5,main]) started.
+:app:stripDebugDebugSymbols (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :wear:processDebugResources
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\runtime_symbol_list\debug\processDebugResources\R.txt
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\stable_resource_ids_file\debug\processDebugResources\stableIds.txt
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\symbol_list_with_package_name\debug\processDebugResources\package-aware-r.txt
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\linked_resources_binary_format\debug\processDebugResources
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\compile_and_runtime_not_namespaced_r_class_jar\debug\processDebugResources\R.jar
+
+> Task :wear:mergeDebugNativeLibs
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_test_only_native_libs\debug\mergeDebugNativeLibs\out
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out
+Caching disabled for task ':wear:mergeDebugNativeLibs' because:
+  Caching has been disabled for the task
+Task ':wear:mergeDebugNativeLibs' is not up-to-date because:
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\arm64-v8a has been removed.
+  and more...
+Resolve mutations for :wear:stripDebugDebugSymbols (Thread[Execution worker Thread 2,5,main]) started.
+:wear:stripDebugDebugSymbols (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :wear:mergeExtDexDebug
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\dex\debug\mergeExtDexDebug
+
+> Task :app:compressDebugAssets FROM-CACHE
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\compressed_assets\debug\compressDebugAssets\out
+Build cache key for task ':app:compressDebugAssets' is 0b216a869abd5819b25c07e79c6a6473
+Task ':app:compressDebugAssets' is not up-to-date because:
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\compressed_assets\debug\compressDebugAssets\out has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\compressed_assets\debug\compressDebugAssets\out\assets has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\compressed_assets\debug\compressDebugAssets\out\assets\mlkit-google-ocr-models has been removed.
+  and more...
+Loaded cache entry for task ':app:compressDebugAssets' with cache key 0b216a869abd5819b25c07e79c6a6473
+Resolve mutations for :wear:validateSigningDebug (Thread[Execution worker Thread 4,5,main]) started.
+:wear:validateSigningDebug (Thread[Execution worker Thread 4,5,main]) started.
+
+> Task :wear:validateSigningDebug
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\validate_signing_config\debug\validateSigningDebug
+Caching disabled for task ':wear:validateSigningDebug' because:
+  Caching has been disabled for the task
+Task ':wear:validateSigningDebug' is not up-to-date because:
+  Output property 'dummyOutputDirectory' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\validate_signing_config\debug\validateSigningDebug has been removed.
+Resolve mutations for :wear:writeDebugAppMetadata (Thread[Execution worker Thread 4,5,main]) started.
+:wear:writeDebugAppMetadata (Thread[Execution worker Thread 4,5,main]) started.
+
+> Task :wear:writeDebugAppMetadata
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\app_metadata\debug\writeDebugAppMetadata\app-metadata.properties
+Caching disabled for task ':wear:writeDebugAppMetadata' because:
+  Caching has been disabled for the task
+Task ':wear:writeDebugAppMetadata' is not up-to-date because:
+  Output property 'outputFile' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\app_metadata\debug\writeDebugAppMetadata\app-metadata.properties has been removed.
+Resolve mutations for :wear:writeDebugSigningConfigVersions (Thread[Execution worker Thread 4,5,main]) started.
+:wear:writeDebugSigningConfigVersions (Thread[Execution worker Thread 4,5,main]) started.
+
+> Task :wear:writeDebugSigningConfigVersions
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\signing_config_versions\debug\writeDebugSigningConfigVersions\signing-config-versions.json
+Caching disabled for task ':wear:writeDebugSigningConfigVersions' because:
+  Caching has been disabled for the task
+Task ':wear:writeDebugSigningConfigVersions' is not up-to-date because:
+  Output property 'outputFile' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\signing_config_versions\debug\writeDebugSigningConfigVersions\signing-config-versions.json has been removed.
+
+> Task :wear:mergeExtDexDebug FROM-CACHE
+Build cache key for task ':wear:mergeExtDexDebug' is b76b908090678e5064ba2aed5570d915
+Task ':wear:mergeExtDexDebug' is not up-to-date because:
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\dex\debug\mergeExtDexDebug has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\dex\debug\mergeExtDexDebug\classes.dex has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\dex\debug\mergeExtDexDebug\classes2.dex has been removed.
+Loaded cache entry for task ':wear:mergeExtDexDebug' with cache key b76b908090678e5064ba2aed5570d915
+
+> Task :app:stripDebugDebugSymbols
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out
+Caching disabled for task ':app:stripDebugDebugSymbols' because:
+  Caching has been disabled for the task
+Task ':app:stripDebugDebugSymbols' is not up-to-date because:
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\arm64-v8a has been removed.
+  and more...
+The input changes require a full rebuild for incremental task ':app:stripDebugDebugSymbols'.
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\arm64-v8a\libandroidx.graphics.path.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\arm64-v8a\libandroidx.graphics.path.so
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\arm64-v8a\libimage_processing_util_jni.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\arm64-v8a\libimage_processing_util_jni.so
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\arm64-v8a\libmlkit_google_ocr_pipeline.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\arm64-v8a\libmlkit_google_ocr_pipeline.so
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\arm64-v8a\libsurface_util_jni.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\arm64-v8a\libsurface_util_jni.so
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\armeabi-v7a\libimage_processing_util_jni.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\armeabi-v7a\libimage_processing_util_jni.so
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\armeabi-v7a\libandroidx.graphics.path.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\armeabi-v7a\libandroidx.graphics.path.so
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\armeabi-v7a\libmlkit_google_ocr_pipeline.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\armeabi-v7a\libmlkit_google_ocr_pipeline.so
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\armeabi-v7a\libsurface_util_jni.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\armeabi-v7a\libsurface_util_jni.so
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\x86\libandroidx.graphics.path.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\x86\libandroidx.graphics.path.so
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\x86\libimage_processing_util_jni.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\x86\libimage_processing_util_jni.so
+
+> Task :wear:processDebugResources FROM-CACHE
+Build cache key for task ':wear:processDebugResources' is e980a3979cc1c3b0aaf4ac5424a7a968
+Task ':wear:processDebugResources' is not up-to-date because:
+  Output property 'RClassOutputJar' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\compile_and_runtime_not_namespaced_r_class_jar\debug\processDebugResources\R.jar has been removed.
+  Output property 'linkedResourcesOutputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\linked_resources_binary_format\debug\processDebugResources has been removed.
+  Output property 'linkedResourcesOutputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\linked_resources_binary_format\debug\processDebugResources\linked-resources-binary-format-debug.ap_ has been removed.
+  and more...
+Loaded cache entry for task ':wear:processDebugResources' with cache key e980a3979cc1c3b0aaf4ac5424a7a968
+Resolve mutations for :wear:compileDebugKotlin (Thread[included builds,5,main]) started.
+
+> Task :wear:stripDebugDebugSymbols
+Deleting stale output file: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out
+Caching disabled for task ':wear:stripDebugDebugSymbols' because:
+  Caching has been disabled for the task
+Task ':wear:stripDebugDebugSymbols' is not up-to-date because:
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib has been removed.
+  Output property 'outputDir' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\arm64-v8a has been removed.
+  and more...
+The input changes require a full rebuild for incremental task ':wear:stripDebugDebugSymbols'.
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\armeabi-v7a\libandroidx.graphics.path.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\armeabi-v7a\libandroidx.graphics.path.so
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\x86_64\libandroidx.graphics.path.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\x86_64\libandroidx.graphics.path.so
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\arm64-v8a\libandroidx.graphics.path.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\arm64-v8a\libandroidx.graphics.path.so
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\x86\libandroidx.graphics.path.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\x86\libandroidx.graphics.path.so
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+
+> Task :app:stripDebugDebugSymbols
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\x86\libmlkit_google_ocr_pipeline.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\x86\libmlkit_google_ocr_pipeline.so
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\x86\libsurface_util_jni.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\x86\libsurface_util_jni.so
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\x86_64\libmlkit_google_ocr_pipeline.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\x86_64\libmlkit_google_ocr_pipeline.so
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\x86_64\libimage_processing_util_jni.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\x86_64\libimage_processing_util_jni.so
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\x86_64\libandroidx.graphics.path.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\x86_64\libandroidx.graphics.path.so
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is C:\Users\Diganta1\AppData\Local\Android\Sdk
+Starting process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''. Working directory: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app Command: C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip --strip-unneeded -o C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\stripped_native_libs\debug\stripDebugDebugSymbols\out\lib\x86_64\libsurface_util_jni.so C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\merged_native_libs\debug\mergeDebugNativeLibs\out\lib\x86_64\libsurface_util_jni.so
+Successfully started process 'command 'C:\Users\Diganta1\AppData\Local\Android\Sdk\ndk\27.0.12077973\toolchains\llvm\prebuilt\windows-x86_64\bin\llvm-strip''
+:wear:compileDebugKotlin (Thread[included builds,5,main]) started.
+
+> Task :wear:compileDebugKotlin UP-TO-DATE
+Build cache key for task ':wear:compileDebugKotlin' is 8ae956cda7bcb379db65d72ebe96df58
+Skipping task ':wear:compileDebugKotlin' as it is up-to-date.
+Resolve mutations for :wear:compileDebugJavaWithJavac (Thread[included builds,5,main]) started.
+Resolve mutations for :wear:processDebugJavaRes (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:processDebugResources
+Build cache key for task ':app:processDebugResources' is d1058eaf1b34fb3789562961d1bbbebc
+Skipping task ':app:processDebugResources' as it is up-to-date.
+
+:wear:processDebugJavaRes (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:processDebugResources UP-TO-DATE
+Resolve mutations for :app:kspDebugKotlin (Thread[Execution worker,5,main]) started.
+:wear:compileDebugJavaWithJavac (Thread[included builds,5,main]) started.
+
+> Task :wear:compileDebugJavaWithJavac NO-SOURCE
+Skipping task ':wear:compileDebugJavaWithJavac' as it has no source files and no previous output files.
+Resolve mutations for :wear:dexBuilderDebug (Thread[included builds,5,main]) started.
+:wear:dexBuilderDebug (Thread[included builds,5,main]) started.
+
+> Task :wear:processDebugJavaRes UP-TO-DATE
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\src\main\resources', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\src\debug\resources', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\src\main\resources', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\wear\src\debug\resources', not found
+Caching disabled for task ':wear:processDebugJavaRes' because:
+  Caching has been disabled for the task
+Skipping task ':wear:processDebugJavaRes' as it is up-to-date.
+Resolve mutations for :wear:mergeDebugJavaResource (Thread[Execution worker Thread 5,5,main]) started.
+:wear:mergeDebugJavaResource (Thread[Execution worker Thread 5,5,main]) started.
+:app:kspDebugKotlin (Thread[Execution worker,5,main]) started.
+
+> Task :wear:mergeDebugJavaResource UP-TO-DATE
+Caching disabled for task ':wear:mergeDebugJavaResource' because:
+  Caching has been disabled for the task
+Skipping task ':wear:mergeDebugJavaResource' as it is up-to-date.
+
+> Task :wear:dexBuilderDebug UP-TO-DATE
+Build cache key for task ':wear:dexBuilderDebug' is c86106b942239f3385db9960090dfec0
+Skipping task ':wear:dexBuilderDebug' as it is up-to-date.
+Resolve mutations for :wear:mergeDebugGlobalSynthetics (Thread[Execution worker Thread 5,5,main]) started.
+Resolve mutations for :wear:mergeProjectDexDebug (Thread[included builds,5,main]) started.
+:wear:mergeProjectDexDebug (Thread[included builds,5,main]) started.
+:wear:mergeDebugGlobalSynthetics (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :wear:mergeProjectDexDebug UP-TO-DATE
+Build cache key for task ':wear:mergeProjectDexDebug' is 1c88e7297dfd754af4e864bd7dc5b00d
+Skipping task ':wear:mergeProjectDexDebug' as it is up-to-date.
+
+> Task :wear:mergeDebugGlobalSynthetics UP-TO-DATE
+Build cache key for task ':wear:mergeDebugGlobalSynthetics' is cea14a4437d87c50017e4011d3df17d1
+Skipping task ':wear:mergeDebugGlobalSynthetics' as it is up-to-date.
+Resolve mutations for :wear:packageDebug (Thread[Execution worker Thread 5,5,main]) started.
+:wear:packageDebug (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :wear:packageDebug UP-TO-DATE
+Caching disabled for task ':wear:packageDebug' because:
+  Caching has been disabled for the task
+Skipping task ':wear:packageDebug' as it is up-to-date.
+Resolve mutations for :wear:createDebugApkListingFileRedirect (Thread[included builds,5,main]) started.
+Resolve mutations for :wear:assembleDebug (Thread[Execution worker Thread 5,5,main]) started.
+:wear:assembleDebug (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :wear:assembleDebug UP-TO-DATE
+Skipping task ':wear:assembleDebug' as it has no actions.
+:wear:createDebugApkListingFileRedirect (Thread[included builds,5,main]) started.
+
+> Task :wear:createDebugApkListingFileRedirect UP-TO-DATE
+Caching disabled for task ':wear:createDebugApkListingFileRedirect' because:
+  Caching has been disabled for the task
+Skipping task ':wear:createDebugApkListingFileRedirect' as it is up-to-date.
+
+> Task :app:kspDebugKotlin
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+Build cache key for task ':app:kspDebugKotlin' is 6e43b42136f523df7d399aaf4dc20f8e
+Task ':app:kspDebugKotlin' is not up-to-date because:
+  Task has failed previously.
+The input changes require a full rebuild for incremental task ':app:kspDebugKotlin'.
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+Kotlin source files: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ads\AdConstants.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ads\AdManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ads\AdState.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ads\AppOpenAdManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ads\BannerAdManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ads\InterstitialAdManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ads\RewardedAdManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\ActionItemExtractor.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\AIAnalysisEngine.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\AIApiClient.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\AIInsightsScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\AIProcessingService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\AIService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\AITestActivity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\AndroidAIService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\ContentSummarizer.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\EnhancedNoteBuddyAIService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\EntityRecognizer.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\NoteBuddyAIService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\OpenAIService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\SentimentAnalyzer.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\TopicModeler.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\VoiceAIExtensions.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ai\VoiceRecordingService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\AINoteBuddyApplication.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\auth\GoogleAuthService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\auth\LoginActivity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\billing\BillingManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\collaboration\CollaborationModels.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\collaboration\CollaborativeEditingViewModel.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\collaboration\FirebaseCollaborationService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\collaboration\OperationalTransformEngine.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\collaboration\PresenceManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\collaboration\ui\CollaborativeEditingComponents.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\collaboration\ui\EditingModeDialog.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\AIProvider.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\AppDatabase.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\CategoryDao.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\CategoryEntity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\ChecklistItemDao.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\ChecklistItemEntity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\FolderDao.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\FolderEntity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\NoteDao.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\NoteEntity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\NoteVersionDao.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\NoteVersionEntity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\PreferencesManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\TagDao.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\TagEntity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\TemplateDao.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\data\TemplateEntity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\AISettingsActivity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\ApiKeySettingsActivity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\APIKeySetupScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\ClipboardManagerScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\CodeEditorScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\CollaborativeNoteEditorScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\CollaborativeNotesScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\FolderManagerScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\ImportNotesScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\MarkdownEditorScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\NoteEditorActivity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\NoteEditorScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\ShareReceiverActivity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\SmartTemplatesScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\VaultScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\VersionHistoryScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\features\WebClipperService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\integration\IntegrationModels.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\integration\IntelligenceOrchestrator.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\integration\PerformanceModels.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\integration\UnifiedPerformanceOptimizer.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\location\LocationService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\MainActivity.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\ConflictResolutionEngine.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\DataIntegrityManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\NetworkStateManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\OfflineAICapabilities.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\OfflineFirstModule.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\OfflineOperationDao.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\OfflineOperationManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\OfflineOperationModels.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\OfflineWorkers.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\ui\ConflictResolutionComponents.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\offline\ui\SyncStatusComponents.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\onboarding\OnboardingScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\personalization\AIEnhancedPersonalizationEngine.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\personalization\AIPersonalizationModels.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\premium\PremiumScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\QuickActionService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\repository\AdvancedNoteRepository.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\repository\NoteRepository.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\repository\OfflineFirstNoteRepository.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\search\AIEnhancedSearchEngine.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\search\AISearchModels.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\search\SavedSearchManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\search\SearchAnalyticsManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\search\SearchIndexManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\search\SmartSearchEngine.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\search\SmartSearchScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\search\SmartSearchViewModel.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\security\BiometricAuthService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\settings\BackupRestoreManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\settings\PrivacyPolicyScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\settings\SettingsDialogs.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\settings\SettingsScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\settings\TermsOfServiceScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\StickyNoteWidgetProvider.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\sync\GoogleDriveSyncService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\sync\GoogleDriveSyncServiceImpl.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\sync\WearNoteSyncService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\testing\APIKeyTestingUtility.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\calendar\CalendarNotesScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\canvas\InfiniteCanvasScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\BannerAdView.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\GlassCard.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\RichTextEditor.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\components\SmartAssistDialog.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\AdvancedDashboardScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\DashboardCustomizationScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\DashboardScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\DashboardWidget.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\DashboardWidgetManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\EnhancedDashboardScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\fab\CustomizableFAB.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\fab\FABAction.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\fab\FABConfigurationManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\fab\FABCustomizationScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\presets\CustomPresetCreationDialog.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\presets\DashboardPreset.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\presets\DashboardPresetManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\presets\DashboardPresetScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\presets\PresetSuccessDialog.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\widgets\DashboardWidgets.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\widgets\EnhancedAISuggestionsWidget.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\dashboard\widgets\SearchShortcutsWidget.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\settings\AISettingsScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\theme\MaterialYouTheme.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\theme\NoteScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\theme\Theme.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\theme\ThemeManager.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\voice\VoiceNoteScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\ui\voice\VoiceNoteViewModel.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\utils\AdConstants.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\viewmodel\AISettingsViewModel.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\viewmodel\NoteEditorViewModel.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\viewmodel\NoteViewModel.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\views\DynamicSmartViewsEngine.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\views\DynamicSmartViewsScreen.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\views\DynamicViewsModels.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\views\DynamicViewsViewModel.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\views\ParadigmSelectorDialog.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\views\SuggestionsBottomSheet.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\voice\VoiceEngine.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\voice\VoiceModels.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\voice\VoiceRecognitionService.kt, C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\java\com\ainotebuddy\app\workers\ReminderWorker.kt
+Java source files: C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\generated\source\buildConfig\debug\com\ainotebuddy\app\BuildConfig.java
+Script source files: 
+Script file extensions: 
+[KOTLIN] Kotlin compilation 'jdkHome' argument: null
+Finished executing kotlin compiler using IN_PROCESS strategy
+i: [ksp] loaded provider(s): [androidx.room.RoomKspProcessor$Provider, dagger.hilt.processor.internal.uninstallmodules.KspUninstallModulesProcessor$Provider, dagger.hilt.processor.internal.earlyentrypoint.KspEarlyEntryPointProcessor$Provider, dagger.hilt.processor.internal.root.KspComponentTreeDepsProcessor$Provider, dagger.hilt.android.processor.internal.bindvalue.KspBindValueProcessor$Provider, dagger.hilt.processor.internal.generatesrootinput.KspGeneratesRootInputProcessor$Provider, dagger.hilt.processor.internal.aliasof.KspAliasOfProcessor$Provider, dagger.hilt.processor.internal.aggregateddeps.KspAggregatedDepsProcessor$Provider, dagger.hilt.processor.internal.root.KspRootProcessor$Provider, dagger.hilt.processor.internal.originatingelement.KspOriginatingElementProcessor$Provider, dagger.hilt.processor.internal.definecomponent.KspDefineComponentProcessor$Provider, dagger.hilt.android.processor.internal.viewmodel.KspViewModelProcessor$Provider, dagger.hilt.android.processor.internal.customtestapplication.KspCustomTestApplicationProcessor$Provider, dagger.hilt.android.processor.internal.androidentrypoint.KspAndroidEntryPointProcessor$Provider, dagger.internal.codegen.KspComponentProcessor$Provider]
+e: [ksp] C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/offline/OfflineOperationDao.kt:40: There is a problem with the query: [SQLITE_ERROR] SQL error or missing database (no such column: entityId)
+e: [ksp] C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/offline/OfflineOperationDao.kt:40: Not sure how to convert a Cursor to this method's return type (java.util.List<com.ainotebuddy.app.offline.OfflineOperationEntity>).
+e: [ksp] C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/offline/OfflineOperationDao.kt:224: There is a problem with the query: [SQLITE_ERROR] SQL error or missing database (no such column: isResolved)
+e: [ksp] C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/offline/OfflineOperationDao.kt:224: Not sure how to convert a Cursor to this method's return type (java.util.List<com.ainotebuddy.app.offline.ConflictHistoryEntity>).
+e: [ksp] InjectProcessingStep was unable to process 'CollaborativeEditingViewModel(error.NonExistentClass,com.ainotebuddy.app.collaboration.FirebaseCollaborationService,com.ainotebuddy.app.collaboration.PresenceManager,com.ainotebuddy.app.collaboration.OperationalTransformEngine)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.collaboration.CollaborativeEditingViewModel
+    => element (CONSTRUCTOR): CollaborativeEditingViewModel(error.NonExistentClass,com.ainotebuddy.app.collaboration.FirebaseCollaborationService,com.ainotebuddy.app.collaboration.PresenceManager,com.ainotebuddy.app.collaboration.OperationalTransformEngine)
+    => type (EXECUTABLE constructor): (error.NonExistentClass,com.ainotebuddy.app.collaboration.FirebaseCollaborationService,com.ainotebuddy.app.collaboration.PresenceManager,com.ainotebuddy.app.collaboration.OperationalTransformEngine)void
+    => type (ERROR parameter type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] InjectProcessingStep was unable to process 'IntelligenceOrchestrator(android.content.Context,com.ainotebuddy.app.ai.AIAnalysisEngine,com.ainotebuddy.app.search.SmartSearchEngine,error.NonExistentClass)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.integration.IntelligenceOrchestrator
+    => element (CONSTRUCTOR): IntelligenceOrchestrator(android.content.Context,com.ainotebuddy.app.ai.AIAnalysisEngine,com.ainotebuddy.app.search.SmartSearchEngine,error.NonExistentClass)
+    => type (EXECUTABLE constructor): (android.content.Context,com.ainotebuddy.app.ai.AIAnalysisEngine,com.ainotebuddy.app.search.SmartSearchEngine,error.NonExistentClass)void
+    => type (ERROR parameter type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] InjectProcessingStep was unable to process 'AIEnhancedPersonalizationEngine(android.content.Context,com.ainotebuddy.app.ai.AIAnalysisEngine,error.NonExistentClass)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.personalization.AIEnhancedPersonalizationEngine
+    => element (CONSTRUCTOR): AIEnhancedPersonalizationEngine(android.content.Context,com.ainotebuddy.app.ai.AIAnalysisEngine,error.NonExistentClass)
+    => type (EXECUTABLE constructor): (android.content.Context,com.ainotebuddy.app.ai.AIAnalysisEngine,error.NonExistentClass)void
+    => type (ERROR parameter type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] InjectProcessingStep was unable to process 'VoiceNoteViewModel(com.ainotebuddy.app.voice.VoiceEngine,com.ainotebuddy.app.integration.IntelligenceOrchestrator,com.ainotebuddy.app.personalization.AIEnhancedPersonalizationEngine,error.NonExistentClass)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.ui.voice.VoiceNoteViewModel
+    => element (CONSTRUCTOR): VoiceNoteViewModel(com.ainotebuddy.app.voice.VoiceEngine,com.ainotebuddy.app.integration.IntelligenceOrchestrator,com.ainotebuddy.app.personalization.AIEnhancedPersonalizationEngine,error.NonExistentClass)
+    => type (EXECUTABLE constructor): (com.ainotebuddy.app.voice.VoiceEngine,com.ainotebuddy.app.integration.IntelligenceOrchestrator,com.ainotebuddy.app.personalization.AIEnhancedPersonalizationEngine,error.NonExistentClass)void
+    => type (ERROR parameter type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] InjectProcessingStep was unable to process 'OfflineSyncWorker(android.content.Context,androidx.work.WorkerParameters,com.ainotebuddy.app.offline.OfflineOperationManager,com.ainotebuddy.app.offline.NetworkStateManager)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.OfflineSyncWorker
+    => annotation: @HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] InjectProcessingStep was unable to process 'OfflineCleanupWorker(android.content.Context,androidx.work.WorkerParameters,com.ainotebuddy.app.offline.OfflineOperationDao,com.ainotebuddy.app.offline.ConflictHistoryDao,com.ainotebuddy.app.offline.DataIntegrityManager)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.OfflineCleanupWorker
+    => annotation: @HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] InjectProcessingStep was unable to process 'DataIntegrityWorker(android.content.Context,androidx.work.WorkerParameters,com.ainotebuddy.app.offline.DataIntegrityManager)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.DataIntegrityWorker
+    => annotation: @HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] InjectProcessingStep was unable to process 'ConflictResolutionWorker(android.content.Context,androidx.work.WorkerParameters,com.ainotebuddy.app.offline.ConflictResolutionEngine,com.ainotebuddy.app.offline.OfflineOperationManager)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.ConflictResolutionWorker
+    => annotation: @HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedInjectProcessingStep was unable to process 'OfflineSyncWorker(android.content.Context,androidx.work.WorkerParameters,com.ainotebuddy.app.offline.OfflineOperationManager,com.ainotebuddy.app.offline.NetworkStateManager)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.OfflineSyncWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedInjectProcessingStep was unable to process 'OfflineCleanupWorker(android.content.Context,androidx.work.WorkerParameters,com.ainotebuddy.app.offline.OfflineOperationDao,com.ainotebuddy.app.offline.ConflictHistoryDao,com.ainotebuddy.app.offline.DataIntegrityManager)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.OfflineCleanupWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedInjectProcessingStep was unable to process 'DataIntegrityWorker(android.content.Context,androidx.work.WorkerParameters,com.ainotebuddy.app.offline.DataIntegrityManager)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.DataIntegrityWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedInjectProcessingStep was unable to process 'ConflictResolutionWorker(android.content.Context,androidx.work.WorkerParameters,com.ainotebuddy.app.offline.ConflictResolutionEngine,com.ainotebuddy.app.offline.OfflineOperationManager)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.ConflictResolutionWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedProcessingStep was unable to process 'context' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.OfflineSyncWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedProcessingStep was unable to process 'workerParams' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.OfflineSyncWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedProcessingStep was unable to process 'context' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.OfflineCleanupWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedProcessingStep was unable to process 'workerParams' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.OfflineCleanupWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedProcessingStep was unable to process 'context' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.DataIntegrityWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedProcessingStep was unable to process 'workerParams' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.DataIntegrityWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedProcessingStep was unable to process 'context' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.ConflictResolutionWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] AssistedProcessingStep was unable to process 'workerParams' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): com.ainotebuddy.app.offline.ConflictResolutionWorker
+    => annotation type: HiltWorker
+    => type (ERROR annotation type): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: Error occurred in KSP, check log for detail
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/search/SmartSearchEngine.kt:391:43 Expecting an expression
+
+> Task :app:kspDebugKotlin FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:kspDebugKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 8m 11s
+65 actionable tasks: 25 executed, 31 from cache, 9 up-to-date
+Watched directory hierarchies: [C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy]
+Configuration cache entry reused.

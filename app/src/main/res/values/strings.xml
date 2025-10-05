@@ -1,5 +1,21 @@
 <resources>
     <string name="app_name">AI NoteBuddy</string>
+    
+    <!-- Task Management -->
+    <string name="no_tasks_title">No tasks yet</string>
+    <string name="no_tasks_subtitle">Add a task to get started</string>
+    <string name="mark_task_complete">Mark task as complete</string>
+    <string name="mark_task_incomplete">Mark task as incomplete</string>
+    <string name="delete_task">Delete task</string>
+    <string name="add_task_hint">Add a new task</string>
+    <string name="task_completed">Task completed</string>
+    <string name="task_marked_incomplete">Task marked as incomplete</string>
+    <string name="task_deleted">Task deleted</string>
+    <string name="tasks_cleared">Completed tasks cleared</string>
+    <string name="task_added">Task added</string>
+    <string name="task_updated">Task updated</string>
+
+    <!-- Shortcuts -->
     <string name="shortcut_new_note">New Note</string>
     <string name="shortcut_create_new_note">Create a new note</string>
     <string name="shortcut_unavailable">Unavailable</string>
@@ -11,4 +27,189 @@
     <string name="new_note_shortcut_long">Create a new note</string>
     <string name="voice_note_shortcut">Voice Note</string>
     <string name="voice_note_shortcut_long">Create a voice note</string>
+
+    <!-- Misc -->
+    <string name="default_web_client_id">317468278038-le8kmvj2an741f9q987n65c7c0vi28gv.apps.googleusercontent.com</string>
+    <string name="remove_variable">Remove variable</string>
+
+    <!-- Voice Note Editor -->
+    <string name="edit_note">Edit note</string>
+    <string name="new_voice_note">New voice note</string>
+    <string name="back">Back</string>
+
+    <!-- Smart Folders -->
+    <string name="smart_folders_title">Smart folders</string>
+    <string name="delete_selected">Delete selected</string>
+    <string name="create_folder">Create folder</string>
+    <string name="delete_folders_title">Delete folders</string>
+    <string name="delete_folders_message">Delete %1$d selected folders?</string>
+    <string name="delete">Delete</string>
+    <string name="no_smart_folders_title">No smart folders</string>
+    <string name="no_smart_folders_message">Create folders to organize your notes intelligently.</string>
+    <string name="error_loading_folders">Error loading folders</string>
+    <string name="retry">Retry</string>
+    <string name="folder_name">Folder name</string>
+    <string name="description_optional">Description (optional)</string>
+    <string name="select_icon">Select icon</string>
+    <string name="select_color">Select color</string>
+
+    <!-- Recurring Notes -->
+    <string name="recurring_notes_title">Recurring notes</string>
+    <string name="create_recurring_note">Create recurring note</string>
+    <string name="delete_recurring_notes_title">Delete recurring notes</string>
+    <string name="delete_recurring_notes_message">Delete %1$d selected recurring notes?</string>
+    <string name="no_recurring_notes_title">No recurring notes</string>
+    <string name="no_recurring_notes_message">Create rules to automatically generate notes on a schedule.</string>
+    <string name="error_loading_recurring_notes">Error loading recurring notes</string>
+    <string name="title">Title</string>
+    <string name="start_date_time">Start date &amp; time</string>
+    <string name="repeat_every">Repeat every</string>
+    <string name="set_end_date">Set end date</string>
+    <string name="select_end_date">Select end date</string>
+    <string name="select_template">Select template</string>
+    <string name="no_templates_available">No templates available</string>
+    <string name="create">Create</string>
+
+    <!-- Templates -->
+    <string name="templates_title">Templates</string>
+    <string name="filter_by_category">Filter by category</string>
+    <string name="all_categories">All categories</string>
+    <string name="create_template">Create template</string>
+    <string name="delete_templates_title">Delete templates</string>
+    <string name="delete_templates_message">Delete %1$d selected templates?</string>
+    <string name="no_templates_title">No templates</string>
+    <string name="no_templates_message">Create templates to quickly generate structured notes.</string>
+    <string name="error_loading_templates">Error loading templates</string>
+    <string name="template_name">Template name</string>
+    <string name="select_category">Select category</string>
+    <string name="category">Category</string>
+    <string name="template_variables">Template variables</string>
+    <string name="add_variable">Add variable</string>
+    <string name="edit_template">Edit template</string>
+    <string name="template_content">Template content</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="edit">Edit</string>
+    <string name="edit_variable">Edit variable</string>
+    <string name="variable_name">Variable name</string>
+    <string name="default_value">Default value</string>
+    <string name="add_to_favorites">Add to favorites</string>
+    <string name="remove_from_favorites">Remove from favorites</string>
+
+    <!-- Recurring Notifications -->
+    <string name="new_recurring_note_created">Recurring note created</string>
+    <string name="new_note_created_from_template">New note created from "%1$s"</string>
+    <string name="error_creating_recurring_note">Error creating recurring note</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="recurring_notes_channel_name">Recurring Notes</string>
+    <string name="recurring_notes_channel_description">Notifications about recurring note generation</string>
+
+    <!-- Accessibility -->
+    <string name="accessibility_settings">Accessibility</string>
+    <string name="display">Display</string>
+    <string name="high_contrast_mode">High contrast mode</string>
+    <string name="high_contrast_mode_description">Increase contrast for better readability</string>
+    <string name="text_size">Text size</string>
+    <string name="text_size_description">Adjust overall text size across the app</string>
+    <string name="text_size_sample">The quick brown fox jumps over the lazy dog</string>
+    <string name="text_to_speech">Text to Speech</string>
+    <string name="enable_tts">Enable TTS</string>
+    <string name="enable_tts_description">Speak text aloud where supported</string>
+    <string name="keyboard_navigation">Keyboard navigation</string>
+    <string name="enable_keyboard_nav">Enable keyboard navigation</string>
+    <string name="enable_keyboard_nav_description">Navigate the app using hardware keyboard keys</string>
+
+    <!-- Common actions -->
+    <string name="ok">OK</string>
+    <string name="decrease">Decrease</string>
+    <string name="reset">Reset</string>
+    <string name="increase">Increase</string>
+    <string name="error">Error</string>
+    
+    <!-- AI Smart Organization Panel -->
+    <string name="tab_suggestions">Suggestions</string>
+    <string name="tab_related_notes">Related Notes</string>
+    <string name="tab_templates">Templates</string>
+    <string name="tab_smart_folders">Smart Folders</string>
+    <string name="error_loading_suggestions">Error loading suggestions</string>
+    <string name="ai_smart_organization">AI Smart Organization</string>
+    <string name="close">Close</string>
+    <string name="suggested_folders">Suggested folders</string>
+    <string name="apply_suggested_rules">Apply suggested rules</string>
+    <string name="related_notes">Related notes</string>
+    <string name="generated_template">Generated template</string>
+    <string name="no_related_notes_title">No related notes</string>
+    <string name="no_related_notes_message">No similar notes found.</string>
+    <string name="no_template_generated_title">No template generated</string>
+    <string name="no_template_generated_message">Generate a template from this note.</string>
+    <string name="generate_template">Generate template</string>
+    <string name="smart_folder_suggestions">Smart folder suggestions</string>
+    <string name="generate_suggestions">Generate suggestions</string>
+    <string name="untitled_note">Untitled</string>
+    
+    <!-- Suggested Folders / Rules strings -->
+    <string name="relevance">Relevance</string>
+    <string name="rules_count">%1$d rules</string>
+    <string name="rules">Rules</string>
+    <string name="collapse">Collapse</string>
+    <string name="expand">Expand</string>
+    <string name="create_folder_with_rules">Create folder "%1$s" with rules</string>
+    
+    <!-- Template Generation / Preview -->
+    <string name="preview">Preview</string>
+    <string name="use_template">Use template</string>
+    <string name="variables">Variables</string>
+    <string name="variable_helper_text">Use double curly braces like {{name}} to mark variables in the template.</string>
+    <string name="default_value_optional">Default value (optional)</string>
+    <string name="category_optional">Category (optional)</string>
+    <string name="delete_variable">Delete variable</string>
+    
+    <!-- Template/Variables editing -->
+    <string name="more_options">More options</string>
+    <string name="duplicate">Duplicate</string>
+    <string name="share">Share</string>
+    <string name="add_choice">Add choice</string>
+    <string name="remove_choice">Remove choice</string>
+    <string name="no_variables_defined">No variables defined</string>
+    <string name="click_to_add_first_variable">Click to add your first variable</string>
+    <string name="required_field">Required</string>
+    <string name="select_date">Select date</string>
+    <string name="select_time">Select time</string>
+    <string name="options">Options</string>
+    <string name="type">Type</string>
+    
+    <!-- Voice UI -->
+    <string name="processing">Processing</string>
+    <string name="start_listening">Start listening</string>
+    <string name="stop_listening">Stop listening</string>
+    <string name="tap_to_speak">Tap to speak</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="voice_command_start">Start voice command</string>
+    <string name="help">Help</string>
+    <string name="listening">Listening</string>
+    <string name="speak_now">Speak now…</string>
+    <string name="stop">Stop</string>
+    <string name="recognizing">Recognizing</string>
+    <string name="confirm">Confirm</string>
+    <string name="permission_required">Permission required</string>
+    <string name="mic_permission_required">Microphone permission is required for voice commands.</string>
+    <string name="open_settings">Open settings</string>
+    <string name="voice_commands">Voice Commands</string>
+    <string name="create_note_help">Create a new note with the given content</string>
+    <string name="add_to_note_help">Add content to the current note</string>
+    <string name="search_help">Search your notes for the given query</string>
+    <string name="open_note_help">Open a note with the specified title</string>
+    <string name="delete_note_help">Delete a note with the specified title</string>
+    <string name="set_reminder_help">Set a reminder with the specified time and content</string>
+    <string name="voice_settings">Voice settings</string>
+    <string name="got_it">Got it</string>
+    <string name="navigating">Navigating</string>
+    <string name="going_to">Going to</string>
+    
+    <!-- Security & Authentication -->
+    <string name="authentication_required">Authentication required</string>
+    <string name="verify_identity_to_continue">Verify your identity to continue</string>
+    <string name="password_cannot_be_empty">Password cannot be empty</string>
+    <string name="unlock">Unlock</string>
+    <string name="use_biometric_instead">Use biometric instead</string>
 </resources>

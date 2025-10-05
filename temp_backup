@@ -1,0 +1,517 @@
+package com.ainotebuddy.app.ui.screens
+
+import androidx.compose.animation.*
+import androidx.compose.animation.core.*
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterVertically
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
+import com.ainotebuddy.app.data.PreferencesManager
+import com.ainotebuddy.app.ui.components.*
+import com.ainotebuddy.app.ui.theme.ModernColors
+import com.ainotebuddy.app.ui.tutorial.TutorialManager
+import com.ainotebuddy.app.ui.tutorial.TutorialPosition
+import com.ainotebuddy.app.ui.tutorial.TutorialType
+import com.ainotebuddy.app.ui.tutorial.rememberTutorialManager
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+
+data class OnboardingPage(
+    val title: String,
+    val description: String,
+    val icon: ImageVector,
+    val accentColor: Color,
+    val showActionButton: Boolean = false,
+    val actionButtonText: String = "Next",
+    val onActionClick: (() -> Unit)? = null
+)
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun ModernOnboardingScreen(
+    onComplete: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    var showPreferences by remember { mutableStateOf(false) }
+    val preferencesManager = remember { PreferencesManager(context) }
+    val tutorialManager = rememberTutorialManager()
+    val tutorialState = tutorialManager.getTutorialState()
+    
+    // Track if tutorial has been started to prevent multiple starts
+    var tutorialStarted by remember { mutableStateOf(false) }
+    
+    // Start the onboarding tutorial when the screen is first shown
+    LaunchedEffect(Unit) {
+        if (!tutorialStarted) {
+            tutorialManager.startTutorialIfNeeded(TutorialType.ONBOARDING)
+            tutorialStarted = true
+        }
+    }
+    
+    val pages = listOf(
+        OnboardingPage(
+            title = "Welcome to AI NoteBuddy",
+            description = "Your intelligent note-taking companion powered by advanced AI technology.",
+            icon = Icons.Default.Psychology,
+            accentColor = ModernColors.AIPrimary
+        ),
+        OnboardingPage(
+            title = "Smart Note Organization",
+            description = "Automatically organize, categorize, and find your notes with AI-powered search and suggestions.",
+            icon = Icons.Default.AutoAwesome,
+            accentColor = ModernColors.AISecondary
+        ),
+        OnboardingPage(
+            title = "Collaborative Features",
+            description = "Work together in real-time with advanced collaboration tools and live editing.",
+            icon = Icons.Default.Group,
+            accentColor = ModernColors.Success
+        ),
+        OnboardingPage(
+            title = "Voice & Accessibility",
+            description = "Control your notes with voice commands and enjoy full accessibility support.",
+            icon = Icons.Default.Accessibility,
+            accentColor = ModernColors.Warning
+        ),
+        OnboardingPage(
+            title = "Secure & Private",
+            description = "Your notes are encrypted and secure with advanced privacy controls and backup options.",
+            icon = Icons.Default.Security,
+            accentColor = ModernColors.Info,
+            showActionButton = true,
+            actionButtonText = "Get Started",
+            onActionClick = { showPreferences = true }
+        )
+    )
+    
+    val pagerState = rememberPagerState(pageCount = { pages.size })
+    val scope = rememberCoroutineScope()
+    
+    // Track onboarding completion in local storage
+    val dataStore = LocalContext.current.dataStore
+    val scope = rememberCoroutineScope()
+    
+    // Handle theme changes
+    val context = LocalContext.current
+    val isSystemInDarkTheme = isSystemInDarkTheme()
+    var isDarkTheme by remember { mutableStateOf(isSystemInDarkTheme) }
+    
+    // Handle font scale
+    var fontScale by remember { mutableFloatStateOf(1f) }
+    
+    // Apply font scale
+    val configuration = LocalConfiguration.current
+    val newConfig = remember(configuration, fontScale) {
+        configuration.copy(fontScale = fontScale)
+    }
+    
+    // Track element positions for tutorial
+    var welcomeRect by remember { mutableStateOf(Rect.Zero) }
+    var nextButtonRect by remember { mutableStateOf(Rect.Zero) }
+    var skipButtonRect by remember { mutableStateOf(Rect.Zero) }
+    
+    // Show tutorial overlay if needed
+    val currentTutorialStep = tutorialState.getCurrentStep()
+    
+    // Update target rects when tutorial step changes
+    LaunchedEffect(currentTutorialStep) {
+        when (currentTutorialStep?.targetId) {
+            "welcome" -> currentTutorialStep.targetRect = welcomeRect
+            "next_button" -> currentTutorialStep.targetRect = nextButtonRect
+            "skip_button" -> currentTutorialStep.targetRect = skipButtonRect
+        }
+    }
+    
+    // Tutorial overlay with completion handling
+    TutorialOverlay(
+        state = tutorialState,
+        tutorialType = TutorialType.ONBOARDING,
+        tutorialManager = tutorialManager,
+        onDismiss = { tutorialState.skip() },
+        onComplete = {
+            // Any additional completion handling
+        }
+    )
+    
+    CompositionLocalProvider(
+        LocalConfiguration provides newConfig
+    ) {
+        Box(
+            modifier = modifier
+                .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        colors = listOf(
+                            MaterialTheme.colorScheme.surface,
+                            MaterialTheme.colorScheme.surfaceContainer
+                        )
+                    )
+                )
+        ) {
+        Column(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            // Skip and section navigation
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+                    .tutorialTarget(tutorialState, "skip_button") {
+                        skipButtonRect = it
+                    },
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = CenterVertically
+            ) {
+                // Section dropdown
+                var showSections by remember { mutableStateOf(false) }
+                val currentPageTitle = pages[pagerState.currentPage].title
+                
+                Box {
+                    OutlinedButton(
+                        onClick = { showSections = true },
+                        colors = ButtonDefaults.outlinedButtonColors(
+                            contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    ) {
+                        Text(
+                            "Sections",
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                        Icon(
+                            Icons.Default.ArrowDropDown,
+                            contentDescription = "Show sections",
+                            modifier = Modifier.size(20.dp)
+                        )
+                    }
+                    
+                    DropdownMenu(
+                        expanded = showSections,
+                        onDismissRequest = { showSections = false },
+                        modifier = Modifier.widthIn(max = 280.dp)
+                    ) {
+                        pages.forEachIndexed { index, page ->
+                            DropdownMenuItem(
+                                text = { 
+                                    Text(
+                                        page.title,
+                                        style = if (index == pagerState.currentPage) {
+                                            LocalTextStyle.current.copy(fontWeight = FontWeight.Bold)
+                                        } else LocalTextStyle.current
+                                    ) 
+                                },
+                                onClick = {
+                                    scope.launch { pagerState.animateScrollToPage(index) }
+                                    showSections = false
+                                },
+                                leadingIcon = {
+                                    if (index == pagerState.currentPage) {
+                                        Icon(
+                                            Icons.Default.Check,
+                                            contentDescription = null,
+                                            tint = MaterialTheme.colorScheme.primary
+                                        )
+                                    } else {
+                                        Spacer(Modifier.size(24.dp))
+                                    }
+                                }
+                            )
+                        }
+                    }
+                }
+                
+                // Skip button
+                TextButton(
+                    onClick = {
+                        tutorialState.skip()
+                        onComplete()
+                    }
+                ) {
+                    Text("Skip")
+                }
+            }
+            
+            // Pager content with tutorial target for welcome
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .tutorialTarget(tutorialState, "welcome") {
+                        welcomeRect = it
+                    }
+            ) {
+                HorizontalPager(
+                    state = pagerState,
+                    modifier = Modifier.fillMaxSize()
+                ) { page ->
+                    OnboardingPageContent(
+                        page = pages[page],
+                        pagerState = pagerState,
+                        isActive = pagerState.currentPage == page
+                    )
+                }
+            }
+            
+            // Bottom section with indicators and navigation
+            Column(
+                modifier = Modifier.padding(32.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                // Interactive page indicators with skip-to-section
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    pages.forEachIndexed { index, page ->
+                        val isSelected = pagerState.currentPage == index
+                        val width by animateDpAsState(
+                            targetValue = if (isSelected) 24.dp else 8.dp,
+                            animationSpec = tween(300),
+                            label = "indicatorWidth"
+                        )
+                        
+                        // Make indicators clickable and show tooltip with section title
+                        val interactionSource = remember { MutableInteractionSource() }
+                        val isPressed by interactionSource.collectIsPressedAsState()
+                        val scale by animateFloatAsState(
+                            targetValue = if (isPressed) 0.8f else 1f,
+                            label = "indicatorScale"
+                        )
+                        
+                        Box(
+                            modifier = Modifier
+                                .size(32.dp)
+                                .clip(CircleShape)
+                                .clickable(
+                                    interactionSource = interactionSource,
+                                    indication = null,
+                                    onClick = {
+                                        scope.launch {
+                                            pagerState.animateScrollToPage(index)
+                                        }
+                                    }
+                                ),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            // Tooltip with section title
+                            if (isSelected) {
+                                Box(
+                                    modifier = Modifier
+                                        .padding(bottom = 4.dp)
+                                        .background(
+                                            color = MaterialTheme.colorScheme.surfaceVariant,
+                                            shape = RoundedCornerShape(4.dp)
+                                        )
+                                        .padding(horizontal = 8.dp, vertical = 4.dp)
+                                ) {
+                                    Text(
+                                        text = page.title,
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            }
+                            
+                            // Indicator dot with scale animation
+                            Box(
+                                modifier = Modifier
+                                    .width(width)
+                                    .height(8.dp)
+                                    .clip(RoundedCornerShape(4.dp))
+                                    .background(
+                                        if (isSelected) {
+                                            page.accentColor
+                                        } else {
+                                            MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.3f)
+                                        }
+                                    )
+                                    .scale(scale)
+                            )
+                        }
+                    }
+                }
+                
+                Spacer(modifier = Modifier.height(32.dp))
+                
+                // Navigation buttons
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    // Back button
+                    if (pagerState.currentPage > 0) {
+                        OutlinedButton(
+                            onClick = {
+                                scope.launch {
+                                    pagerState.animateScrollToPage(pagerState.currentPage - 1)
+                                }
+                            }
+                        ) {
+                            Icon(Icons.Default.ArrowBack, contentDescription = null)
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text("Back")
+                        }
+                    } else {
+                        Spacer(modifier = Modifier.width(1.dp))
+                    }
+                    
+                    // Next/Get Started button with tutorial target
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth(0.5f)
+                            .tutorialTarget(tutorialState, "next_button") {
+                                nextButtonRect = it
+                            }
+                    ) {
+                        Button(
+                            onClick = {
+                                if (pagerState.currentPage < pages.size - 1) {
+                                    scope.launch {
+                                        pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                                    }
+                                } else {
+                                    tutorialState.skip()
+                                    onComplete()
+                                }
+                            }
+                        ) {
+                            Text(
+                                if (pagerState.currentPage < pages.size - 1) "Next" else "Get Started"
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Icon(
+                                if (pagerState.currentPage < pages.size - 1) Icons.Default.ArrowForward else Icons.Default.Check,
+                                contentDescription = null
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun OnboardingPageContent(
+    page: OnboardingPage,
+    pagerState: PagerState,
+    isActive: Boolean,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(horizontal = 32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        // Animated icon
+        AnimatedVisibility(
+            visible = isActive,
+            enter = fadeIn(tween(600)) + scaleIn(tween(600, easing = FastOutSlowInEasing)),
+            exit = fadeOut(tween(300))
+        ) {
+            Box(
+                modifier = Modifier.size(120.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                // Pulsing background
+                BreathingAnimation {
+                    Box(
+                        modifier = Modifier
+                            .size(100.dp)
+                            .background(
+                                page.accentColor.copy(alpha = 0.1f),
+                                CircleShape
+                            )
+                    )
+                }
+                
+                // Icon container
+                Surface(
+                    modifier = Modifier.size(80.dp),
+                    shape = CircleShape,
+                    color = page.accentColor,
+                    shadowElevation = 8.dp
+                ) {
+                    Box(
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            imageVector = page.icon,
+                            contentDescription = null,
+                            tint = Color.White,
+                            modifier = Modifier.size(40.dp)
+                        )
+                    }
+                }
+            }
+        }
+        
+        Spacer(modifier = Modifier.height(48.dp))
+        
+        // Title
+        AnimatedVisibility(
+            visible = isActive,
+            enter = fadeIn(tween(600, delayMillis = 200)) + slideInVertically(
+                initialOffsetY = { it / 4 },
+                animationSpec = tween(600, delayMillis = 200, easing = FastOutSlowInEasing)
+            ),
+            exit = fadeOut(tween(300))
+        ) {
+            Text(
+                text = page.title,
+                style = MaterialTheme.typography.headlineMedium,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onSurface,
+                textAlign = TextAlign.Center
+            )
+        }
+        
+        Spacer(modifier = Modifier.height(16.dp))
+        
+        // Description
+        AnimatedVisibility(
+            visible = isActive,
+            enter = fadeIn(tween(600, delayMillis = 400)) + slideInVertically(
+                initialOffsetY = { it / 4 },
+                animationSpec = tween(600, delayMillis = 400, easing = FastOutSlowInEasing)
+            ),
+            exit = fadeOut(tween(300))
+        ) {
+            Text(
+                text = page.description,
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center,
+                lineHeight = MaterialTheme.typography.bodyLarge.lineHeight * 1.2
+            )
+        }
+    }
+}

@@ -28,17 +28,16 @@ import androidx.datastore.preferences.core.edit
 import kotlinx.coroutines.flow.first
 import com.ainotebuddy.app.AINoteBuddyApplication
 import kotlinx.coroutines.CoroutineScope
+import androidx.compose.ui.platform.LocalContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.background
+import androidx.compose.runtime.rememberCoroutineScope
 
 @Composable
 fun NoteScreen(
-    viewModel: NoteViewModel,
-    onSignOut: () -> Unit,
-    onSyncToDrive: () -> Unit,
-    onSyncFromDrive: () -> Unit
+    viewModel: NoteViewModel
 ) {
     val notes by viewModel.notes.collectAsState()
 
@@ -54,47 +53,12 @@ fun NoteScreen(
     // }
 
     Column(modifier = Modifier.padding(16.dp)) {
-        // Header with sync buttons and sign out
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
-                text = "My Notes",
-                style = MaterialTheme.typography.headlineMedium
-            )
-            
-            Row {
-                IconButton(onClick = onSyncToDrive) {
-                    Text("\u2191", style = MaterialTheme.typography.titleLarge)
-                }
-                IconButton(onClick = onSyncFromDrive) {
-                    Text("\u2193", style = MaterialTheme.typography.titleLarge)
-                }
-                IconButton(onClick = onSignOut) {
-                    Text("Sign Out", style = MaterialTheme.typography.bodyMedium)
-                }
-            }
-        }
-        // Auto-sync toggle
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text("Auto-sync to Google Drive", modifier = Modifier.weight(1f))
-            Switch(
-                checked = autoSyncEnabled,
-                onCheckedChange = { checked ->
-                    autoSyncEnabled = checked
-                    // scope.launch {
-                    //     AINoteBuddyApplication.dataStore.edit { prefs ->
-                    //         prefs[AUTO_SYNC_KEY] = checked
-                    //     }
-                    // }
-                }
-            )
-        }
+        // Simple header
+        Text(
+            text = "My Notes",
+            style = MaterialTheme.typography.headlineMedium,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
         
         Spacer(modifier = Modifier.height(16.dp))
         
@@ -117,9 +81,11 @@ fun NoteScreen(
         Button(
             onClick = {
                 if (title.isNotBlank() && content.isNotBlank()) {
-                    viewModel.addNote(title, content)
-                    title = ""
-                    content = ""
+                    scope.launch {
+                        viewModel.createQuickNote(title, content, context)
+                        title = ""
+                        content = ""
+                    }
                 }
             },
             modifier = Modifier.padding(top = 8.dp)

@@ -6,9 +6,15 @@ pluginManagement {
         maven { url = uri("https://jitpack.io") }
         maven { url = uri("https://plugins.gradle.org/m2/") }
     }
+    val requestedTasks = gradle.startParameter.taskNames
+    val runningOnlyLintTests = requestedTasks.any { it.startsWith(":lint-tests") }
     plugins {
-        id("com.android.application") version "8.11.1"
-        id("org.jetbrains.kotlin.android") version "1.9.22"
+        if (!runningOnlyLintTests) {
+            id("com.android.application") version "8.11.1"
+            id("org.jetbrains.kotlin.android") version "2.1.0"
+        }
+        // Always ensure Kotlin JVM is available for pure JVM modules like lint and lint-tests
+        id("org.jetbrains.kotlin.jvm") version "2.1.0"
     }
 }
 dependencyResolutionManagement {
@@ -21,5 +27,16 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "AINoteBuddy"
-include(":app")
-include(":wear")
+
+val requestedTasks = gradle.startParameter.taskNames
+val runningOnlyLintTests = requestedTasks.any { it.startsWith(":lint-tests") }
+
+if (!runningOnlyLintTests) {
+    include(":app")
+} else {
+    println("[settings] Skipping :app for lint-tests run")
+}
+include(":lint")
+include(":lint-tests")
+// Temporarily disabled wear module to fix build issues
+// include(":wear")

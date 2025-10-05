@@ -2,321 +2,549 @@ package com.ainotebuddy.app
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.ainotebuddy.app.auth.LoginActivity
-import com.ainotebuddy.app.auth.GoogleAuthService
-import com.ainotebuddy.app.ui.theme.AINoteBuddyTheme
-import com.ainotebuddy.app.ui.theme.ThemeManager
-import com.ainotebuddy.app.ui.theme.NoteScreen
-import com.ainotebuddy.app.ui.dashboard.DashboardScreen
-import com.ainotebuddy.app.features.NoteEditorActivity
-import com.ainotebuddy.app.settings.SettingsScreen
-import com.ainotebuddy.app.viewmodel.NoteViewModel
-import com.ainotebuddy.app.viewmodel.NoteViewModelFactory
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.launch
-import android.content.SharedPreferences
-import androidx.compose.runtime.*
-import com.ainotebuddy.app.onboarding.OnboardingScreen
-import com.ainotebuddy.app.settings.PrivacyPolicyScreen
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.Modifier
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.unit.dp
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.rememberCoroutineScope
-import com.ainotebuddy.app.data.NoteEntity
-import androidx.compose.foundation.clickable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.ainotebuddy.app.ui.calendar.CalendarNotesScreen
-import com.ainotebuddy.app.ui.canvas.InfiniteCanvasScreen
-import com.ainotebuddy.app.features.WebClipperScreen
-import com.ainotebuddy.app.features.ClipboardManagerScreen
-import com.ainotebuddy.app.features.SmartTemplatesScreen
-import com.ainotebuddy.app.features.VersionHistoryScreen
-
-enum class Screen {
-    DASHBOARD,
-    NOTES,
-    SETTINGS,
-    CALENDAR,
-    CANVAS,
-    WEB_CLIPPER,
-    CLIPBOARD,
-    TEMPLATES,
-    VERSION_HISTORY
-}
-
-// Placeholder screens for functionality
-@Composable
-fun SearchScreen(
-    viewModel: NoteViewModel,
-    onBack: () -> Unit,
-    onNoteClick: (NoteEntity) -> Unit
-) {
-    val notes by viewModel.notes.collectAsState()
-    var searchQuery by remember { mutableStateOf("") }
-    val filteredNotes = if (searchQuery.isBlank()) {
-        notes
-    } else {
-        notes.filter { 
-            it.title.contains(searchQuery, ignoreCase = true) || 
-            it.content.contains(searchQuery, ignoreCase = true) 
-        }
-    }
-    
-    Column(modifier = Modifier.fillMaxSize()) {
-        // Search header
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            IconButton(onClick = onBack) {
-                Icon(Icons.Filled.ArrowBack, "Back")
-            }
-            Spacer(modifier = Modifier.width(8.dp))
-            OutlinedTextField(
-                value = searchQuery,
-                onValueChange = { searchQuery = it },
-                placeholder = { Text("Search notes...") },
-                modifier = Modifier.weight(1f),
-                singleLine = true
-            )
-        }
-        
-        // Search results
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(16.dp)
-        ) {
-            items(filteredNotes) { note ->
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { onNoteClick(note) }
-                        .padding(vertical = 4.dp)
-                ) {
-                    Column(modifier = Modifier.padding(16.dp)) {
-                        Text(
-                            text = note.title,
-                            style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Text(
-                            text = note.content,
-                            style = MaterialTheme.typography.bodyMedium,
-                            maxLines = 2,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                    }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun TemplatesScreen(
-    viewModel: NoteViewModel,
-    onBack: () -> Unit,
-    onNoteClick: (NoteEntity) -> Unit
-) {
-    Column(modifier = Modifier.fillMaxSize()) {
-        // Header
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            IconButton(onClick = onBack) {
-                Icon(Icons.Filled.ArrowBack, "Back")
-            }
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(
-                text = "Note Templates",
-                style = MaterialTheme.typography.headlineMedium
-            )
-        }
-        
-        // Template list
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(16.dp)
-        ) {
-            item {
-                Text(
-                    text = "Coming Soon!",
-                    style = MaterialTheme.typography.headlineMedium,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                )
-            }
-            item {
-                Spacer(modifier = Modifier.height(16.dp))
-                Text(
-                    text = "Template functionality will be implemented soon.",
-                    style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                )
-            }
-        }
-    }
-}
-
-@Composable
-fun CategoriesScreen(
-    viewModel: NoteViewModel,
-    onBack: () -> Unit,
-    onCategoryClick: (String) -> Unit
-) {
-    val notes by viewModel.notes.collectAsState()
-    val categories = notes.map { it.category }.distinct()
-    
-    Column(modifier = Modifier.fillMaxSize()) {
-        // Header
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            IconButton(onClick = onBack) {
-                Icon(Icons.Filled.ArrowBack, "Back")
-            }
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(
-                text = "Categories",
-                style = MaterialTheme.typography.headlineMedium
-            )
-        }
-        
-        // Categories list
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(16.dp)
-        ) {
-            items(categories) { category ->
-                val noteCount = notes.count { it.category == category }
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { onCategoryClick(category) }
-                        .padding(vertical = 4.dp)
-                ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = category,
-                            style = MaterialTheme.typography.titleMedium
-                        )
-                        Text(
-                            text = "$noteCount notes",
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                }
-            }
-        }
-    }
-}
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.ainotebuddy.app.data.NoteEntity
+import com.ainotebuddy.app.features.NoteEditorActivity
+import com.ainotebuddy.app.features.SearchActivity
+import com.ainotebuddy.app.features.SettingsActivity
+import com.ainotebuddy.app.features.VoiceRecorderActivity
+import com.ainotebuddy.app.ui.theme.AINoteBuddyTheme
+import com.ainotebuddy.app.viewmodel.MainViewModel
 
 class MainActivity : ComponentActivity() {
 
-    private val viewModel by viewModels<NoteViewModel> {
-        object : ViewModelProvider.Factory {
-            @Suppress("UNCHECKED_CAST")
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                if (modelClass.isAssignableFrom(NoteViewModel::class.java)) {
-                    return NoteViewModel(
-                        repository = null, // TODO: Implement when Room is available
-                        advancedRepository = (application as AINoteBuddyApplication).advancedNoteRepository,
-                        googleAuthService = GoogleAuthService(this@MainActivity)
-                    ) as T
-                }
-                throw IllegalArgumentException("Unknown ViewModel class")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        
+        setContent {
+            AINoteBuddyTheme {
+                MainScreen()
             }
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val prefs = getSharedPreferences("ainotebuddy_prefs", MODE_PRIVATE)
-        val firstRun = prefs.getBoolean("first_run", true)
-        // var isSignedIn = (application as AINoteBuddyApplication).googleAuthService.isSignedIn()
-        var isSignedIn = false // TODO: Implement when auth is available
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun MainScreen() {
+        val context = LocalContext.current
+        val viewModel: MainViewModel = viewModel { MainViewModel(context) }
+        val notes by viewModel.allNotes.collectAsState()
+        val currentPage = remember { mutableStateOf("Dashboard") }
 
-        setContent {
-            var showOnboarding by remember { mutableStateOf(firstRun) }
-            var showPrivacy by remember { mutableStateOf(false) }
-            var currentScreen by remember { mutableStateOf(Screen.DASHBOARD) }
-            var signedIn by remember { mutableStateOf(isSignedIn) }
-
-            if (showOnboarding) {
-                if (showPrivacy) {
-                    PrivacyPolicyScreen(onBack = { showPrivacy = false })
-                } else {
-                    OnboardingScreen(
-                        onFinish = {
-                            prefs.edit().putBoolean("first_run", false).apply()
-                            showOnboarding = false
-                        },
-                        onPrivacy = { showPrivacy = true }
+        Scaffold(
+            bottomBar = {
+                ModernBottomNavigation(
+                    currentPage = currentPage.value,
+                    onPageSelected = { page -> currentPage.value = page },
+                    onNotesClick = { /* Show all notes */ },
+                    onSettingsClick = {
+                        val intent = Intent(context, SettingsActivity::class.java)
+                        startActivity(intent)
+                    }
+                )
+            },
+            floatingActionButton = {
+                FloatingActionButton(
+                    onClick = {
+                        val intent = Intent(context, NoteEditorActivity::class.java)
+                        startActivity(intent)
+                    },
+                    shape = CircleShape,
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(56.dp)
+                ) {
+                    Icon(
+                        Icons.Filled.Add, 
+                        contentDescription = "Add Note",
+                        tint = MaterialTheme.colorScheme.onPrimary,
+                        modifier = Modifier.size(24.dp)
                     )
                 }
-            } else {
-                if (!signedIn) {
-                    // Show sign-in prompt or screen, but allow skip
-                    SignInPrompt(
-                        onSignIn = {
-                            // TODO: Implement real sign-in logic
-                            signedIn = true
-                        },
-                        onSkip = {
-                            signedIn = false
+            }
+        ) { paddingValues ->
+            when (currentPage.value) {
+                "Dashboard" -> DashboardContent(
+                    modifier = Modifier.padding(paddingValues),
+                    notes = notes,
+                    onCreateNote = {
+                        val intent = Intent(context, NoteEditorActivity::class.java)
+                        startActivity(intent)
+                    },
+                    onSearchClick = {
+                        val intent = Intent(context, SearchActivity::class.java)
+                        startActivity(intent)
+                    },
+                    onVoiceClick = {
+                        val intent = Intent(context, VoiceRecorderActivity::class.java)
+                        startActivity(intent)
+                    },
+                    onNoteClick = { note ->
+                        val intent = Intent(context, NoteEditorActivity::class.java).apply {
+                            putExtra("note_id", note.id)
                         }
+                        startActivity(intent)
+                    }
+                )
+                "Notes" -> NotesListContent(
+                    modifier = Modifier.padding(paddingValues),
+                    notes = notes,
+                    onNoteClick = { note ->
+                        val intent = Intent(context, NoteEditorActivity::class.java).apply {
+                            putExtra("note_id", note.id)
+                        }
+                        startActivity(intent)
+                    },
+                    onPinClick = { note -> viewModel.togglePin(note.id) },
+                    onFavoriteClick = { note -> viewModel.toggleFavorite(note.id) }
+                )
+                "Settings" -> {
+                    LaunchedEffect(Unit) {
+                        val intent = Intent(context, SettingsActivity::class.java)
+                        startActivity(intent)
+                        currentPage.value = "Dashboard"
+                    }
+                }
+            }
+        }
+    }
+
+    @Composable
+    fun DashboardContent(
+        modifier: Modifier = Modifier,
+        notes: List<NoteEntity>,
+        onCreateNote: () -> Unit,
+        onSearchClick: () -> Unit,
+        onVoiceClick: () -> Unit,
+        onNoteClick: (NoteEntity) -> Unit
+    ) {
+        LazyColumn(
+            modifier = modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background),
+            contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(20.dp)
+        ) {
+            item {
+                WelcomeCard(
+                    onCreateNote = onCreateNote,
+                    onSearchClick = onSearchClick
+                )
+            }
+            
+            item {
+                StatsRow(
+                    totalNotes = notes.size,
+                    favorites = notes.count { it.isFavorite },
+                    pinned = notes.count { it.isPinned },
+                    inVault = 0
+                )
+            }
+            
+            item {
+                QuickActionsCard(
+                    onVoiceClick = onVoiceClick,
+                    onTemplatesClick = { /* TODO */ },
+                    onCategoriesClick = { /* TODO */ }
+                )
+            }
+            
+            if (notes.isNotEmpty()) {
+                item {
+                    CategoriesSection(notes = notes, onNoteClick = onNoteClick)
+                }
+            }
+        }
+    }
+    
+    @Composable
+    fun NotesListContent(
+        modifier: Modifier = Modifier,
+        notes: List<NoteEntity>,
+        onNoteClick: (NoteEntity) -> Unit,
+        onPinClick: (NoteEntity) -> Unit,
+        onFavoriteClick: (NoteEntity) -> Unit
+    ) {
+        LazyColumn(
+            modifier = modifier
+                .fillMaxSize()
+                .padding(horizontal = 16.dp),
+            contentPadding = PaddingValues(vertical = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            item {
+                Text(
+                    text = "${notes.size} notes",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+            }
+            
+            items(notes) { note ->
+                ModernNoteCard(
+                    note = note,
+                    onClick = { onNoteClick(note) },
+                    onPinClick = { onPinClick(note) },
+                    onFavoriteClick = { onFavoriteClick(note) }
+                )
+            }
+        }
+    }
+    
+    @Composable
+    fun WelcomeCard(
+        onCreateNote: () -> Unit,
+        onSearchClick: () -> Unit
+    ) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f)
+            ),
+            shape = RoundedCornerShape(20.dp),
+            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.12f))
+        ) {
+            Column(
+                modifier = Modifier.padding(24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column {
+                        Text(
+                            text = "Welcome back! 👋",
+                            style = MaterialTheme.typography.headlineMedium,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+                        Text(
+                            text = "Ready to capture your thoughts?",
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(top = 4.dp)
+                        )
+                    }
+                    
+                    IconButton(
+                        onClick = onSearchClick,
+                        modifier = Modifier
+                            .size(48.dp)
+                            .background(
+                                MaterialTheme.colorScheme.surface,
+                                CircleShape
+                            )
+                    ) {
+                        Icon(
+                            Icons.Filled.Search,
+                            contentDescription = "Search",
+                            tint = MaterialTheme.colorScheme.onSurface
+                        )
+                    }
+                }
+                
+                Spacer(modifier = Modifier.height(20.dp))
+                
+                Button(
+                    onClick = onCreateNote,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.primary
+                    ),
+                    shape = RoundedCornerShape(16.dp)
+                ) {
+                    Icon(
+                        Icons.Filled.Add,
+                        contentDescription = null,
+                        modifier = Modifier.size(20.dp)
                     )
-                } else {
-                    AINoteBuddyTheme(themeState = ThemeManager.themeState) {
-                        Surface(color = MaterialTheme.colorScheme.background) {
-                            MainAppContent(
-                                currentScreen = currentScreen,
-                                onScreenChange = { currentScreen = it },
-                                viewModel = viewModel,
-                                onSignOut = {
-                                    signOut()
-                                    signedIn = false
-                                },
-                                onSyncToDrive = { syncToDrive() },
-                                onSyncFromDrive = { syncFromDrive() },
-                                onNoteClick = { note -> openNoteEditor(note) },
-                                onNewNote = { openNoteEditor(null) }
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        "Create New Note",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
+            }
+        }
+    }
+    
+    @Composable
+    fun StatsRow(
+        totalNotes: Int,
+        favorites: Int,
+        pinned: Int,
+        inVault: Int
+    ) {
+        LazyRow(
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            item {
+                StatCard(
+                    icon = Icons.Filled.Description,
+                    count = totalNotes,
+                    label = "Total Notes",
+                    color = MaterialTheme.colorScheme.primary
+                )
+            }
+            item {
+                StatCard(
+                    icon = Icons.Filled.Favorite,
+                    count = favorites,
+                    label = "Favorites",
+                    color = Color(0xFFFC5C7D)
+                )
+            }
+            item {
+                StatCard(
+                    icon = Icons.Filled.Star,
+                    count = pinned,
+                    label = "Pinned",
+                    color = Color(0xFFFFD700)
+                )
+            }
+            item {
+                StatCard(
+                    icon = Icons.Filled.Lock,
+                    count = inVault,
+                    label = "In Vault",
+                    color = Color(0xFF00BCD4)
+                )
+            }
+        }
+    }
+    
+    @Composable
+    fun StatCard(
+        icon: ImageVector,
+        count: Int,
+        label: String,
+        color: Color
+    ) {
+        Card(
+            modifier = Modifier.width(100.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surface
+            ),
+            shape = RoundedCornerShape(16.dp),
+            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.12f))
+        ) {
+            Column(
+                modifier = Modifier.padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Icon(
+                    icon,
+                    contentDescription = null,
+                    tint = color,
+                    modifier = Modifier.size(24.dp)
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = count.toString(),
+                    style = MaterialTheme.typography.headlineMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = label,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    textAlign = TextAlign.Center
+                )
+            }
+        }
+    }
+    
+    @Composable
+    fun QuickActionsCard(
+        onVoiceClick: () -> Unit,
+        onTemplatesClick: () -> Unit,
+        onCategoriesClick: () -> Unit
+    ) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surface
+            ),
+            shape = RoundedCornerShape(20.dp),
+            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.12f))
+        ) {
+            Column(
+                modifier = Modifier.padding(20.dp)
+            ) {
+                Text(
+                    text = "Quick Actions",
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                
+                Spacer(modifier = Modifier.height(16.dp))
+                
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    QuickActionButton(
+                        modifier = Modifier.weight(1f),
+                        icon = Icons.Filled.Description,
+                        label = "Templates",
+                        color = Color(0xFF00BCD4),
+                        onClick = onTemplatesClick
+                    )
+                    QuickActionButton(
+                        modifier = Modifier.weight(1f),
+                        icon = Icons.Filled.Folder,
+                        label = "Categories",
+                        color = Color(0xFFFFD700),
+                        onClick = onCategoriesClick
+                    )
+                }
+                
+                Spacer(modifier = Modifier.height(12.dp))
+                
+                QuickActionButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    icon = Icons.Filled.Mic,
+                    label = "Voice Note",
+                    color = MaterialTheme.colorScheme.primary,
+                    onClick = onVoiceClick
+                )
+            }
+        }
+    }
+    
+    @Composable
+    fun QuickActionButton(
+        modifier: Modifier = Modifier,
+        icon: ImageVector,
+        label: String,
+        color: Color,
+        onClick: () -> Unit
+    ) {
+        Card(
+            modifier = modifier
+                .clickable { onClick() }
+                .height(80.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = color.copy(alpha = 0.1f)
+            ),
+            shape = RoundedCornerShape(16.dp),
+            border = BorderStroke(1.dp, color.copy(alpha = 0.2f))
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Icon(
+                    icon,
+                    contentDescription = null,
+                    tint = color,
+                    modifier = Modifier.size(24.dp)
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = label,
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.Medium,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+            }
+        }
+    }
+    
+    @Composable
+    fun CategoriesSection(
+        notes: List<NoteEntity>,
+        onNoteClick: (NoteEntity) -> Unit
+    ) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surface
+            ),
+            shape = RoundedCornerShape(20.dp),
+            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.12f))
+        ) {
+            Column(
+                modifier = Modifier.padding(20.dp)
+            ) {
+                Text(
+                    text = "Categories",
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                
+                Spacer(modifier = Modifier.height(16.dp))
+                
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onNoteClick(notes.first()) },
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f)
+                    ),
+                    shape = RoundedCornerShape(16.dp),
+                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.2f))
+                ) {
+                    Row(
+                        modifier = Modifier.padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            Icons.Filled.Folder,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(24.dp)
+                        )
+                        Spacer(modifier = Modifier.width(12.dp))
+                        Column {
+                            Text(
+                                text = "General",
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.SemiBold,
+                                color = MaterialTheme.colorScheme.onSurface
+                            )
+                            Text(
+                                text = "${notes.size} notes",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
                     }
@@ -325,202 +553,201 @@ class MainActivity : ComponentActivity() {
         }
     }
     
-    private fun openNoteEditor(note: NoteEntity?) {
-        val intent = Intent(this, NoteEditorActivity::class.java).apply {
-            note?.let { putExtra("note_id", it.id) }
-        }
-        startActivity(intent)
-    }
-    
-    private fun signOut() {
-        // val googleAuthService = (application as AINoteBuddyApplication).googleAuthService
-        lifecycleScope.launch {
-            // googleAuthService.signOut()
-            // startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-            // finish()
-        }
-    }
-    
-    private fun syncToDrive() {
-        // val googleAuthService = (application as AINoteBuddyApplication).googleAuthService
-        val syncService = (application as AINoteBuddyApplication).googleDriveSyncService
-        
-        // val account = googleAuthService.getCurrentAccount()
-        // if (account != null) {
-        //     Toast.makeText(this, "Syncing to Google Drive...", Toast.LENGTH_SHORT).show()
-        //     viewModel.syncToDrive(account, syncService)
-        // } else {
-        //     Toast.makeText(this, "Please sign in to sync", Toast.LENGTH_SHORT).show()
-        // }
-        Toast.makeText(this, "Sync not available yet", Toast.LENGTH_SHORT).show()
-    }
-    
-    private fun syncFromDrive() {
-        // val googleAuthService = (application as AINoteBuddyApplication).googleAuthService
-        val syncService = (application as AINoteBuddyApplication).googleDriveSyncService
-        
-        // val account = googleAuthService.getCurrentAccount()
-        // if (account != null) {
-        //     Toast.makeText(this, "Syncing from Google Drive...", Toast.LENGTH_SHORT).show()
-        //     viewModel.syncFromDrive(account, syncService)
-        // } else {
-        //     Toast.makeText(this, "Please sign in to sync", Toast.LENGTH_SHORT).show()
-        // }
-        Toast.makeText(this, "Sync not available yet", Toast.LENGTH_SHORT).show()
-    }
-}
-
-@Composable
-fun MainAppContent(
-    currentScreen: Screen,
-    onScreenChange: (Screen) -> Unit,
-    viewModel: NoteViewModel,
-    onSignOut: () -> Unit,
-    onSyncToDrive: () -> Unit,
-    onSyncFromDrive: () -> Unit,
-    onNoteClick: (NoteEntity) -> Unit,
-    onNewNote: () -> Unit
-) {
-    val context = LocalContext.current
-    
-    @OptIn(ExperimentalMaterial3Api::class)
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { 
-                    Text(
-                        when (currentScreen) {
-                            Screen.DASHBOARD -> "AINoteBuddy Dashboard"
-                            Screen.NOTES -> "My Notes"
-                            Screen.SETTINGS -> "Settings"
-                        }
-                    )
-                },
-                actions = {
-                    // Sync buttons
-                    IconButton(onClick = onSyncToDrive) {
-                        Icon(Icons.Filled.CloudUpload, "Sync to Drive")
-                    }
-                    IconButton(onClick = onSyncFromDrive) {
-                        Icon(Icons.Filled.CloudDownload, "Sync from Drive")
-                    }
-                }
-            )
-        },
-        bottomBar = {
-            @OptIn(ExperimentalMaterial3Api::class)
-            NavigationBar {
-                NavigationBarItem(
-                    icon = { Icon(Icons.Filled.Dashboard, "Dashboard") },
-                    label = { Text("Dashboard") },
-                    selected = currentScreen == Screen.DASHBOARD,
-                    onClick = { onScreenChange(Screen.DASHBOARD) }
-                )
-                NavigationBarItem(
-                    icon = { Icon(Icons.Filled.Note, "Notes") },
-                    label = { Text("Notes") },
-                    selected = currentScreen == Screen.NOTES,
-                    onClick = { onScreenChange(Screen.NOTES) }
-                )
-                NavigationBarItem(
-                    icon = { Icon(Icons.Filled.Settings, "Settings") },
-                    label = { Text("Settings") },
-                    selected = currentScreen == Screen.SETTINGS,
-                    onClick = { onScreenChange(Screen.SETTINGS) }
-                )
-            }
-        },
-        floatingActionButton = {
-            FloatingActionButton(
-                onClick = onNewNote,
-                containerColor = MaterialTheme.colorScheme.primary,
-                contentColor = MaterialTheme.colorScheme.onPrimary
-            ) {
-                Icon(Icons.Filled.Add, contentDescription = "Add new note")
-            }
-        }
-    ) { paddingValues ->
-        Box(modifier = Modifier.padding(paddingValues)) {
-            when (currentScreen) {
-                Screen.DASHBOARD -> {
-                    var showSearch by remember { mutableStateOf(false) }
-                    var showTemplates by remember { mutableStateOf(false) }
-                    var showCategories by remember { mutableStateOf(false) }
-                    
-                    if (showSearch) {
-                        SearchScreen(
-                            viewModel = viewModel,
-                            onBack = { showSearch = false },
-                            onNoteClick = onNoteClick
-                        )
-                    } else if (showTemplates) {
-                        TemplatesScreen(
-                            viewModel = viewModel,
-                            onBack = { showTemplates = false },
-                            onNoteClick = onNoteClick
-                        )
-                    } else if (showCategories) {
-                        CategoriesScreen(
-                            viewModel = viewModel,
-                            onBack = { showCategories = false },
-                            onCategoryClick = { category ->
-                                // Filter notes by category
-                                showCategories = false
-                            }
-                        )
-                    } else {
-                        DashboardScreen(
-                            viewModel = viewModel,
-                            onNoteClick = onNoteClick,
-                            onNewNote = onNewNote,
-                            onSearch = { showSearch = true },
-                            onCategoryClick = { category -> 
-                                // Filter notes by category
-                            },
-                            onTagClick = { tag -> 
-                                // Filter notes by tag
-                            },
-                            onSignOut = onSignOut,
-                            onSyncToDrive = onSyncToDrive,
-                            onSyncFromDrive = onSyncFromDrive,
-                            onTemplates = { showTemplates = true },
-                            onCategories = { showCategories = true }
-                        )
-                    }
-                }
-                Screen.NOTES -> {
-                    NoteScreen(
-                        viewModel = viewModel,
-                        onSignOut = onSignOut,
-                        onSyncToDrive = onSyncToDrive,
-                        onSyncFromDrive = onSyncFromDrive
-                    )
-                }
-                Screen.SETTINGS -> {
-                    val app = context.applicationContext as AINoteBuddyApplication
-                    SettingsScreen(
-                        repository = app.advancedNoteRepository,
-                        backupManager = app.backupRestoreManager
-                    )
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun SignInPrompt(onSignIn: () -> Unit, onSkip: () -> Unit) {
-    Surface(modifier = Modifier.fillMaxSize()) {
-        Column(
-            modifier = Modifier.fillMaxSize().padding(32.dp),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+    @Composable
+    fun ModernNoteCard(
+        note: NoteEntity,
+        onClick: () -> Unit,
+        onPinClick: () -> Unit,
+        onFavoriteClick: () -> Unit
+    ) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { onClick() },
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surface
+            ),
+            shape = RoundedCornerShape(16.dp),
+            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.12f))
         ) {
-            Text("Sign in for sync, backup, and more!", style = MaterialTheme.typography.headlineMedium)
-            Spacer(modifier = Modifier.height(24.dp))
-            Button(onClick = onSignIn) { Text("Sign In with Google") }
-            Spacer(modifier = Modifier.height(16.dp))
-            TextButton(onClick = onSkip) { Text("Skip for now") }
+            Column(
+                modifier = Modifier.padding(16.dp)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.Top
+                ) {
+                    Column(
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        Text(
+                            text = note.title.ifEmpty { "Untitled" },
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colorScheme.onSurface,
+                            maxLines = 1
+                        )
+                        if (note.content.isNotEmpty()) {
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(
+                                text = note.content,
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                maxLines = 2
+                            )
+                        }
+                    }
+                    
+                    Row {
+                        if (note.isPinned) {
+                            IconButton(
+                                onClick = onPinClick,
+                                modifier = Modifier.size(36.dp)
+                            ) {
+                                Icon(
+                                    Icons.Filled.Star,
+                                    contentDescription = "Unpin",
+                                    tint = Color(0xFFFFD700),
+                                    modifier = Modifier.size(18.dp)
+                                )
+                            }
+                        }
+                        if (note.isFavorite) {
+                            IconButton(
+                                onClick = onFavoriteClick,
+                                modifier = Modifier.size(36.dp)
+                            ) {
+                                Icon(
+                                    Icons.Filled.Favorite,
+                                    contentDescription = "Remove favorite",
+                                    tint = Color(0xFFFC5C7D),
+                                    modifier = Modifier.size(18.dp)
+                                )
+                            }
+                        }
+                    }
+                }
+                
+                Spacer(modifier = Modifier.height(12.dp))
+                
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = formatDate(note.updatedAt),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    
+                    Surface(
+                        color = MaterialTheme.colorScheme.secondary.copy(alpha = 0.12f),
+                        shape = RoundedCornerShape(12.dp)
+                    ) {
+                        Text(
+                            text = "General",
+                            style = MaterialTheme.typography.labelMedium,
+                            color = MaterialTheme.colorScheme.secondary,
+                            modifier = Modifier.padding(horizontal = 12.dp, vertical = 4.dp)
+                        )
+                    }
+                }
+            }
         }
+    }
+    
+    @Composable
+    fun ModernBottomNavigation(
+        currentPage: String,
+        onPageSelected: (String) -> Unit,
+        onNotesClick: () -> Unit,
+        onSettingsClick: () -> Unit
+    ) {
+        Surface(
+            modifier = Modifier.fillMaxWidth(),
+            color = MaterialTheme.colorScheme.surface,
+            tonalElevation = 8.dp
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 32.dp, vertical = 12.dp),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                BottomNavItem(
+                    icon = Icons.Filled.Dashboard,
+                    label = "Dashboard",
+                    isSelected = currentPage == "Dashboard",
+                    onClick = { onPageSelected("Dashboard") }
+                )
+                BottomNavItem(
+                    icon = Icons.Filled.Description,
+                    label = "Notes",
+                    isSelected = currentPage == "Notes",
+                    onClick = { onPageSelected("Notes") }
+                )
+                BottomNavItem(
+                    icon = Icons.Filled.Settings,
+                    label = "Settings",
+                    isSelected = currentPage == "Settings",
+                    onClick = onSettingsClick
+                )
+            }
+        }
+    }
+    
+    @Composable
+    fun BottomNavItem(
+        icon: ImageVector,
+        label: String,
+        isSelected: Boolean,
+        onClick: () -> Unit
+    ) {
+        val backgroundColor = if (isSelected) {
+            MaterialTheme.colorScheme.primary
+        } else {
+            Color.Transparent
+        }
+        
+        val contentColor = if (isSelected) {
+            MaterialTheme.colorScheme.onPrimary
+        } else {
+            MaterialTheme.colorScheme.onSurfaceVariant
+        }
+        
+        Surface(
+            modifier = Modifier
+                .clip(RoundedCornerShape(24.dp))
+                .clickable { onClick() }
+                .padding(horizontal = 16.dp, vertical = 8.dp),
+            color = backgroundColor,
+            shape = RoundedCornerShape(24.dp)
+        ) {
+            Column(
+                modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Icon(
+                    icon,
+                    contentDescription = label,
+                    tint = contentColor,
+                    modifier = Modifier.size(20.dp)
+                )
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(
+                    text = label,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = contentColor,
+                    fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal
+                )
+            }
+        }
+    }
+
+    private fun formatDate(timestamp: Long): String {
+        val sdf = java.text.SimpleDateFormat("MMM dd, yyyy", java.util.Locale.getDefault())
+        return sdf.format(java.util.Date(timestamp))
     }
 }
