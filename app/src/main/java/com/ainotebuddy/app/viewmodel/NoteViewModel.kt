@@ -28,11 +28,17 @@ import androidx.datastore.preferences.core.edit
 import kotlinx.coroutines.flow.first
 import com.ainotebuddy.app.AINoteBuddyApplication
 import com.ainotebuddy.app.dataStore
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 
-// @HiltViewModel
-class NoteViewModel(private val context: Context) : ViewModel() {
-    private val repository = NoteRepository(context)
-    private val taskRepository = TaskRepositoryImpl(context)
+@HiltViewModel
+class NoteViewModel @Inject constructor(
+    private val repository: NoteRepository,
+    @ApplicationContext private val context: Context
+) : ViewModel() {
+    // Create task repository using injected context (temporary until it's properly injectable)
+    private val taskRepository by lazy { TaskRepositoryImpl(context) }
 
     // Combine notes with their task counts
     val notes = repository.getAllNotes().stateIn(

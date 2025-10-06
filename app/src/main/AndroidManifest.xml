@@ -111,6 +111,12 @@
             android:theme="@style/Theme.AINoteBuddy"
             android:parentActivityName=".MainActivity" />
             
+        <activity
+            android:name=".features.TemplatesActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AINoteBuddy"
+            android:parentActivityName=".MainActivity" />
+            
         <activity 
             android:name=".features.VoiceRecorderActivity" 
             android:exported="false"

@@ -1,0 +1,1151 @@
+package com.ainotebuddy.app.ui.components
+
+import android.net.Uri
+import androidx.compose.animation.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.text.*
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
+import com.ainotebuddy.app.data.NoteEntity
+import com.ainotebuddy.app.ui.theme.NoteType
+import kotlinx.coroutines.delay
+
+// Enhanced editor state
+data class EnhancedEditorState(
+    val title: TextFieldValue = TextFieldValue(),
+    val content: TextFieldValue = TextFieldValue(),
+    val selectedColor: NoteType = NoteType.PERSONAL,
+    val tags: Set<String> = emptySet(),
+    val isFavorite: Boolean = false,
+    val isPinned: Boolean = false,
+    val isLocked: Boolean = false,
+    val isReadOnly: Boolean = false,
+    val wordCount: Int = 0,
+    val characterCount: Int = 0,
+    val selectedText: String = "",
+    val hasUnsavedChanges: Boolean = false,
+    val lastSaved: Long? = null,
+    val isAutoSaving: Boolean = false,
+    val saveError: String? = null,
+    val attachments: List<Uri> = emptyList()
+)
+
+// Editor actions
+sealed class EditorAction {
+    object Save : EditorAction()
+    object AutoSave : EditorAction()
+    object ToggleFavorite : EditorAction()
+    object TogglePin : EditorAction()
+    object ToggleLock : EditorAction()
+    object ShowFormattingToolbar : EditorAction()
+    object HideFormattingToolbar : EditorAction()
+    object ShowInsertMenu : EditorAction()
+    object HideInsertMenu : EditorAction()
+    object Undo : EditorAction()
+    object Redo : EditorAction()
+    data class UpdateTitle(val title: TextFieldValue) : EditorAction()
+    data class UpdateContent(val content: TextFieldValue) : EditorAction()
+    data class AddTag(val tag: String) : EditorAction()
+    data class RemoveTag(val tag: String) : EditorAction()
+    data class ChangeColor(val color: NoteType) : EditorAction()
+    data class ApplyFormatting(val format: FormatStyle) : EditorAction()
+    data class InsertText(val text: String, val position: Int) : EditorAction()
+    data class AddAttachment(val uri: Uri) : EditorAction()
+    data class RemoveAttachment(val uri: Uri) : EditorAction()
+}
+
+// Formatting styles
+enum class FormatStyle {
+    BOLD, ITALIC, UNDERLINE, STRIKETHROUGH, 
+    HEADING_1, HEADING_2, HEADING_3,
+    BULLET_LIST, NUMBERED_LIST, CHECKLIST,
+    QUOTE, CODE_INLINE, CODE_BLOCK,
+    HIGHLIGHT, LINK
+}
+
+// Insert menu options
+data class InsertOption(
+    val id: String,
+    val title: String,
+    val icon: ImageVector,
+    val description: String
+)
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun EnhancedNoteEditor(
+    initialNote: NoteEntity? = null,
+    onSave: (NoteEntity) -> Unit,
+    onBack: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    var editorState by remember {
+        mutableStateOf(
+            if (initialNote != null) {
+                EnhancedEditorState(
+                    title = TextFieldValue(initialNote.title),
+                    content = TextFieldValue(initialNote.content),
+                    tags = initialNote.tags.split(",").filter { it.isNotBlank() }.toSet(),
+                    isFavorite = initialNote.isFavorite,
+                    wordCount = initialNote.content.split("\\s+".toRegex()).size,
+                    characterCount = initialNote.content.length
+                )
+            } else {
+                EnhancedEditorState()
+            }
+        )
+    }
+    
+    // UI state
+    var showFormattingToolbar by rememberSaveable { mutableStateOf(false) }
+    var showInsertMenu by rememberSaveable { mutableStateOf(false) }
+    var showColorPicker by rememberSaveable { mutableStateOf(false) }
+    var showTagEditor by rememberSaveable { mutableStateOf(false) }
+    var showWordCountDialog by rememberSaveable { mutableStateOf(false) }
+    var showFindReplace by rememberSaveable { mutableStateOf(false) }
+    
+    // Focus requesters
+    val titleFocusRequester = remember { FocusRequester() }
+    val contentFocusRequester = remember { FocusRequester() }
+    
+    val context = LocalContext.current
+    val haptic = LocalHapticFeedback.current
+    val clipboardManager = LocalClipboardManager.current
+    
+    // Auto-save effect
+    LaunchedEffect(editorState.title.text, editorState.content.text) {
+        if (editorState.title.text.isNotEmpty() || editorState.content.text.isNotEmpty()) {
+            editorState = editorState.copy(hasUnsavedChanges = true)
+            
+            // Auto-save after 3 seconds of inactivity
+            delay(3000)
+            if (editorState.hasUnsavedChanges) {
+                editorState = editorState.copy(isAutoSaving = true)
+                delay(500) // Simulate save time
+                editorState = editorState.copy(
+                    isAutoSaving = false,
+                    hasUnsavedChanges = false,
+                    lastSaved = System.currentTimeMillis()
+                )
+            }
+        }
+    }
+    
+    // Word count update effect
+    LaunchedEffect(editorState.content.text) {
+        val text = editorState.content.text
+        val wordCount = if (text.isBlank()) 0 else text.split("\\s+".toRegex()).size
+        val characterCount = text.length
+        editorState = editorState.copy(
+            wordCount = wordCount,
+            characterCount = characterCount
+        )
+    }
+    
+    Scaffold(
+        topBar = {
+            EnhancedEditorTopBar(
+                state = editorState,
+                onBack = onBack,
+                onSave = {
+                    val note = NoteEntity(
+                        id = initialNote?.id ?: 0,
+                        title = editorState.title.text.ifBlank { "Untitled" },
+                        content = editorState.content.text,
+                        tags = editorState.tags.joinToString(","),
+                        isFavorite = editorState.isFavorite,
+                        createdAt = initialNote?.createdAt ?: System.currentTimeMillis(),
+                        updatedAt = System.currentTimeMillis()
+                    )
+                    onSave(note)
+                },
+                onToggleFavorite = {
+                    editorState = editorState.copy(isFavorite = !editorState.isFavorite)
+                    haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                },
+                onTogglePin = {
+                    editorState = editorState.copy(isPinned = !editorState.isPinned)
+                    haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                },
+                onShowWordCount = { showWordCountDialog = true }
+            )
+        },
+        bottomBar = {
+            Column {
+                // Formatting toolbar
+                AnimatedVisibility(
+                    visible = showFormattingToolbar,
+                    enter = slideInVertically { it } + fadeIn(),
+                    exit = slideOutVertically { it } + fadeOut()
+                ) {
+                    EnhancedFormattingToolbar(
+                        onFormatClick = { format ->
+                            applyFormatting(format, editorState) { newState ->
+                                editorState = newState
+                            }
+                            haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                        },
+                        onDismiss = { showFormattingToolbar = false }
+                    )
+                }
+                
+                // Color picker
+                AnimatedVisibility(
+                    visible = showColorPicker,
+                    enter = slideInVertically { it } + fadeIn(),
+                    exit = slideOutVertically { it } + fadeOut()
+                ) {
+                    ColorPickerBar(
+                        selectedColor = editorState.selectedColor,
+                        onColorSelect = { color ->
+                            editorState = editorState.copy(selectedColor = color)
+                            showColorPicker = false
+                            haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                        }
+                    )
+                }
+                
+                // Tag editor
+                AnimatedVisibility(
+                    visible = showTagEditor,
+                    enter = slideInVertically { it } + fadeIn(),
+                    exit = slideOutVertically { it } + fadeOut()
+                ) {
+                    TagEditorBar(
+                        selectedTags = editorState.tags,
+                        onTagsChange = { newTags ->
+                            editorState = editorState.copy(tags = newTags)
+                        },
+                        onDismiss = { showTagEditor = false }
+                    )
+                }
+                
+                // Insert menu
+                AnimatedVisibility(
+                    visible = showInsertMenu,
+                    enter = slideInVertically { it } + fadeIn(),
+                    exit = slideOutVertically { it } + fadeOut()
+                ) {
+                    InsertOptionsMenu(
+                        onInsertOption = { option ->
+                            handleInsertOption(option, editorState) { newState ->
+                                editorState = newState
+                            }
+                            showInsertMenu = false
+                        },
+                        onDismiss = { showInsertMenu = false }
+                    )
+                }
+                
+                // Main bottom toolbar
+                EnhancedEditorBottomBar(
+                    onFormattingClick = { showFormattingToolbar = !showFormattingToolbar },
+                    onInsertClick = { showInsertMenu = !showInsertMenu },
+                    onColorClick = { showColorPicker = !showColorPicker },
+                    onTagClick = { showTagEditor = !showTagEditor },
+                    onFindReplaceClick = { showFindReplace = !showFindReplace },
+                    onUndoClick = { /* TODO: Implement undo */ },
+                    onRedoClick = { /* TODO: Implement redo */ },
+                    canUndo = false, // TODO: Implement undo/redo logic
+                    canRedo = false
+                )
+            }
+        }
+    ) { paddingValues ->
+        Box(
+            modifier = modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+                    .padding(16.dp)
+            ) {
+                // Title field with enhanced styling
+                EnhancedTextField(
+                    value = editorState.title,
+                    onValueChange = { newTitle ->
+                        editorState = editorState.copy(title = newTitle, hasUnsavedChanges = true)
+                    },
+                    placeholder = "Note title...",
+                    textStyle = MaterialTheme.typography.headlineMedium.copy(
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .focusRequester(titleFocusRequester),
+                    keyboardOptions = KeyboardOptions(
+                        capitalization = KeyboardCapitalization.Words,
+                        imeAction = ImeAction.Next
+                    ),
+                    keyboardActions = KeyboardActions(
+                        onNext = { contentFocusRequester.requestFocus() }
+                    ),
+                    singleLine = true,
+                    readOnly = editorState.isReadOnly
+                )
+                
+                Spacer(modifier = Modifier.height(16.dp))
+                
+                // Content field with enhanced features
+                EnhancedTextField(
+                    value = editorState.content,
+                    onValueChange = { newContent ->
+                        editorState = editorState.copy(content = newContent, hasUnsavedChanges = true)
+                    },
+                    placeholder = "Start writing your note...",
+                    textStyle = MaterialTheme.typography.bodyLarge.copy(
+                        lineHeight = 24.sp
+                    ),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .defaultMinSize(minHeight = 400.dp)
+                        .focusRequester(contentFocusRequester),
+                    keyboardOptions = KeyboardOptions(
+                        capitalization = KeyboardCapitalization.Sentences,
+                        imeAction = ImeAction.Default
+                    ),
+                    singleLine = false,
+                    readOnly = editorState.isReadOnly
+                )
+                
+                Spacer(modifier = Modifier.height(16.dp))
+                
+                // Attachments section
+                if (editorState.attachments.isNotEmpty()) {
+                    AttachmentsSection(
+                        attachments = editorState.attachments,
+                        onRemoveAttachment = { uri ->
+                            editorState = editorState.copy(
+                                attachments = editorState.attachments - uri
+                            )
+                        }
+                    )
+                }
+            }
+            
+            // Auto-save indicator
+            if (editorState.isAutoSaving) {
+                AutoSaveIndicator(
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .padding(16.dp)
+                )
+            }
+        }
+    }
+    
+    // Word count dialog
+    if (showWordCountDialog) {
+        WordCountDialog(
+            wordCount = editorState.wordCount,
+            characterCount = editorState.characterCount,
+            onDismiss = { showWordCountDialog = false }
+        )
+    }
+    
+    // Find and replace dialog
+    if (showFindReplace) {
+        FindReplaceDialog(
+            text = editorState.content.text,
+            onReplace = { find, replace ->
+                val newText = editorState.content.text.replace(find, replace)
+                editorState = editorState.copy(
+                    content = editorState.content.copy(text = newText),
+                    hasUnsavedChanges = true
+                )
+            },
+            onDismiss = { showFindReplace = false }
+        )
+    }
+}
+
+@Composable
+fun EnhancedTextField(
+    value: TextFieldValue,
+    onValueChange: (TextFieldValue) -> Unit,
+    placeholder: String,
+    textStyle: TextStyle,
+    modifier: Modifier = Modifier,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    keyboardActions: KeyboardActions = KeyboardActions.Default,
+    singleLine: Boolean = false,
+    readOnly: Boolean = false
+) {
+    BasicTextField(
+        value = value,
+        onValueChange = onValueChange,
+        textStyle = textStyle.copy(color = MaterialTheme.colorScheme.onSurface),
+        cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
+        keyboardOptions = keyboardOptions,
+        keyboardActions = keyboardActions,
+        singleLine = singleLine,
+        readOnly = readOnly,
+        modifier = modifier
+            .background(
+                color = if (readOnly) 
+                    MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
+                else 
+                    Color.Transparent,
+                shape = RoundedCornerShape(8.dp)
+            )
+            .padding(if (readOnly) 12.dp else 0.dp)
+    ) { innerTextField ->
+        if (value.text.isEmpty()) {
+            Text(
+                text = placeholder,
+                style = textStyle.copy(
+                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
+                )
+            )
+        }
+        innerTextField()
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun EnhancedEditorTopBar(
+    state: EnhancedEditorState,
+    onBack: () -> Unit,
+    onSave: () -> Unit,
+    onToggleFavorite: () -> Unit,
+    onTogglePin: () -> Unit,
+    onShowWordCount: () -> Unit
+) {
+    TopAppBar(
+        title = {
+            Column {
+                Text(
+                    text = if (state.title.text.isBlank()) "New Note" else state.title.text,
+                    style = MaterialTheme.typography.titleLarge,
+                    maxLines = 1
+                )
+                
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    // Save status
+                    when {
+                        state.isAutoSaving -> {
+                            Text(
+                                text = "Saving...",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                        }
+                        state.hasUnsavedChanges -> {
+                            Text(
+                                text = "Unsaved changes",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.error
+                            )
+                        }
+                        state.lastSaved != null -> {
+                            Text(
+                                text = "Saved ${formatTime(state.lastSaved)}",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    }
+                    
+                    // Word count
+                    TextButton(
+                        onClick = onShowWordCount,
+                        contentPadding = PaddingValues(4.dp)
+                    ) {
+                        Text(
+                            text = "${state.wordCount} words",
+                            style = MaterialTheme.typography.labelSmall
+                        )
+                    }
+                }
+            }
+        },
+        navigationIcon = {
+            IconButton(onClick = onBack) {
+                Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+            }
+        },
+        actions = {
+            // Lock indicator
+            if (state.isLocked) {
+                Icon(
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = "Locked",
+                    tint = MaterialTheme.colorScheme.error,
+                    modifier = Modifier.padding(8.dp)
+                )
+            }
+            
+            // Pin toggle
+            IconButton(onClick = onTogglePin) {
+                Icon(
+                    imageVector = Icons.Default.PushPin,
+                    contentDescription = "Toggle pin",
+                    tint = if (state.isPinned) 
+                        MaterialTheme.colorScheme.primary 
+                    else 
+                        MaterialTheme.colorScheme.onSurface
+                )
+            }
+            
+            // Favorite toggle
+            IconButton(onClick = onToggleFavorite) {
+                Icon(
+                    imageVector = if (state.isFavorite) 
+                        Icons.Default.Favorite 
+                    else 
+                        Icons.Default.FavoriteBorder,
+                    contentDescription = "Toggle favorite",
+                    tint = if (state.isFavorite) 
+                        Color.Red 
+                    else 
+                        MaterialTheme.colorScheme.onSurface
+                )
+            }
+            
+            // Save button
+            IconButton(
+                onClick = onSave,
+                enabled = state.hasUnsavedChanges && !state.isAutoSaving
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Save,
+                    contentDescription = "Save",
+                    tint = if (state.hasUnsavedChanges) 
+                        MaterialTheme.colorScheme.primary 
+                    else 
+                        MaterialTheme.colorScheme.onSurface
+                )
+            }
+        }
+    )
+}
+
+@Composable
+fun EnhancedEditorBottomBar(
+    onFormattingClick: () -> Unit,
+    onInsertClick: () -> Unit,
+    onColorClick: () -> Unit,
+    onTagClick: () -> Unit,
+    onFindReplaceClick: () -> Unit,
+    onUndoClick: () -> Unit,
+    onRedoClick: () -> Unit,
+    canUndo: Boolean,
+    canRedo: Boolean
+) {
+    Surface(
+        color = MaterialTheme.colorScheme.surfaceContainer,
+        tonalElevation = 8.dp
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Undo/Redo
+            IconButton(
+                onClick = onUndoClick,
+                enabled = canUndo
+            ) {
+                Icon(
+                    Icons.Default.Undo,
+                    contentDescription = "Undo",
+                    tint = if (canUndo) 
+                        MaterialTheme.colorScheme.onSurface 
+                    else 
+                        MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            
+            IconButton(
+                onClick = onRedoClick,
+                enabled = canRedo
+            ) {
+                Icon(
+                    Icons.Default.Redo,
+                    contentDescription = "Redo",
+                    tint = if (canRedo) 
+                        MaterialTheme.colorScheme.onSurface 
+                    else 
+                        MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            
+            // Divider
+            VerticalDivider(
+                modifier = Modifier.height(24.dp),
+                thickness = 1.dp,
+                color = MaterialTheme.colorScheme.outline
+            )
+            
+            // Formatting tools
+            IconButton(onClick = onFormattingClick) {
+                Icon(Icons.Default.FormatBold, contentDescription = "Formatting")
+            }
+            
+            IconButton(onClick = onInsertClick) {
+                Icon(Icons.Default.Add, contentDescription = "Insert")
+            }
+            
+            IconButton(onClick = onColorClick) {
+                Icon(Icons.Default.Palette, contentDescription = "Colors")
+            }
+            
+            IconButton(onClick = onTagClick) {
+                Icon(Icons.Default.LocalOffer, contentDescription = "Tags")
+            }
+            
+            // Divider
+            VerticalDivider(
+                modifier = Modifier.height(24.dp),
+                thickness = 1.dp,
+                color = MaterialTheme.colorScheme.outline
+            )
+            
+            // Find and replace
+            IconButton(onClick = onFindReplaceClick) {
+                Icon(Icons.Default.Search, contentDescription = "Find & Replace")
+            }
+        }
+    }
+}
+
+@Composable
+fun EnhancedFormattingToolbar(
+    onFormatClick: (FormatStyle) -> Unit,
+    onDismiss: () -> Unit
+) {
+    val formats = listOf(
+        FormatStyle.BOLD to Icons.Default.FormatBold,
+        FormatStyle.ITALIC to Icons.Default.FormatItalic,
+        FormatStyle.UNDERLINE to Icons.Default.FormatUnderlined,
+        FormatStyle.STRIKETHROUGH to Icons.Default.StrikethroughS,
+        FormatStyle.HEADING_1 to Icons.Default.Title,
+        FormatStyle.BULLET_LIST to Icons.Default.FormatListBulleted,
+        FormatStyle.NUMBERED_LIST to Icons.Default.FormatListNumbered,
+        FormatStyle.CHECKLIST to Icons.Default.CheckBox,
+        FormatStyle.QUOTE to Icons.Default.FormatQuote,
+        FormatStyle.CODE_INLINE to Icons.Default.Code,
+        FormatStyle.HIGHLIGHT to Icons.Default.Highlight,
+        FormatStyle.LINK to Icons.Default.Link
+    )
+    
+    Surface(
+        color = MaterialTheme.colorScheme.surfaceContainer,
+        tonalElevation = 4.dp
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Formatting",
+                    style = MaterialTheme.typography.titleSmall
+                )
+                IconButton(onClick = onDismiss) {
+                    Icon(Icons.Default.Close, contentDescription = "Close")
+                }
+            }
+            
+            Spacer(modifier = Modifier.height(8.dp))
+            
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                items(formats) { (format, icon) ->
+                    FilterChip(
+                        onClick = { onFormatClick(format) },
+                        label = { },
+                        selected = false,
+                        leadingIcon = {
+                            Icon(
+                                imageVector = icon,
+                                contentDescription = format.name,
+                                modifier = Modifier.size(16.dp)
+                            )
+                        }
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun InsertOptionsMenu(
+    onInsertOption: (InsertOption) -> Unit,
+    onDismiss: () -> Unit
+) {
+    val insertOptions = listOf(
+        InsertOption("date", "Date", Icons.Default.DateRange, "Insert current date"),
+        InsertOption("time", "Time", Icons.Default.AccessTime, "Insert current time"),
+        InsertOption("divider", "Divider", Icons.Default.HorizontalRule, "Insert horizontal line"),
+        InsertOption("table", "Table", Icons.Default.TableChart, "Insert table"),
+        InsertOption("image", "Image", Icons.Default.Image, "Insert image"),
+        InsertOption("link", "Link", Icons.Default.Link, "Insert hyperlink"),
+        InsertOption("code", "Code Block", Icons.Default.Code, "Insert code block"),
+        InsertOption("quote", "Quote", Icons.Default.FormatQuote, "Insert quote"),
+        InsertOption("checklist", "Checklist", Icons.Default.Checklist, "Insert checklist item")
+    )
+    
+    Surface(
+        color = MaterialTheme.colorScheme.surfaceContainer,
+        tonalElevation = 4.dp
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Insert",
+                    style = MaterialTheme.typography.titleSmall
+                )
+                IconButton(onClick = onDismiss) {
+                    Icon(Icons.Default.Close, contentDescription = "Close")
+                }
+            }
+            
+            Spacer(modifier = Modifier.height(8.dp))
+            
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                items(insertOptions) { option ->
+                    Card(
+                        onClick = { onInsertOption(option) },
+                        modifier = Modifier.width(80.dp)
+                    ) {
+                        Column(
+                            modifier = Modifier.padding(8.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Icon(
+                                imageVector = option.icon,
+                                contentDescription = option.title,
+                                modifier = Modifier.size(24.dp)
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(
+                                text = option.title,
+                                style = MaterialTheme.typography.labelSmall,
+                                textAlign = TextAlign.Center,
+                                maxLines = 1
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun AttachmentsSection(
+    attachments: List<Uri>,
+    onRemoveAttachment: (Uri) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier.fillMaxWidth()
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Text(
+                text = "Attachments",
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            
+            Spacer(modifier = Modifier.height(8.dp))
+            
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                items(attachments) { uri ->
+                    AttachmentItem(
+                        uri = uri,
+                        onRemove = { onRemoveAttachment(uri) }
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun AttachmentItem(
+    uri: Uri,
+    onRemove: () -> Unit
+) {
+    Card(
+        modifier = Modifier.size(80.dp)
+    ) {
+        Box(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            // Placeholder for attachment preview
+            Icon(
+                imageVector = Icons.Default.Attachment,
+                contentDescription = "Attachment",
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .size(32.dp),
+                tint = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            
+            IconButton(
+                onClick = onRemove,
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .size(24.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Close,
+                    contentDescription = "Remove",
+                    modifier = Modifier.size(16.dp)
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun AutoSaveIndicator(
+    modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier,
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer
+        )
+    ) {
+        Row(
+            modifier = Modifier.padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            CircularProgressIndicator(
+                modifier = Modifier.size(16.dp),
+                strokeWidth = 2.dp
+            )
+            Text(
+                text = "Auto-saving...",
+                style = MaterialTheme.typography.labelSmall
+            )
+        }
+    }
+}
+
+@Composable
+fun WordCountDialog(
+    wordCount: Int,
+    characterCount: Int,
+    onDismiss: () -> Unit
+) {
+    Dialog(onDismissRequest = onDismiss) {
+        Card(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Column(
+                modifier = Modifier.padding(24.dp)
+            ) {
+                Text(
+                    text = "Document Statistics",
+                    style = MaterialTheme.typography.titleLarge
+                )
+                
+                Spacer(modifier = Modifier.height(16.dp))
+                
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text("Words:")
+                    Text(
+                        text = wordCount.toString(),
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+                
+                Spacer(modifier = Modifier.height(8.dp))
+                
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text("Characters:")
+                    Text(
+                        text = characterCount.toString(),
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+                
+                Spacer(modifier = Modifier.height(8.dp))
+                
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text("Characters (no spaces):")
+                    Text(
+                        text = characterCount.toString(), // TODO: Calculate without spaces
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+                
+                Spacer(modifier = Modifier.height(16.dp))
+                
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.End
+                ) {
+                    TextButton(onClick = onDismiss) {
+                        Text("Close")
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun FindReplaceDialog(
+    text: String,
+    onReplace: (String, String) -> Unit,
+    onDismiss: () -> Unit
+) {
+    var findText by remember { mutableStateOf("") }
+    var replaceText by remember { mutableStateOf("") }
+    var matchCount by remember { mutableStateOf(0) }
+    
+    LaunchedEffect(findText, text) {
+        if (findText.isNotEmpty()) {
+            matchCount = text.split(findText).size - 1
+        } else {
+            matchCount = 0
+        }
+    }
+    
+    Dialog(
+        onDismissRequest = onDismiss,
+        properties = DialogProperties(usePlatformDefaultWidth = false)
+    ) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+        ) {
+            Column(
+                modifier = Modifier.padding(24.dp)
+            ) {
+                Text(
+                    text = "Find & Replace",
+                    style = MaterialTheme.typography.titleLarge
+                )
+                
+                Spacer(modifier = Modifier.height(16.dp))
+                
+                OutlinedTextField(
+                    value = findText,
+                    onValueChange = { findText = it },
+                    label = { Text("Find") },
+                    modifier = Modifier.fillMaxWidth(),
+                    trailingIcon = {
+                        if (matchCount > 0) {
+                            Text(
+                                text = "$matchCount found",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                        }
+                    }
+                )
+                
+                Spacer(modifier = Modifier.height(8.dp))
+                
+                OutlinedTextField(
+                    value = replaceText,
+                    onValueChange = { replaceText = it },
+                    label = { Text("Replace with") },
+                    modifier = Modifier.fillMaxWidth()
+                )
+                
+                Spacer(modifier = Modifier.height(16.dp))
+                
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End)
+                ) {
+                    TextButton(onClick = onDismiss) {
+                        Text("Cancel")
+                    }
+                    
+                    Button(
+                        onClick = {
+                            if (findText.isNotEmpty()) {
+                                onReplace(findText, replaceText)
+                            }
+                        },
+                        enabled = findText.isNotEmpty() && matchCount > 0
+                    ) {
+                        Text("Replace All")
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Helper functions
+private fun applyFormatting(
+    format: FormatStyle,
+    state: EnhancedEditorState,
+    onStateChange: (EnhancedEditorState) -> Unit
+) {
+    val selection = state.content.selection
+    val text = state.content.text
+    
+    val newText = when (format) {
+        FormatStyle.BOLD -> {
+            if (selection.collapsed) {
+                text.substring(0, selection.start) + "****" + text.substring(selection.start)
+            } else {
+                val selectedText = text.substring(selection.start, selection.end)
+                text.replaceRange(selection.start, selection.end, "**$selectedText**")
+            }
+        }
+        FormatStyle.ITALIC -> {
+            if (selection.collapsed) {
+                text.substring(0, selection.start) + "__" + text.substring(selection.start)
+            } else {
+                val selectedText = text.substring(selection.start, selection.end)
+                text.replaceRange(selection.start, selection.end, "_${selectedText}_")
+            }
+        }
+        FormatStyle.HEADING_1 -> {
+            val lineStart = text.lastIndexOf('\n', selection.start) + 1
+            text.substring(0, lineStart) + "# " + text.substring(lineStart)
+        }
+        FormatStyle.BULLET_LIST -> {
+            val lineStart = text.lastIndexOf('\n', selection.start) + 1
+            text.substring(0, lineStart) + "• " + text.substring(lineStart)
+        }
+        FormatStyle.CHECKLIST -> {
+            val lineStart = text.lastIndexOf('\n', selection.start) + 1
+            text.substring(0, lineStart) + "- [ ] " + text.substring(lineStart)
+        }
+        else -> text // TODO: Implement other formats
+    }
+    
+    onStateChange(
+        state.copy(
+            content = state.content.copy(text = newText),
+            hasUnsavedChanges = true
+        )
+    )
+}
+
+private fun handleInsertOption(
+    option: InsertOption,
+    state: EnhancedEditorState,
+    onStateChange: (EnhancedEditorState) -> Unit
+) {
+    val insertText = when (option.id) {
+        "date" -> java.text.SimpleDateFormat("MMM dd, yyyy", java.util.Locale.getDefault())
+            .format(java.util.Date())
+        "time" -> java.text.SimpleDateFormat("HH:mm", java.util.Locale.getDefault())
+            .format(java.util.Date())
+        "divider" -> "\n---\n"
+        "table" -> "\n| Column 1 | Column 2 |\n|----------|----------|\n| Cell 1   | Cell 2   |\n"
+        "code" -> "\n```\n\n```\n"
+        "quote" -> "\n> "
+        "checklist" -> "\n- [ ] "
+        else -> ""
+    }
+    
+    if (insertText.isNotEmpty()) {
+        val position = state.content.selection.start
+        val newText = state.content.text.substring(0, position) + 
+                     insertText + 
+                     state.content.text.substring(position)
+        
+        onStateChange(
+            state.copy(
+                content = state.content.copy(
+                    text = newText,
+                    selection = TextRange(position + insertText.length)
+                ),
+                hasUnsavedChanges = true
+            )
+        )
+    }
+}
+
+private fun formatTime(timestamp: Long): String {
+    val now = System.currentTimeMillis()
+    val diff = now - timestamp
+    
+    return when {
+        diff < 60_000 -> "just now"
+        diff < 3600_000 -> "${diff / 60_000}m ago"
+        diff < 86400_000 -> "${diff / 3600_000}h ago"
+        else -> java.text.SimpleDateFormat("MMM dd, HH:mm", java.util.Locale.getDefault())
+            .format(java.util.Date(timestamp))
+    }
+}

@@ -33,6 +33,12 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
+import android.widget.Toast
+import android.Manifest
+import android.content.Intent
+import android.speech.RecognizerIntent
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -106,6 +112,73 @@ fun ModernNoteEditorScreen(
     var isVoiceRecording by remember { mutableStateOf(false) }
     var showAIAssistant by remember { mutableStateOf(false) }
     
+    // Auto-save state
+    var hasUnsavedChanges by remember { mutableStateOf(false) }
+    var lastSaved by remember { mutableStateOf<Long?>(null) }
+    
+    val context = LocalContext.current
+    val haptic = LocalHapticFeedback.current
+    val titleFocusRequester = remember { FocusRequester() }
+    val contentFocusRequester = remember { FocusRequester() }
+    
+    // Camera and Gallery launchers
+    val cameraLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.TakePicture()
+    ) { success ->
+        if (success) {
+            content = if (content.isBlank()) "[Photo attached]" else "$content\n[Photo attached]"
+            hasUnsavedChanges = true
+        }
+    }
+    
+    val galleryLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri ->
+        uri?.let {
+            content = if (content.isBlank()) "[Image attached]" else "$content\n[Image attached]"
+            hasUnsavedChanges = true
+        }
+    }
+    
+    val cameraPermissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+            // Create a temporary file URI for the camera
+            try {
+                val photoFile = java.io.File(
+                    context.cacheDir,
+                    "photo_${System.currentTimeMillis()}.jpg"
+                )
+                val photoUri = androidx.core.content.FileProvider.getUriForFile(
+                    context,
+                    "${context.packageName}.fileprovider",
+                    photoFile
+                )
+                cameraLauncher.launch(photoUri)
+            } catch (e: Exception) {
+                Toast.makeText(context, "Camera not available", Toast.LENGTH_SHORT).show()
+            }
+        } else {
+            Toast.makeText(context, "Camera permission required", Toast.LENGTH_SHORT).show()
+        }
+    }
+    
+    val voiceLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == android.app.Activity.RESULT_OK) {
+            val spokenText = result.data?.getStringArrayListExtra(
+                RecognizerIntent.EXTRA_RESULTS
+            )?.firstOrNull()
+            spokenText?.let { text ->
+                content = if (content.isBlank()) text else "$content\n$text"
+                hasUnsavedChanges = true
+            }
+        }
+        isVoiceRecording = false
+    }
+    
     // AI State
     val aiState by aiViewModel.uiState.collectAsState()
     var lastVoiceCommandResult by remember { mutableStateOf<VoiceCommandResult?>(null) }
@@ -165,25 +238,12 @@ fun ModernNoteEditorScreen(
     
     // Simplified: voice input handled locally via isVoiceRecording; collaboration features removed for compile stability
     
-    // Auto-save state
-    var hasUnsavedChanges by remember { mutableStateOf(false) }
-    var lastSaved by remember { mutableStateOf<Long?>(null) }
-    
-
-    
-    // Presence typing tracking removed
-    
-    val context = LocalContext.current
-    val haptic = LocalHapticFeedback.current
-    val titleFocusRequester = remember { FocusRequester() }
-    val contentFocusRequester = remember { FocusRequester() }
-    
     // Load existing note if needed (no-op for now)
     LaunchedEffect(noteId) { }
     
     // Auto-save functionality
     LaunchedEffect(title, content) {
-        if (title.isNotEmpty() || content.isNotEmpty()) {
+        if (title.isNotEmpty() && content.isNotEmpty()) {
             hasUnsavedChanges = true
             delay(2000) // Auto-save after 2 seconds of inactivity
             if (hasUnsavedChanges) {
@@ -202,6 +262,11 @@ fun ModernNoteEditorScreen(
                 title = if (noteId == -1L) "New Note" else "Edit Note",
                 onBack = onBack,
                 onSave = {
+                    if (title.isBlank() && content.isBlank()) {
+                        Toast.makeText(context, "Please add some content before saving", Toast.LENGTH_SHORT).show()
+                        return@ModernNoteEditorTopBar
+                    }
+                    
                     val now = System.currentTimeMillis()
                     val note = NoteEntity(
                         id = if (noteId == -1L) 0 else noteId,
@@ -217,6 +282,7 @@ fun ModernNoteEditorScreen(
                     onSave(note)
                     lastSaved = now
                     hasUnsavedChanges = false
+                    Toast.makeText(context, "Note saved successfully", Toast.LENGTH_SHORT).show()
                 },
                 isFavorite = isFavorite,
                 onFavoriteClick = { isFavorite = !isFavorite },
@@ -290,7 +356,40 @@ fun ModernNoteEditorScreen(
                         aiAssistantState.navigateTo(AIAssistantTab.TAGS)
                         aiAssistantState.show()
                     },
-                    onVoiceClick = { isVoiceRecording = !isVoiceRecording }
+                    onVoiceClick = { 
+                        if (isVoiceRecording) {
+                            isVoiceRecording = false
+                        } else {
+                            // Start voice recognition
+                            try {
+                                val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
+                                    putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+                                    putExtra(RecognizerIntent.EXTRA_PROMPT, "Speak your note...")
+                                }
+                                isVoiceRecording = true
+                                voiceLauncher.launch(intent)
+                            } catch (e: Exception) {
+                                Toast.makeText(context, "Voice recognition not available", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    },
+                    onAIClick = {
+                        if (aiAssistantState.isVisible) {
+                            aiAssistantState.hide()
+                        } else {
+                            aiAssistantState.show()
+                        }
+                    },
+                    onCameraClick = {
+                        // Check camera permission and launch camera
+                        cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
+                    },
+                    onGalleryClick = {
+                        // Launch gallery picker
+                        galleryLauncher.launch("image/*")
+                    },
+                    showAIAssistant = aiAssistantState.isVisible,
+                    isVoiceRecording = isVoiceRecording
                 )
                 
                 // Voice FAB removed; using bottom bar voice toggle only
@@ -562,8 +661,12 @@ private fun ModernEditorBottomBar(
     onColorClick: () -> Unit,
     onTagClick: () -> Unit,
     onVoiceClick: (() -> Unit)? = null,
+    onCameraClick: (() -> Unit)? = null,
+    onGalleryClick: (() -> Unit)? = null,
     showVoiceButton: Boolean = true,
     showAIButton: Boolean = true,
+    showCameraButton: Boolean = true,
+    showGalleryButton: Boolean = true,
     isVoiceRecording: Boolean = false,
     showAIAssistant: Boolean = false,
     onAIClick: (() -> Unit)? = null
@@ -596,6 +699,24 @@ private fun ModernEditorBottomBar(
                 contentDescription = "Tags",
                 onClick = onTagClick
             )
+            
+            // Camera button (conditionally shown)
+            if (showCameraButton && onCameraClick != null) {
+                EditorToolButton(
+                    icon = Icons.Default.CameraAlt,
+                    contentDescription = "Camera",
+                    onClick = onCameraClick
+                )
+            }
+            
+            // Gallery button (conditionally shown)
+            if (showGalleryButton && onGalleryClick != null) {
+                EditorToolButton(
+                    icon = Icons.Default.Image,
+                    contentDescription = "Gallery",
+                    onClick = onGalleryClick
+                )
+            }
             
             // Voice button (conditionally shown)
             if (showVoiceButton && onVoiceClick != null) {

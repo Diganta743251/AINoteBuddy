@@ -20,7 +20,10 @@ import com.ainotebuddy.app.data.NoteEntity
 import com.ainotebuddy.app.ui.components.SimpleNoteCard
 import com.ainotebuddy.app.ui.theme.AINoteBuddyTheme
 import com.ainotebuddy.app.viewmodel.SearchViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SearchActivity : ComponentActivity() {
     
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +40,7 @@ class SearchActivity : ComponentActivity() {
     @Composable
     fun SearchScreen() {
         val context = LocalContext.current
-        val viewModel: SearchViewModel = viewModel { SearchViewModel(context) }
+        val viewModel: SearchViewModel = hiltViewModel()
         
         var searchQuery by remember { mutableStateOf("") }
         val searchResults by viewModel.searchResults.collectAsState()

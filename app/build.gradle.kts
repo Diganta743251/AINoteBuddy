@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id("kotlin-parcelize")
     kotlin("plugin.serialization") version "1.9.22"
-    id("com.google.dagger.hilt.android") version "2.48"
+    id("com.google.dagger.hilt.android") version "2.44"
 }
 
 android {
@@ -228,11 +228,14 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore-ktx:25.0.0")
     
     // Hilt for dependency injection - required for collaborative features
-    implementation("com.google.dagger:hilt-android:2.48")
-    ksp("com.google.dagger:hilt-android-compiler:2.48")
+    implementation("com.google.dagger:hilt-android:2.44")
+    ksp("com.google.dagger:hilt-android-compiler:2.44")
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
     implementation("androidx.hilt:hilt-work:1.1.0")
     ksp("androidx.hilt:hilt-compiler:1.1.0")
+    
+    // Fix JavaPoet version conflict
+    implementation("com.squareup:javapoet:1.13.0")
     
     // Retrofit for API calls
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -259,6 +262,9 @@ dependencies {
     // Drag and drop reorderable list
     implementation("org.burnoutcrew.composereorderable:reorderable:0.9.6")
     
+    // Swipe actions for notes
+    implementation("me.saket.swipe:swipe:1.2.0")
+    
     // Kotlinx Serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
     // implementation("io.noties.markwon:latex:4.6.2") // Not available
@@ -272,7 +278,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit.v121)
     androidTestImplementation(libs.androidx.espresso.core.v361)
-    androidTestImplementation(libs.androidx.compose.bom.v20240200)
+    androidTestImplementation(platform(libs.androidx.compose.bom.v20240200))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")

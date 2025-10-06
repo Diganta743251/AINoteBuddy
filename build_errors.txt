@@ -1,0 +1,48 @@
+Starting a Gradle Daemon, 1 incompatible and 4 stopped Daemons could not be reused, use --status for details
+Reusing configuration cache.
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:processDebugGoogleServices UP-TO-DATE
+> Task :app:generateDebugBuildConfig UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:kspDebugKotlin UP-TO-DATE
+> Task :app:compileDebugKotlin
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/MainActivity.kt:45:36 Unresolved reference 'size'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:40:70 Argument type mismatch: actual type is 'android.content.Context', but 'com.ainotebuddy.app.repository.NoteRepository' was expected.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/services/EnhancedAutoSaveService.kt:17:45 Argument type mismatch: actual type is 'android.content.Context', but 'com.ainotebuddy.app.data.NoteDao' was expected.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/services/EnhancedAutoSaveService.kt:426:45 Argument type mismatch: actual type is 'android.content.Context', but 'com.ainotebuddy.app.data.NoteDao' was expected.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/viewmodel/NoteEditorViewModel.kt:18:49 Argument type mismatch: actual type is 'android.content.Context', but 'com.ainotebuddy.app.data.NoteDao' was expected.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/viewmodel/NoteViewModel.kt:34:45 Argument type mismatch: actual type is 'android.content.Context', but 'com.ainotebuddy.app.data.NoteDao' was expected.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/viewmodel/SimpleSettingsViewModel.kt:17:49 Argument type mismatch: actual type is 'android.content.Context', but 'com.ainotebuddy.app.data.NoteDao' was expected.
+
+> Task :app:compileDebugKotlin FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileDebugKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 2m 25s
+17 actionable tasks: 1 executed, 16 up-to-date
+Configuration cache entry reused.

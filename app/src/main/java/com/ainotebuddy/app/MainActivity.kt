@@ -30,13 +30,22 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.ainotebuddy.app.data.NoteEntity
 import com.ainotebuddy.app.features.NoteEditorActivity
 import com.ainotebuddy.app.features.SearchActivity
 import com.ainotebuddy.app.features.SettingsActivity
 import com.ainotebuddy.app.features.VoiceRecorderActivity
+import com.ainotebuddy.app.features.TemplatesActivity
 import com.ainotebuddy.app.ui.theme.AINoteBuddyTheme
 import com.ainotebuddy.app.viewmodel.MainViewModel
+import com.ainotebuddy.app.ui.screens.*
+import com.ainotebuddy.app.ui.viewmodels.EnhancedNotesViewModel
+import androidx.compose.foundation.layout.size
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 
 class MainActivity : ComponentActivity() {
 
@@ -54,41 +63,80 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun MainScreen() {
         val context = LocalContext.current
-        val viewModel: MainViewModel = viewModel { MainViewModel(context) }
-        val notes by viewModel.allNotes.collectAsState()
+        val viewModel: MainViewModel = hiltViewModel()
+        val notes by viewModel.allNotes.collectAsStateWithLifecycle()
         val currentPage = remember { mutableStateOf("Dashboard") }
 
+        // Categories screen UI state
+        val customCategories = remember { mutableStateListOf<String>() }
+        val selectedCategory = remember { mutableStateOf<String?>(null) }
+        var showAddCategoryDialog by remember { mutableStateOf(false) }
+        val showCreateFab = currentPage.value == "Dashboard"
+
         Scaffold(
+            topBar = {
+                if (currentPage.value == "Categories") {
+                    TopAppBar(
+                        title = { Text(selectedCategory.value ?: "Categories") },
+                        navigationIcon = {
+                            if (selectedCategory.value != null) {
+                                IconButton(onClick = { selectedCategory.value = null }) {
+                                    Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
+                                }
+                            }
+                        },
+                        actions = {
+                            if (selectedCategory.value == null) {
+                                IconButton(onClick = { showAddCategoryDialog = true }) {
+                                    Icon(Icons.Filled.Add, contentDescription = "Add category")
+                                }
+                            }
+                        }
+                    )
+                }
+            },
             bottomBar = {
                 ModernBottomNavigation(
                     currentPage = currentPage.value,
                     onPageSelected = { page -> currentPage.value = page },
-                    onNotesClick = { /* Show all notes */ },
-                    onSettingsClick = {
-                        val intent = Intent(context, SettingsActivity::class.java)
-                        startActivity(intent)
-                    }
+                    onNotesClick = { currentPage.value = "Notes" },
+                    onCategoriesClick = { currentPage.value = "Categories" },
+                    onSettingsClick = { currentPage.value = "Settings" }
                 )
             },
             floatingActionButton = {
-                FloatingActionButton(
-                    onClick = {
-                        val intent = Intent(context, NoteEditorActivity::class.java)
-                        startActivity(intent)
-                    },
-                    shape = CircleShape,
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.size(56.dp)
-                ) {
-                    Icon(
-                        Icons.Filled.Add, 
-                        contentDescription = "Add Note",
-                        tint = MaterialTheme.colorScheme.onPrimary,
-                        modifier = Modifier.size(24.dp)
-                    )
+                if (currentPage.value == "Dashboard") {
+                    FloatingActionButton(
+                        onClick = {
+                            val intent = Intent(context, NoteEditorActivity::class.java)
+                            startActivity(intent)
+                        },
+                        containerColor = MaterialTheme.colorScheme.primary,
+                        contentColor = MaterialTheme.colorScheme.onPrimary
+                    ) {
+                        Icon(
+                            Icons.Filled.Add,
+                            contentDescription = "Create New Note",
+                            modifier = Modifier.size(28.dp)
+                        )
+                    }
                 }
             }
         ) { paddingValues ->
+            // Add Category dialog
+            if (showAddCategoryDialog) {
+                AddCategoryDialog(
+                    onDismiss = { showAddCategoryDialog = false },
+                    onAdd = { name ->
+                        val trimmed = name.trim()
+                        if (trimmed.isNotEmpty()) {
+                            if (!customCategories.contains(trimmed)) customCategories.add(trimmed)
+                        }
+                        showAddCategoryDialog = false
+                    }
+                )
+            }
+            
             when (currentPage.value) {
                 "Dashboard" -> DashboardContent(
                     modifier = Modifier.padding(paddingValues),
@@ -110,20 +158,66 @@ class MainActivity : ComponentActivity() {
                             putExtra("note_id", note.id)
                         }
                         startActivity(intent)
-                    }
-                )
-                "Notes" -> NotesListContent(
-                    modifier = Modifier.padding(paddingValues),
-                    notes = notes,
-                    onNoteClick = { note ->
-                        val intent = Intent(context, NoteEditorActivity::class.java).apply {
-                            putExtra("note_id", note.id)
-                        }
+                    },
+                    onTemplatesClick = {
+                        val intent = Intent(context, TemplatesActivity::class.java)
                         startActivity(intent)
                     },
-                    onPinClick = { note -> viewModel.togglePin(note.id) },
-                    onFavoriteClick = { note -> viewModel.toggleFavorite(note.id) }
+                    onCategoriesClick = { currentPage.value = "Categories" }
                 )
+                "Notes" -> {
+                    val enhancedNotesViewModel: EnhancedNotesViewModel = hiltViewModel()
+                    val enhancedUiState by enhancedNotesViewModel.uiState.collectAsStateWithLifecycle()
+                    val enhancedNotes by enhancedNotesViewModel.notes.collectAsStateWithLifecycle()
+                    
+                    EnhancedNotesListScreen(
+                        notes = enhancedNotes,
+                        uiState = enhancedUiState,
+                        onNoteClick = { note ->
+                            val intent = Intent(context, NoteEditorActivity::class.java).apply {
+                                putExtra("note_id", note.id)
+                            }
+                            startActivity(intent)
+                        },
+                        onSelectionModeToggle = enhancedNotesViewModel::onSelectionModeToggle,
+                        onNoteSelectionToggle = enhancedNotesViewModel::onNoteSelectionToggle,
+                        onSelectAll = enhancedNotesViewModel::onSelectAll,
+                        onClearSelection = enhancedNotesViewModel::onClearSelection,
+                        onPinClick = enhancedNotesViewModel::onPinClick,
+                        onFavoriteClick = enhancedNotesViewModel::onFavoriteClick,
+                        onArchiveClick = enhancedNotesViewModel::onArchiveClick,
+                        onDeleteClick = enhancedNotesViewModel::onDeleteClick,
+                        onBatchDelete = enhancedNotesViewModel::onBatchDelete,
+                        onBatchArchive = enhancedNotesViewModel::onBatchArchive,
+                        onBatchPin = enhancedNotesViewModel::onBatchPin,
+                        onFilterChange = enhancedNotesViewModel::onFilterChange,
+                        modifier = Modifier.padding(paddingValues)
+                    )
+                }
+                "Categories" -> {
+                    if (selectedCategory.value == null) {
+                        CategoriesGridContent(
+                            modifier = Modifier.padding(paddingValues),
+                            categories = (notes.map { it.category.ifEmpty { "General" } } + customCategories).toSet().toList().sorted(),
+                            counts = notes.groupBy { it.category.ifEmpty { "General" } }.mapValues { it.value.size },
+                            onCategoryClick = { selectedCategory.value = it }
+                        )
+                    } else {
+                        val filtered = notes.filter { (it.category.ifEmpty { "General" }) == selectedCategory.value }
+                        NotesListContent(
+                            modifier = Modifier.padding(paddingValues),
+                            notes = filtered,
+                            onNoteClick = { note ->
+                                val intent = Intent(context, NoteEditorActivity::class.java).apply {
+                                    putExtra("note_id", note.id)
+                                }
+                                startActivity(intent)
+                            },
+                            onPinClick = { note -> viewModel.togglePin(note.id) },
+                            onFavoriteClick = { note -> viewModel.toggleFavorite(note.id) }
+                        )
+                    }
+                }
                 "Settings" -> {
                     LaunchedEffect(Unit) {
                         val intent = Intent(context, SettingsActivity::class.java)
@@ -132,6 +226,7 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
+            
         }
     }
 
@@ -142,7 +237,12 @@ class MainActivity : ComponentActivity() {
         onCreateNote: () -> Unit,
         onSearchClick: () -> Unit,
         onVoiceClick: () -> Unit,
-        onNoteClick: (NoteEntity) -> Unit
+        onNoteClick: (NoteEntity) -> Unit,
+        onTemplatesClick: () -> Unit,
+        onCategoriesClick: () -> Unit,
+        onPinnedClick: () -> Unit = {},
+        onFavoritesClick: () -> Unit = {},
+        onVaultClick: () -> Unit = {}
     ) {
         LazyColumn(
             modifier = modifier
@@ -163,22 +263,19 @@ class MainActivity : ComponentActivity() {
                     totalNotes = notes.size,
                     favorites = notes.count { it.isFavorite },
                     pinned = notes.count { it.isPinned },
-                    inVault = 0
+                    inVault = notes.count { it.isArchived },
+                    onPinnedClick = onPinnedClick,
+                    onFavoritesClick = onFavoritesClick,
+                    onVaultClick = onVaultClick
                 )
             }
             
             item {
                 QuickActionsCard(
                     onVoiceClick = onVoiceClick,
-                    onTemplatesClick = { /* TODO */ },
-                    onCategoriesClick = { /* TODO */ }
+                    onTemplatesClick = onTemplatesClick,
+                    onCategoriesClick = onCategoriesClick
                 )
-            }
-            
-            if (notes.isNotEmpty()) {
-                item {
-                    CategoriesSection(notes = notes, onNoteClick = onNoteClick)
-                }
             }
         }
     }
@@ -305,7 +402,10 @@ class MainActivity : ComponentActivity() {
         totalNotes: Int,
         favorites: Int,
         pinned: Int,
-        inVault: Int
+        inVault: Int,
+        onPinnedClick: () -> Unit = {},
+        onFavoritesClick: () -> Unit = {},
+        onVaultClick: () -> Unit = {}
     ) {
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy(12.dp)
@@ -323,7 +423,8 @@ class MainActivity : ComponentActivity() {
                     icon = Icons.Filled.Favorite,
                     count = favorites,
                     label = "Favorites",
-                    color = Color(0xFFFC5C7D)
+                    color = Color(0xFFFC5C7D),
+                    onClick = onFavoritesClick
                 )
             }
             item {
@@ -331,15 +432,17 @@ class MainActivity : ComponentActivity() {
                     icon = Icons.Filled.Star,
                     count = pinned,
                     label = "Pinned",
-                    color = Color(0xFFFFD700)
+                    color = Color(0xFFFFD700),
+                    onClick = onPinnedClick
                 )
             }
             item {
                 StatCard(
-                    icon = Icons.Filled.Lock,
+                    icon = Icons.Filled.Archive,
                     count = inVault,
                     label = "In Vault",
-                    color = Color(0xFF00BCD4)
+                    color = Color(0xFF00BCD4),
+                    onClick = onVaultClick
                 )
             }
         }
@@ -350,10 +453,13 @@ class MainActivity : ComponentActivity() {
         icon: ImageVector,
         count: Int,
         label: String,
-        color: Color
+        color: Color,
+        onClick: () -> Unit = {}
     ) {
         Card(
-            modifier = Modifier.width(100.dp),
+            modifier = Modifier
+                .width(100.dp)
+                .clickable { onClick() },
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.surface
             ),
@@ -489,62 +595,61 @@ class MainActivity : ComponentActivity() {
     }
     
     @Composable
-    fun CategoriesSection(
-        notes: List<NoteEntity>,
-        onNoteClick: (NoteEntity) -> Unit
+    fun CategoriesGridContent(
+        modifier: Modifier = Modifier,
+        categories: List<String>,
+        counts: Map<String, Int>,
+        onCategoryClick: (String) -> Unit
     ) {
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surface
-            ),
-            shape = RoundedCornerShape(20.dp),
-            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.12f))
+        LazyColumn(
+            modifier = modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+                .padding(horizontal = 16.dp),
+            contentPadding = PaddingValues(vertical = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            Column(
-                modifier = Modifier.padding(20.dp)
-            ) {
-                Text(
-                    text = "Categories",
-                    style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-                
-                Spacer(modifier = Modifier.height(16.dp))
-                
+            items(categories) { cat ->
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { onNoteClick(notes.first()) },
+                        .clickable { onCategoryClick(cat) },
                     colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f)
+                        containerColor = MaterialTheme.colorScheme.surface
                     ),
                     shape = RoundedCornerShape(16.dp),
-                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.2f))
+                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.12f))
                 ) {
                     Row(
-                        modifier = Modifier.padding(16.dp),
-                        verticalAlignment = Alignment.CenterVertically
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        Icon(
-                            Icons.Filled.Folder,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.size(24.dp)
-                        )
-                        Spacer(modifier = Modifier.width(12.dp))
-                        Column {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                Icons.Filled.Folder,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.size(24.dp)
+                            )
+                            Spacer(modifier = Modifier.width(12.dp))
                             Text(
-                                text = "General",
+                                text = cat,
                                 style = MaterialTheme.typography.titleMedium,
-                                fontWeight = FontWeight.SemiBold,
                                 color = MaterialTheme.colorScheme.onSurface
                             )
+                        }
+                        Surface(
+                            color = MaterialTheme.colorScheme.secondary.copy(alpha = 0.12f),
+                            shape = RoundedCornerShape(12.dp)
+                        ) {
                             Text(
-                                text = "${notes.size} notes",
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                                text = "${counts[cat] ?: 0} notes",
+                                style = MaterialTheme.typography.labelMedium,
+                                color = MaterialTheme.colorScheme.secondary,
+                                modifier = Modifier.padding(horizontal = 12.dp, vertical = 4.dp)
                             )
                         }
                     }
@@ -663,6 +768,7 @@ class MainActivity : ComponentActivity() {
         currentPage: String,
         onPageSelected: (String) -> Unit,
         onNotesClick: () -> Unit,
+        onCategoriesClick: () -> Unit,
         onSettingsClick: () -> Unit
     ) {
         Surface(
@@ -673,7 +779,7 @@ class MainActivity : ComponentActivity() {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 32.dp, vertical = 12.dp),
+                    .padding(horizontal = 32.dp, vertical = 6.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 BottomNavItem(
@@ -687,6 +793,12 @@ class MainActivity : ComponentActivity() {
                     label = "Notes",
                     isSelected = currentPage == "Notes",
                     onClick = { onPageSelected("Notes") }
+                )
+                BottomNavItem(
+                    icon = Icons.Filled.Folder,
+                    label = "Categories",
+                    isSelected = currentPage == "Categories",
+                    onClick = onCategoriesClick
                 )
                 BottomNavItem(
                     icon = Icons.Filled.Settings,
@@ -721,12 +833,12 @@ class MainActivity : ComponentActivity() {
             modifier = Modifier
                 .clip(RoundedCornerShape(24.dp))
                 .clickable { onClick() }
-                .padding(horizontal = 16.dp, vertical = 8.dp),
+                .padding(horizontal = 16.dp, vertical = 4.dp),
             color = backgroundColor,
             shape = RoundedCornerShape(24.dp)
         ) {
             Column(
-                modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
+                modifier = Modifier.padding(horizontal = 12.dp, vertical = 4.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Icon(
@@ -744,6 +856,30 @@ class MainActivity : ComponentActivity() {
                 )
             }
         }
+    }
+
+    @Composable
+    private fun AddCategoryDialog(onDismiss: () -> Unit, onAdd: (String) -> Unit) {
+        var text by remember { mutableStateOf("") }
+        AlertDialog(
+            onDismissRequest = onDismiss,
+            title = { Text("New Category") },
+            text = {
+                OutlinedTextField(
+                    value = text,
+                    onValueChange = { text = it },
+                    placeholder = { Text("Category name") },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            },
+            confirmButton = {
+                TextButton(onClick = { onAdd(text) }) { Text("Add") }
+            },
+            dismissButton = {
+                TextButton(onClick = onDismiss) { Text("Cancel") }
+            }
+        )
     }
 
     private fun formatDate(timestamp: Long): String {

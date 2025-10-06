@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -50,7 +51,7 @@ fun VoiceNoteEditorScreen(
     onNoteSaved: (String) -> Unit = {},
     viewModel: VoiceNoteEditorViewModel = hiltViewModel()
 ) {
-    val uiState by viewModel.uiState.collectAsState()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     
@@ -62,8 +63,8 @@ fun VoiceNoteEditorScreen(
         navigationManager.updateCurrentScreen("voice_note_editor", noteId)
     }
     
-    // Handle voice command results
-    LaunchedEffect(Unit) {
+    // Handle voice command results when viewModel changes
+    LaunchedEffect(viewModel) {
         viewModel.commandResult.collectLatest { _ ->
             // Minimal handling path while voice parsing is stubbed
             // Consider mapping transcripts to actions in VoiceCommandService when ready

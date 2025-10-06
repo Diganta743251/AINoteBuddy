@@ -53,15 +53,15 @@ fun AnalyticsScreen(
     // State for export dialog
     var showExportDialog by remember { mutableStateOf(false) }
     
-    // Handle side effects
-    LaunchedEffect(Unit) {
+    // Handle side effects - load data when needed
+    LaunchedEffect(viewModel, isRefreshing) {
         if (!isRefreshing && uiState !is AnalyticsUiState.Success) {
             viewModel.loadAnalyticsData()
         }
     }
     
-    // Track note view for analytics
-    LaunchedEffect(Unit) {
+    // Track note view for analytics - once per screen composition
+    LaunchedEffect(viewModel) {
         viewModel.trackNoteView()
     }
     

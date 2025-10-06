@@ -1,9 +1,21 @@
 package com.ainotebuddy.app.data
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "notes")
+@Entity(
+    tableName = "notes",
+    indices = [
+        Index(value = ["category"]),
+        Index(value = ["isPinned", "isFavorite"]),
+        Index(value = ["createdAt"]),
+        Index(value = ["updatedAt"]),
+        Index(value = ["isDeleted", "isArchived"]),
+        Index(value = ["folderId"]),
+        Index(value = ["isInVault"])
+    ]
+)
 data class NoteEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val title: String,

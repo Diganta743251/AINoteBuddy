@@ -45,8 +45,8 @@ fun AISettingsScreen(
     var geminiKey by remember { mutableStateOf("") }
     var claudeKey by remember { mutableStateOf("") }
     
-    // Load keys from preferences
-    LaunchedEffect(Unit) {
+    // Load keys from preferences when preferencesManager changes
+    LaunchedEffect(preferencesManager) {
         openAIKey = preferencesManager.getOpenAIKey() ?: ""
         geminiKey = preferencesManager.getGeminiKey() ?: ""
         claudeKey = preferencesManager.getClaudeKey() ?: ""

@@ -6,17 +6,23 @@ import androidx.lifecycle.viewModelScope
 import com.ainotebuddy.app.data.NoteEntity
 import com.ainotebuddy.app.data.model.Task
 import com.ainotebuddy.app.repository.NoteRepository
-import com.ainotebuddy.app.repository.TaskRepository
-import com.ainotebuddy.app.repository.TaskRepositoryImpl
-import com.ainotebuddy.app.ai.SimpleAIService
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.delay
+import android.net.Uri
+import javax.inject.Inject
 
-class NoteEditorViewModel(private val context: Context) : ViewModel() {
-    private val noteRepository = NoteRepository(context)
-    private val taskRepository = TaskRepositoryImpl(context)
-    private val aiService = SimpleAIService(context)
+@HiltViewModel
+class NoteEditorViewModel @Inject constructor(
+    private val noteRepository: NoteRepository,
+    @ApplicationContext private val context: Context
+) : ViewModel() {
+    
+    // Create services using injected context (temporary until they're properly injectable)
+    private val taskRepository by lazy { com.ainotebuddy.app.repository.TaskRepositoryImpl(context) }
+    private val aiService by lazy { com.ainotebuddy.app.ai.SimpleAIService(context) }
 
     private val _uiState = MutableStateFlow(NoteEditorUiState())
     val uiState: StateFlow<NoteEditorUiState> = _uiState.asStateFlow()
@@ -64,6 +70,7 @@ class NoteEditorViewModel(private val context: Context) : ViewModel() {
                 
                 _currentNote.value = note
                 _uiState.value = _uiState.value.copy(
+                    noteId = note?.id,
                     title = note?.title ?: "",
                     content = note?.content ?: "",
                     tags = note?.tags?.split(",")?.filter { it.isNotBlank() } ?: emptyList(),
@@ -320,6 +327,26 @@ class NoteEditorViewModel(private val context: Context) : ViewModel() {
         _uiState.value = NoteEditorUiState()
     }
 
+    fun addImage(uri: Uri) {
+        val currentImages = _uiState.value.images.toMutableList()
+        currentImages.add(uri)
+        _uiState.value = _uiState.value.copy(
+            images = currentImages,
+            hasUnsavedChanges = true
+        )
+        changesSinceLastSave++
+    }
+    
+    fun removeImage(uri: Uri) {
+        val currentImages = _uiState.value.images.toMutableList()
+        currentImages.remove(uri)
+        _uiState.value = _uiState.value.copy(
+            images = currentImages,
+            hasUnsavedChanges = true
+        )
+        changesSinceLastSave++
+    }
+
     fun createNewNote() {
         _currentNote.value = null
         _uiState.value = NoteEditorUiState()
@@ -556,6 +583,7 @@ class NoteEditorViewModel(private val context: Context) : ViewModel() {
 
 // Data classes and enums
 data class NoteEditorUiState(
+    val noteId: Long? = null,
     val title: String = "",
     val content: String = "",
     val tags: List<String> = emptyList(),
@@ -568,7 +596,8 @@ data class NoteEditorUiState(
     val aiAnalysis: com.ainotebuddy.app.ai.AIAnalysisResult? = null,
     val aiSuggestions: List<com.ainotebuddy.app.ai.AISuggestion> = emptyList(),
     val tasks: List<Task> = emptyList(),
-    val snackbarMessage: String? = null
+    val snackbarMessage: String? = null,
+    val images: List<Uri> = emptyList()
 )
 
 data class TextSelection(

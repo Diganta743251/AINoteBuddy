@@ -1,0 +1,829 @@
+package com.ainotebuddy.app.ui.screens
+
+import androidx.compose.animation.*
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.ainotebuddy.app.data.NoteEntity
+import com.ainotebuddy.app.services.EnhancedAutoSaveService
+import com.ainotebuddy.app.ui.components.*
+import com.ainotebuddy.app.viewmodel.NoteViewModel
+import kotlinx.coroutines.delay
+
+/**
+ * Improved Note Editor Screen that combines all the enhanced features:
+ * - Enhanced note editor with better UI
+ * - Advanced auto-save functionality
+ * - Advanced editing tools
+ * - Better save feedback and error handling
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ImprovedNoteEditorScreen(
+    noteId: Long = -1L,
+    initialNote: NoteEntity? = null,
+    onBack: () -> Unit,
+    modifier: Modifier = Modifier,
+    viewModel: NoteViewModel = viewModel()
+) {
+    val context = LocalContext.current
+    
+    // Auto-save service
+    val autoSaveService = remember { EnhancedAutoSaveService(context) }
+    val saveStatus by autoSaveService.getSaveStatus(noteId).collectAsState()
+    
+    // Enhanced editor state
+    var editorState by remember {
+        mutableStateOf(
+            EnhancedEditorState(
+                title = TextFieldValue(initialNote?.title ?: ""),
+                content = TextFieldValue(initialNote?.content ?: ""),
+                tags = initialNote?.tags?.split(",")?.filter { it.isNotBlank() }?.toSet() ?: emptySet(),
+                isFavorite = initialNote?.isFavorite ?: false
+            )
+        )
+    }
+    
+    // UI state
+    var showAdvancedTools by remember { mutableStateOf(false) }
+    var showSaveOptions by remember { mutableStateOf(false) }
+    var showExportDialog by remember { mutableStateOf(false) }
+    
+    // Configure auto-save
+    LaunchedEffect(Unit) {
+        autoSaveService.configure(
+            EnhancedAutoSaveService.AutoSaveConfig(
+                isEnabled = true,
+                saveIntervalSeconds = 3,
+                maxRetries = 3,
+                backupEnabled = true,
+                conflictResolution = EnhancedAutoSaveService.ConflictResolution.MERGE_LATEST
+            )
+        )
+        
+        // Start auto-save
+        autoSaveService.startAutoSave(noteId) {
+            if (editorState.hasUnsavedChanges) {
+                NoteEntity(
+                    id = noteId,
+                    title = editorState.title.text.ifBlank { "Untitled" },
+                    content = editorState.content.text,
+                    tags = editorState.tags.joinToString(","),
+                    isFavorite = editorState.isFavorite,
+                    createdAt = initialNote?.createdAt ?: System.currentTimeMillis(),
+                    updatedAt = System.currentTimeMillis()
+                )
+            } else null
+        }
+    }
+    
+    // Clean up auto-save when leaving
+    DisposableEffect(Unit) {
+        onDispose {
+            autoSaveService.stopAutoSave(noteId)
+        }
+    }
+    
+    Scaffold(
+        topBar = {
+            ImprovedEditorTopBar(
+                state = editorState,
+                saveStatus = saveStatus,
+                onBack = onBack,
+                onSave = {
+                    val note = NoteEntity(
+                        id = noteId,
+                        title = editorState.title.text.ifBlank { "Untitled" },
+                        content = editorState.content.text,
+                        tags = editorState.tags.joinToString(","),
+                        isFavorite = editorState.isFavorite,
+                        createdAt = initialNote?.createdAt ?: System.currentTimeMillis(),
+                        updatedAt = System.currentTimeMillis()
+                    )
+                    
+                    viewModel.insertNote(note, context)
+                    editorState = editorState.copy(hasUnsavedChanges = false)
+                },
+                onToggleFavorite = {
+                    editorState = editorState.copy(
+                        isFavorite = !editorState.isFavorite,
+                        hasUnsavedChanges = true
+                    )
+                },
+                onShowSaveOptions = { showSaveOptions = true },
+                onShowExportDialog = { showExportDialog = true }
+            )
+        },
+        bottomBar = {
+            Column {
+                // Advanced tools panel
+                AnimatedVisibility(
+                    visible = showAdvancedTools,
+                    enter = slideInVertically { it } + fadeIn(),
+                    exit = slideOutVertically { it } + fadeOut()
+                ) {
+                    AdvancedEditingToolsPanel(
+                        text = editorState.content.text,
+                        onTextChange = { newText ->
+                            editorState = editorState.copy(
+                                content = editorState.content.copy(text = newText),
+                                hasUnsavedChanges = true
+                            )
+                        }
+                    )
+                }
+                
+                // Bottom action bar
+                ImprovedEditorBottomBar(
+                    onAdvancedToolsClick = { showAdvancedTools = !showAdvancedTools },
+                    onQuickSaveClick = {
+                        // Quick save without full save dialog
+                        val note = NoteEntity(
+                            id = noteId,
+                            title = editorState.title.text.ifBlank { "Untitled" },
+                            content = editorState.content.text,
+                            tags = editorState.tags.joinToString(","),
+                            isFavorite = editorState.isFavorite,
+                            createdAt = initialNote?.createdAt ?: System.currentTimeMillis(),
+                            updatedAt = System.currentTimeMillis()
+                        )
+                        viewModel.insertNote(note, context)
+                        editorState = editorState.copy(hasUnsavedChanges = false)
+                    },
+                    showAdvancedTools = showAdvancedTools,
+                    hasUnsavedChanges = editorState.hasUnsavedChanges,
+                    saveStatus = saveStatus.status
+                )
+            }
+        }
+    ) { paddingValues ->
+        Box(
+            modifier = modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                // Save status indicator
+                SaveStatusIndicator(
+                    saveStatus = saveStatus,
+                    modifier = Modifier.fillMaxWidth()
+                )
+                
+                // Enhanced title field
+                EnhancedTextField(
+                    value = editorState.title,
+                    onValueChange = { newTitle ->
+                        editorState = editorState.copy(
+                            title = newTitle,
+                            hasUnsavedChanges = true
+                        )
+                    },
+                    placeholder = "Note title...",
+                    textStyle = MaterialTheme.typography.headlineMedium,
+                    singleLine = true
+                )
+                
+                // Enhanced content field
+                EnhancedTextField(
+                    value = editorState.content,
+                    onValueChange = { newContent ->
+                        editorState = editorState.copy(
+                            content = newContent,
+                            hasUnsavedChanges = true
+                        )
+                    },
+                    placeholder = "Start writing your note...",
+                    textStyle = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.defaultMinSize(minHeight = 400.dp)
+                )
+                
+                // Tags section
+                if (editorState.tags.isNotEmpty()) {
+                    TagsSection(
+                        tags = editorState.tags,
+                        onTagRemove = { tag ->
+                            editorState = editorState.copy(
+                                tags = editorState.tags - tag,
+                                hasUnsavedChanges = true
+                            )
+                        }
+                    )
+                }
+                
+                // Quick stats
+                NoteStatsSection(
+                    title = editorState.title.text,
+                    content = editorState.content.text
+                )
+            }
+            
+            // Save conflict dialog
+            if (saveStatus.status == EnhancedAutoSaveService.SaveStatus.CONFLICT) {
+                saveStatus.conflictInfo?.let { conflictInfo ->
+                    SaveConflictDialog(
+                        conflictInfo = conflictInfo,
+                        onResolveConflict = { resolution ->
+                            // Handle conflict resolution
+                            when (resolution) {
+                                ConflictResolution.KEEP_LOCAL -> {
+                                    // Keep current editor state
+                                }
+                                ConflictResolution.KEEP_REMOTE -> {
+                                    // Update editor state with remote version
+                                    editorState = editorState.copy(
+                                        title = TextFieldValue(conflictInfo.remoteVersion.title),
+                                        content = TextFieldValue(conflictInfo.remoteVersion.content),
+                                        hasUnsavedChanges = false
+                                    )
+                                }
+                                ConflictResolution.MERGE -> {
+                                    // Simple merge - could be more sophisticated
+                                    val mergedContent = "${editorState.content.text}\n\n---\n\n${conflictInfo.remoteVersion.content}"
+                                    editorState = editorState.copy(
+                                        content = TextFieldValue(mergedContent),
+                                        hasUnsavedChanges = true
+                                    )
+                                }
+                            }
+                        }
+                    )
+                }
+            }
+        }
+    }
+    
+    // Save options dialog
+    if (showSaveOptions) {
+        SaveOptionsDialog(
+            onSaveAndClose = {
+                val note = NoteEntity(
+                    id = noteId,
+                    title = editorState.title.text.ifBlank { "Untitled" },
+                    content = editorState.content.text,
+                    tags = editorState.tags.joinToString(","),
+                    isFavorite = editorState.isFavorite,
+                    createdAt = initialNote?.createdAt ?: System.currentTimeMillis(),
+                    updatedAt = System.currentTimeMillis()
+                )
+                viewModel.insertNote(note, context)
+                onBack()
+            },
+            onSaveAndNew = {
+                val note = NoteEntity(
+                    id = noteId,
+                    title = editorState.title.text.ifBlank { "Untitled" },
+                    content = editorState.content.text,
+                    tags = editorState.tags.joinToString(","),
+                    isFavorite = editorState.isFavorite,
+                    createdAt = initialNote?.createdAt ?: System.currentTimeMillis(),
+                    updatedAt = System.currentTimeMillis()
+                )
+                viewModel.insertNote(note, context)
+                
+                // Reset editor for new note
+                editorState = EnhancedEditorState()
+                showSaveOptions = false
+            },
+            onSaveDraft = {
+                // Save as draft
+                showSaveOptions = false
+            },
+            onDismiss = { showSaveOptions = false }
+        )
+    }
+    
+    // Export dialog
+    if (showExportDialog) {
+        ExportDialog(
+            noteTitle = editorState.title.text,
+            noteContent = editorState.content.text,
+            onDismiss = { showExportDialog = false }
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ImprovedEditorTopBar(
+    state: EnhancedEditorState,
+    saveStatus: EnhancedAutoSaveService.SaveResult,
+    onBack: () -> Unit,
+    onSave: () -> Unit,
+    onToggleFavorite: () -> Unit,
+    onShowSaveOptions: () -> Unit,
+    onShowExportDialog: () -> Unit
+) {
+    TopAppBar(
+        title = {
+            Column {
+                Text(
+                    text = if (state.title.text.isBlank()) "New Note" else state.title.text,
+                    style = MaterialTheme.typography.titleLarge,
+                    maxLines = 1
+                )
+                
+                // Save status text
+                val statusText = when (saveStatus.status) {
+                    EnhancedAutoSaveService.SaveStatus.SAVING -> "Saving..."
+                    EnhancedAutoSaveService.SaveStatus.SAVED -> "Saved ${formatTime(saveStatus.timestamp)}"
+                    EnhancedAutoSaveService.SaveStatus.ERROR -> "Save failed: ${saveStatus.error}"
+                    EnhancedAutoSaveService.SaveStatus.CONFLICT -> "Conflict detected"
+                    else -> if (state.hasUnsavedChanges) "Unsaved changes" else null
+                }
+                
+                statusText?.let {
+                    Text(
+                        text = it,
+                        style = MaterialTheme.typography.labelSmall,
+                        color = when (saveStatus.status) {
+                            EnhancedAutoSaveService.SaveStatus.ERROR -> MaterialTheme.colorScheme.error
+                            EnhancedAutoSaveService.SaveStatus.CONFLICT -> MaterialTheme.colorScheme.error
+                            EnhancedAutoSaveService.SaveStatus.SAVING -> MaterialTheme.colorScheme.primary
+                            else -> MaterialTheme.colorScheme.onSurfaceVariant
+                        }
+                    )
+                }
+            }
+        },
+        navigationIcon = {
+            IconButton(onClick = onBack) {
+                Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+            }
+        },
+        actions = {
+            // Favorite toggle
+            IconButton(onClick = onToggleFavorite) {
+                Icon(
+                    imageVector = if (state.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                    contentDescription = "Toggle favorite",
+                    tint = if (state.isFavorite) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface
+                )
+            }
+            
+            // Save options dropdown
+            var expanded by remember { mutableStateOf(false) }
+            Box {
+                IconButton(onClick = { expanded = true }) {
+                    Icon(Icons.Default.Save, contentDescription = "Save options")
+                }
+                DropdownMenu(
+                    expanded = expanded,
+                    onDismissRequest = { expanded = false }
+                ) {
+                    DropdownMenuItem(
+                        text = { Text("Save") },
+                        onClick = {
+                            onSave()
+                            expanded = false
+                        },
+                        leadingIcon = { Icon(Icons.Default.Save, contentDescription = null) }
+                    )
+                    DropdownMenuItem(
+                        text = { Text("Save Options") },
+                        onClick = {
+                            onShowSaveOptions()
+                            expanded = false
+                        },
+                        leadingIcon = { Icon(Icons.Default.Settings, contentDescription = null) }
+                    )
+                    DropdownMenuItem(
+                        text = { Text("Export") },
+                        onClick = {
+                            onShowExportDialog()
+                            expanded = false
+                        },
+                        leadingIcon = { Icon(Icons.Default.FileDownload, contentDescription = null) }
+                    )
+                }
+            }
+        }
+    )
+}
+
+@Composable
+fun ImprovedEditorBottomBar(
+    onAdvancedToolsClick: () -> Unit,
+    onQuickSaveClick: () -> Unit,
+    showAdvancedTools: Boolean,
+    hasUnsavedChanges: Boolean,
+    saveStatus: EnhancedAutoSaveService.SaveStatus
+) {
+    Surface(
+        color = MaterialTheme.colorScheme.surfaceContainer,
+        tonalElevation = 8.dp
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 12.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Advanced tools toggle
+            FilterChip(
+                onClick = onAdvancedToolsClick,
+                label = { Text("Advanced Tools") },
+                selected = showAdvancedTools,
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Construction,
+                        contentDescription = null,
+                        modifier = Modifier.size(16.dp)
+                    )
+                }
+            )
+            
+            // Save status indicator
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                when (saveStatus) {
+                    EnhancedAutoSaveService.SaveStatus.SAVING -> {
+                        CircularProgressIndicator(
+                            modifier = Modifier.size(16.dp),
+                            strokeWidth = 2.dp
+                        )
+                        Text(
+                            text = "Saving...",
+                            style = MaterialTheme.typography.labelSmall
+                        )
+                    }
+                    EnhancedAutoSaveService.SaveStatus.ERROR -> {
+                        Icon(
+                            imageVector = Icons.Default.Error,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.error,
+                            modifier = Modifier.size(16.dp)
+                        )
+                        Text(
+                            text = "Save failed",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.error
+                        )
+                    }
+                    else -> {
+                        if (hasUnsavedChanges) {
+                            ElevatedButton(
+                                onClick = onQuickSaveClick,
+                                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Save,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(16.dp)
+                                )
+                                Spacer(modifier = Modifier.width(4.dp))
+                                Text("Quick Save")
+                            }
+                        } else {
+                            Icon(
+                                imageVector = Icons.Default.Check,
+                                contentDescription = "Saved",
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.size(16.dp)
+                            )
+                            Text(
+                                text = "Saved",
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun SaveStatusIndicator(
+    saveStatus: EnhancedAutoSaveService.SaveResult,
+    modifier: Modifier = Modifier
+) {
+    AnimatedVisibility(
+        visible = saveStatus.status != EnhancedAutoSaveService.SaveStatus.IDLE,
+        enter = slideInVertically() + fadeIn(),
+        exit = slideOutVertically() + fadeOut()
+    ) {
+        Card(
+            modifier = modifier,
+            colors = CardDefaults.cardColors(
+                containerColor = when (saveStatus.status) {
+                    EnhancedAutoSaveService.SaveStatus.ERROR, 
+                    EnhancedAutoSaveService.SaveStatus.CONFLICT -> MaterialTheme.colorScheme.errorContainer
+                    EnhancedAutoSaveService.SaveStatus.SAVING -> MaterialTheme.colorScheme.primaryContainer
+                    EnhancedAutoSaveService.SaveStatus.SAVED -> MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f)
+                    else -> MaterialTheme.colorScheme.surfaceVariant
+                }
+            )
+        ) {
+            Row(
+                modifier = Modifier.padding(12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                val icon = when (saveStatus.status) {
+                    EnhancedAutoSaveService.SaveStatus.SAVING -> Icons.Default.CloudUpload
+                    EnhancedAutoSaveService.SaveStatus.SAVED -> Icons.Default.CloudDone
+                    EnhancedAutoSaveService.SaveStatus.ERROR -> Icons.Default.CloudOff
+                    EnhancedAutoSaveService.SaveStatus.CONFLICT -> Icons.Default.Sync
+                    else -> Icons.Default.Cloud
+                }
+                
+                Icon(
+                    imageVector = icon,
+                    contentDescription = null,
+                    modifier = Modifier.size(16.dp)
+                )
+                
+                val statusText = when (saveStatus.status) {
+                    EnhancedAutoSaveService.SaveStatus.SAVING -> "Auto-saving..."
+                    EnhancedAutoSaveService.SaveStatus.SAVED -> "Auto-saved ${formatTime(saveStatus.timestamp)}"
+                    EnhancedAutoSaveService.SaveStatus.ERROR -> "Auto-save failed: ${saveStatus.error}"
+                    EnhancedAutoSaveService.SaveStatus.CONFLICT -> "Sync conflict detected"
+                    else -> "Auto-save ready"
+                }
+                
+                Text(
+                    text = statusText,
+                    style = MaterialTheme.typography.labelMedium
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun TagsSection(
+    tags: Set<String>,
+    onTagRemove: (String) -> Unit
+) {
+    Card(
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
+        )
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Text(
+                text = "Tags",
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            
+            Spacer(modifier = Modifier.height(8.dp))
+            
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                tags.forEach { tag ->
+                    AssistChip(
+                        onClick = { onTagRemove(tag) },
+                        label = { Text("#$tag") },
+                        trailingIcon = {
+                            Icon(
+                                imageVector = Icons.Default.Close,
+                                contentDescription = "Remove tag",
+                                modifier = Modifier.size(14.dp)
+                            )
+                        }
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun NoteStatsSection(
+    title: String,
+    content: String
+) {
+    val wordCount = remember(content) {
+        if (content.isBlank()) 0 else content.split("\\s+".toRegex()).size
+    }
+    val charCount = content.length
+    
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceEvenly
+    ) {
+        StatChip(label = "Words", value = wordCount.toString())
+        StatChip(label = "Characters", value = charCount.toString())
+        StatChip(label = "Paragraphs", value = content.split("\n\n").size.toString())
+        StatChip(label = "Reading", value = "${(wordCount / 200).coerceAtLeast(1)}m")
+    }
+}
+
+@Composable
+fun StatChip(label: String, value: String) {
+    OutlinedCard {
+        Column(
+            modifier = Modifier.padding(12.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = value,
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.primary
+            )
+            Text(
+                text = label,
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+    }
+}
+
+// Dialog components
+enum class ConflictResolution {
+    KEEP_LOCAL, KEEP_REMOTE, MERGE
+}
+
+@Composable
+fun SaveConflictDialog(
+    conflictInfo: EnhancedAutoSaveService.ConflictInfo,
+    onResolveConflict: (ConflictResolution) -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = { },
+        title = { Text("Sync Conflict Detected") },
+        text = {
+            Column {
+                Text("The note has been modified in another location. How would you like to resolve this conflict?")
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = "Conflict Type: ${conflictInfo.conflictType.name.lowercase().replace('_', ' ')}",
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
+        },
+        confirmButton = {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                TextButton(onClick = { onResolveConflict(ConflictResolution.KEEP_REMOTE) }) {
+                    Text("Keep Server")
+                }
+                TextButton(onClick = { onResolveConflict(ConflictResolution.MERGE) }) {
+                    Text("Merge")
+                }
+                Button(onClick = { onResolveConflict(ConflictResolution.KEEP_LOCAL) }) {
+                    Text("Keep Local")
+                }
+            }
+        }
+    )
+}
+
+@Composable
+fun SaveOptionsDialog(
+    onSaveAndClose: () -> Unit,
+    onSaveAndNew: () -> Unit,
+    onSaveDraft: () -> Unit,
+    onDismiss: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Save Options") },
+        text = {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onSaveAndClose() }
+                ) {
+                    Row(
+                        modifier = Modifier.padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(Icons.Default.SaveAlt, contentDescription = null)
+                        Spacer(modifier = Modifier.width(12.dp))
+                        Text("Save and Close")
+                    }
+                }
+                
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onSaveAndNew() }
+                ) {
+                    Row(
+                        modifier = Modifier.padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(Icons.Default.NoteAdd, contentDescription = null)
+                        Spacer(modifier = Modifier.width(12.dp))
+                        Text("Save and New")
+                    }
+                }
+                
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onSaveDraft() }
+                ) {
+                    Row(
+                        modifier = Modifier.padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(Icons.Default.Drafts, contentDescription = null)
+                        Spacer(modifier = Modifier.width(12.dp))
+                        Text("Save as Draft")
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text("Cancel")
+            }
+        }
+    )
+}
+
+@Composable
+fun ExportDialog(
+    noteTitle: String,
+    noteContent: String,
+    onDismiss: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Export Note") },
+        text = {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Text("Choose export format:")
+                
+                val exportOptions = listOf(
+                    "Plain Text (.txt)" to Icons.Default.TextSnippet,
+                    "Markdown (.md)" to Icons.Default.Article,
+                    "PDF Document" to Icons.Default.PictureAsPdf,
+                    "Word Document" to Icons.Default.Description
+                )
+                
+                exportOptions.forEach { (format, icon) ->
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { 
+                                // Handle export
+                                onDismiss()
+                            }
+                    ) {
+                        Row(
+                            modifier = Modifier.padding(12.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Icon(icon, contentDescription = null)
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(format)
+                        }
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text("Cancel")
+            }
+        }
+    )
+}
+
+private fun formatTime(timestamp: Long): String {
+    val now = System.currentTimeMillis()
+    val diff = now - timestamp
+    
+    return when {
+        diff < 60_000 -> "just now"
+        diff < 3600_000 -> "${diff / 60_000}m ago"
+        diff < 86400_000 -> "${diff / 3600_000}h ago"
+        else -> java.text.SimpleDateFormat("MMM dd, HH:mm", java.util.Locale.getDefault())
+            .format(java.util.Date(timestamp))
+    }
+}

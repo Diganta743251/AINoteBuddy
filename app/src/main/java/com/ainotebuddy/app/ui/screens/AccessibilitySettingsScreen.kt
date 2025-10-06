@@ -26,6 +26,7 @@ import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import androidx.compose.runtime.collectAsState
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 /**
  * Screen for managing accessibility settings
@@ -39,7 +40,7 @@ fun AccessibilitySettingsScreen(
     val spacing = LocalSpacing.current
     
     // Collect state from ViewModel
-    val uiState by viewModel.uiState.collectAsState()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val textScaler = rememberTextScaler()
     var showTextSizeDialog by remember { mutableStateOf(false) }
     

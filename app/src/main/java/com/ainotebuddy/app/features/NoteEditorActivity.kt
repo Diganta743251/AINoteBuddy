@@ -58,6 +58,7 @@ import androidx.compose.foundation.layout.Arrangement
 import com.ainotebuddy.app.ai.VoiceRecordingService
 import com.ainotebuddy.app.viewmodel.NoteEditorViewModel
 import com.ainotebuddy.app.ui.theme.AINoteBuddyTheme
+import dagger.hilt.android.AndroidEntryPoint
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Upload
 import androidx.compose.material.icons.filled.Download
@@ -74,7 +75,6 @@ import com.ainotebuddy.app.ads.AdManager
 // QuickActionService stub
 class QuickActionService {
     fun scheduleNoteReminder(noteId: Long, reminderTime: Long, context: Context) {
-        // Use WorkManager to schedule reminder notification
         val workRequest = androidx.work.OneTimeWorkRequestBuilder<ReminderWorker>()
             .setInitialDelay(reminderTime - System.currentTimeMillis(), java.util.concurrent.TimeUnit.MILLISECONDS)
             .setInputData(androidx.work.workDataOf("noteId" to noteId))
@@ -84,9 +84,10 @@ class QuickActionService {
     }
 }
 
+@AndroidEntryPoint
 class NoteEditorActivity : ComponentActivity() {
     
-    private lateinit var viewModel: NoteEditorViewModel
+    private val viewModel: NoteEditorViewModel by viewModels()
     
     private val cameraPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -96,11 +97,14 @@ class NoteEditorActivity : ComponentActivity() {
         }
     }
     
+    private var currentPhotoUri: Uri? = null
     private val cameraLauncher = registerForActivityResult(
         ActivityResultContracts.TakePicture()
     ) { success ->
         if (success) {
-            // Image captured successfully
+            currentPhotoUri?.let { uri ->
+                viewModel.addImage(uri)
+            }
         }
     }
     
@@ -108,8 +112,7 @@ class NoteEditorActivity : ComponentActivity() {
         ActivityResultContracts.GetContent()
     ) { uri ->
         uri?.let {
-            val prev = viewModel.uiState.value.content
-            viewModel.updateContent((prev + "\n[Image attached]").trim())
+            viewModel.addImage(it)
         }
     }
     
@@ -155,9 +158,6 @@ class NoteEditorActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         
-        // Create ViewModel with context
-        viewModel = NoteEditorViewModel(this)
-        
         val noteId = intent.getLongExtra("note_id", -1L)
         val voiceText = intent.getStringExtra("voice_text")
         
@@ -176,7 +176,12 @@ class NoteEditorActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    NoteEditorScreenSimple(
+                    // Local UI state for dialogs
+                    var showAdvancedOptions by remember { mutableStateOf(false) }
+                    var showFormatDialog by remember { mutableStateOf(false) }
+                    var showAiSheet by remember { mutableStateOf(false) }
+
+                    NoteEditorScreenEnhanced(
                         viewModel = viewModel,
                         onBackPressed = {
                             viewModel.saveNote()
@@ -185,19 +190,72 @@ class NoteEditorActivity : ComponentActivity() {
                         onSave = {
                             viewModel.saveNote()
                             showAdAfterSave()
-                        }
+                        },
+                        onCameraClick = { requestCameraPermission() },
+                        onGalleryClick = { galleryLauncher.launch("image/*") },
+                        onVoiceClick = { startVoiceRecognition() },
+                        onFormatClick = { showFormatDialog = true },
+                        onMoreClick = { showAdvancedOptions = true },
+                        onAiClick = { showAiSheet = true }
                     )
+
+                    if (showAdvancedOptions) {
+                        AdvancedOptionsDialog(
+                            onDismiss = { showAdvancedOptions = false },
+                            onImport = { importNoteLauncher.launch(arrayOf("text/plain", "text/markdown")) },
+                            onExport = { exportNoteLauncher.launch("note.txt") },
+                            onPdfExport = { pdfExportLauncher.launch("note.pdf") },
+                            onReminder = { showReminderDialog() }
+                        )
+                    }
+
+                    if (showFormatDialog) {
+                        AlertDialog(
+                            onDismissRequest = { showFormatDialog = false },
+                            title = { Text("Formatting") },
+                            text = { Text("Formatting options will be available soon.") },
+                            confirmButton = {
+                                TextButton(onClick = { showFormatDialog = false }) { Text("OK") }
+                            }
+                        )
+                    }
+                    
+                    if (showAiSheet) {
+                        com.ainotebuddy.app.ui.components.ai.AIAssistantPanel(
+                            note = com.ainotebuddy.app.data.model.Note(
+                                id = viewModel.uiState.value.noteId ?: 0,
+                                title = viewModel.uiState.value.title,
+                                content = viewModel.uiState.value.content,
+                                tags = ""
+                            ),
+                            onClose = { showAiSheet = false },
+                            onSuggestionClick = { },
+                            onVoiceCommand = { },
+                            onGenerateTags = { emptyList() },
+                            onTagsChanged = { },
+                            sentimentResult = null,
+                            suggestions = emptyList(),
+                            voiceCommands = emptyList(),
+                            isLoading = false
+                        )
+                    }
                 }
             }
         }
     }
     
     private fun showAdAfterSave() {
-        val adManager = AdManager.getInstance(this)
-        if (adManager.canShowInterstitial() && adManager.interstitialAdManager.isAdReady()) {
-            adManager.interstitialAdManager.showAd(this) {
-                // Ad closed, continue
+        try {
+            val adManager = AdManager.getInstance(this)
+            val interstitialManager = adManager.retrieveInterstitialAdManager()
+            if (adManager.canShowInterstitial() && interstitialManager?.isAdReady() == true) {
+                interstitialManager.showAd(this) {
+                    // Ad closed, continue
+                }
             }
+        } catch (e: Exception) {
+            // Ad failed to load/show, continue without showing ad
+            e.printStackTrace()
         }
     }
     
@@ -222,6 +280,7 @@ class NoteEditorActivity : ComponentActivity() {
             "${packageName}.fileprovider",
             photoFile
         )
+        currentPhotoUri = photoUri
         cameraLauncher.launch(photoUri)
     }
     
@@ -261,10 +320,16 @@ class NoteEditorActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NoteEditorScreenSimple(
+fun NoteEditorScreenEnhanced(
     viewModel: NoteEditorViewModel,
     onBackPressed: () -> Unit,
-    onSave: () -> Unit
+    onSave: () -> Unit,
+    onCameraClick: () -> Unit,
+    onGalleryClick: () -> Unit,
+    onVoiceClick: () -> Unit,
+    onFormatClick: () -> Unit,
+    onMoreClick: () -> Unit,
+    onAiClick: () -> Unit
 ) {
     val state by viewModel.uiState.collectAsState()
 
@@ -306,41 +371,27 @@ fun NoteEditorScreenSimple(
             
             Spacer(modifier = Modifier.height(16.dp))
             
-            // Content Input
-            OutlinedTextField(
-                value = state.content,
-                onValueChange = { viewModel.updateContent(it) },
-                placeholder = { 
-                    Text(
-                        "Start writing your note...",
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
-                    )
-                },
+            // Rich Text Editor with Image Support
+            com.ainotebuddy.app.ui.components.RichTextEditor(
+                content = state.content,
+                onContentChange = { viewModel.updateContent(it) },
+                images = state.images,
+                onImageClick = { imageUri -> viewModel.removeImage(imageUri) },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(1f),
-                textStyle = MaterialTheme.typography.bodyLarge.copy(
-                    lineHeight = 24.sp
-                ),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = MaterialTheme.colorScheme.primary,
-                    unfocusedBorderColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.12f),
-                    focusedContainerColor = Color.Transparent,
-                    unfocusedContainerColor = Color.Transparent
-                ),
-                shape = RoundedCornerShape(16.dp)
+                    .weight(1f)
             )
             
             Spacer(modifier = Modifier.height(16.dp))
             
-            // Bottom Action Bar
-            ModernEditorBottomBar(
-                onCameraClick = { /* TODO */ },
-                onGalleryClick = { /* TODO */ },
-                onVoiceClick = { /* TODO */ },
-                onFormatClick = { /* TODO */ },
-                onMoreClick = { /* TODO */ }
+            // Bottom Action Bar with AI
+            ModernEditorBottomBarWithAI(
+                onCameraClick = onCameraClick,
+                onGalleryClick = onGalleryClick,
+                onVoiceClick = onVoiceClick,
+                onFormatClick = onFormatClick,
+                onMoreClick = onMoreClick,
+                onAiClick = onAiClick
             )
         }
     }
@@ -409,12 +460,13 @@ fun ModernEditorHeader(
 }
 
 @Composable
-fun ModernEditorBottomBar(
+fun ModernEditorBottomBarWithAI(
     onCameraClick: () -> Unit,
     onGalleryClick: () -> Unit,
     onVoiceClick: () -> Unit,
     onFormatClick: () -> Unit,
-    onMoreClick: () -> Unit
+    onMoreClick: () -> Unit,
+    onAiClick: () -> Unit
 ) {
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -449,6 +501,11 @@ fun ModernEditorBottomBar(
                 icon = Icons.Filled.Mic,
                 label = "Voice",
                 onClick = onVoiceClick
+            )
+            EditorActionButton(
+                icon = Icons.Filled.SmartToy,
+                label = "AI",
+                onClick = onAiClick
             )
             EditorActionButton(
                 icon = Icons.Filled.MoreHoriz,

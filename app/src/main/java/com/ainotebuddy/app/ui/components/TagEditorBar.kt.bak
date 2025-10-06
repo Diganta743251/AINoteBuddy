@@ -1,0 +1,145 @@
+package com.ainotebuddy.app.ui.components
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.unit.dp
+
+@Composable
+fun TagEditorBar(
+    selectedTags: Set<String>,
+    onTagsChange: (Set<String>) -> Unit,
+    onDismiss: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    var newTagText by remember { mutableStateOf("") }
+    
+    Surface(
+        color = MaterialTheme.colorScheme.surfaceContainer,
+        tonalElevation = 4.dp,
+        modifier = modifier
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Tags",
+                    style = MaterialTheme.typography.titleSmall
+                )
+                IconButton(onClick = onDismiss) {
+                    Icon(Icons.Default.Close, contentDescription = "Close")
+                }
+            }
+            
+            Spacer(modifier = Modifier.height(8.dp))
+            
+            // Current tags
+            if (selectedTags.isNotEmpty()) {
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    modifier = Modifier.padding(bottom = 8.dp)
+                ) {
+                    items(selectedTags.toList()) { tag ->
+                        TagChip(
+                            tag = tag,
+                            onRemove = {
+                                onTagsChange(selectedTags - tag)
+                            }
+                        )
+                    }
+                }
+            }
+            
+            // Add new tag input
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                OutlinedTextField(
+                    value = newTagText,
+                    onValueChange = { newTagText = it },
+                    placeholder = { Text("Add tag...") },
+                    modifier = Modifier.weight(1f),
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                    keyboardActions = KeyboardActions(
+                        onDone = {
+                            if (newTagText.isNotBlank()) {
+                                onTagsChange(selectedTags + newTagText.trim())
+                                newTagText = ""
+                            }
+                        }
+                    )
+                )
+                
+                Spacer(modifier = Modifier.width(8.dp))
+                
+                IconButton(
+                    onClick = {
+                        if (newTagText.isNotBlank()) {
+                            onTagsChange(selectedTags + newTagText.trim())
+                            newTagText = ""
+                        }
+                    }
+                ) {
+                    Icon(Icons.Default.Add, contentDescription = "Add tag")
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun TagChip(
+    tag: String,
+    onRemove: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Surface(
+        shape = RoundedCornerShape(16.dp),
+        color = MaterialTheme.colorScheme.primaryContainer,
+        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+        modifier = modifier
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(start = 12.dp, top = 6.dp, end = 4.dp, bottom = 6.dp)
+        ) {
+            Text(
+                text = tag,
+                style = MaterialTheme.typography.labelMedium
+            )
+            
+            Spacer(modifier = Modifier.width(4.dp))
+            
+            IconButton(
+                onClick = onRemove,
+                modifier = Modifier.size(20.dp)
+            ) {
+                Icon(
+                    Icons.Default.Close,
+                    contentDescription = "Remove tag",
+                    modifier = Modifier.size(14.dp)
+                )
+            }
+        }
+    }
+}

@@ -33,8 +33,8 @@ fun OnboardingPreferencesScreen(
     var enableAnalytics by remember { mutableStateOf(true) }
     var enableBackup by remember { mutableStateOf(true) }
     
-    // Load saved preferences
-    LaunchedEffect(Unit) {
+    // Load saved preferences when preferencesManager changes
+    LaunchedEffect(preferencesManager) {
         selectedTheme = preferencesManager.getTheme()
         fontSizeScale = preferencesManager.getFontScale()
         enableAnalytics = preferencesManager.getAnalyticsEnabled()

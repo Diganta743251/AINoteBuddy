@@ -1225,8 +1225,8 @@ fun PremiumFeaturesSection() {
                     onClick = {
                         try {
                             val activity = context as? androidx.activity.ComponentActivity
-                            if (activity != null && adManager.isInitialized.value && adManager.rewardedAdManager.isAdReady()) {
-                                adManager.rewardedAdManager.showAd(
+                            if (activity != null && adManager.isInitialized.value && adManager.rewardedAdManager?.isAdReady() == true) {
+                                adManager.rewardedAdManager?.showAd(
                                     activity = activity,
                                     onRewardEarned = { amount, type ->
                                         premiumUnlocked = true

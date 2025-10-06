@@ -1,0 +1,116 @@
+package com.ainotebuddy.app.ui.components
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import com.ainotebuddy.app.ui.theme.NoteType
+
+@Composable
+fun ColorPickerBar(
+    selectedColor: NoteType,
+    onColorSelect: (NoteType) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Surface(
+        color = MaterialTheme.colorScheme.surfaceContainer,
+        tonalElevation = 4.dp,
+        modifier = modifier
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Note Color",
+                    style = MaterialTheme.typography.titleSmall
+                )
+            }
+            
+            Spacer(modifier = Modifier.height(8.dp))
+            
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                items(NoteType.values()) { noteType ->
+                    val color = getNoteTypeColor(noteType)
+                    ColorButton(
+                        color = color,
+                        isSelected = selectedColor == noteType,
+                        onClick = { onColorSelect(noteType) },
+                        label = noteType.name.lowercase().replaceFirstChar { it.uppercase() }
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun ColorButton(
+    color: Color,
+    isSelected: Boolean,
+    onClick: () -> Unit,
+    label: String,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier.clickable { onClick() }
+    ) {
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier
+                .size(48.dp)
+                .clip(CircleShape)
+                .background(color)
+                .border(
+                    width = if (isSelected) 3.dp else 1.dp,
+                    color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline,
+                    shape = CircleShape
+                )
+        ) {
+            if (isSelected) {
+                Icon(
+                    Icons.Default.Check,
+                    contentDescription = "Selected",
+                    tint = Color.White,
+                    modifier = Modifier.size(24.dp)
+                )
+            }
+        }
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(
+            text = label,
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurface
+        )
+    }
+}
+
+private fun getNoteTypeColor(noteType: NoteType): Color {
+    return when (noteType) {
+        NoteType.PERSONAL -> Color(0xFF2196F3)  // Blue
+        NoteType.WORK -> Color(0xFF4CAF50)      // Green
+        NoteType.MEETING -> Color(0xFFFF9800)   // Orange
+        NoteType.REMINDER -> Color(0xFF9C27B0)  // Purple
+        NoteType.IDEA -> Color(0xFFE91E63)      // Pink
+    }
+}

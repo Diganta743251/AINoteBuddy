@@ -23,6 +23,11 @@ fun BannerAdView(
     val context = LocalContext.current
     val adManager = remember { AdManager.getInstance(context) }
     val bannerAdManager = remember { adManager.bannerAdManager }
+    
+    if (bannerAdManager == null) {
+        return // Don't show banner if ad manager is not initialized
+    }
+    
     val adState by bannerAdManager.adState.collectAsState()
     
     // Only show banner if ad is loaded or loading

@@ -1,17 +1,20 @@
 package com.ainotebuddy.app.viewmodel
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ainotebuddy.app.data.NoteEntity
 import com.ainotebuddy.app.repository.NoteRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import javax.inject.Inject
 
-class SearchViewModel(private val context: Context) : ViewModel() {
-    private val noteRepository = NoteRepository(context)
+@HiltViewModel
+class SearchViewModel @Inject constructor(
+    private val noteRepository: NoteRepository
+) : ViewModel() {
     
     private val _searchResults = MutableStateFlow<List<NoteEntity>>(emptyList())
     val searchResults: StateFlow<List<NoteEntity>> = _searchResults.asStateFlow()

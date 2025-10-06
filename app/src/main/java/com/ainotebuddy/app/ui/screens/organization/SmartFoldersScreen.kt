@@ -20,6 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.ainotebuddy.app.R
 import com.ainotebuddy.app.ui.components.LoadingIndicator
 import com.ainotebuddy.app.ui.theme.LocalSpacing
@@ -31,9 +32,9 @@ fun SmartFoldersScreen(
     onFolderClick: (String) -> Unit,
     viewModel: SmartFoldersViewModel = hiltViewModel()
 ) {
-    val uiState by viewModel.uiState.collectAsState()
-    val selectedFolders by viewModel.selectedFolders.collectAsState()
-    val showCreateDialog by viewModel.showCreateDialog.collectAsState()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val selectedFolders by viewModel.selectedFolders.collectAsStateWithLifecycle()
+    val showCreateDialog by viewModel.showCreateDialog.collectAsStateWithLifecycle()
     var showDeleteConfirm by remember { mutableStateOf(false) }
     
     val spacing = LocalSpacing.current

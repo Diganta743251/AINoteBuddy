@@ -112,7 +112,7 @@ fun ModernBottomNavigation(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 12.dp),
+                .padding(horizontal = 16.dp, vertical = 6.dp),
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -168,7 +168,7 @@ private fun ModernNavItem(
                 haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                 onClick()
             }
-            .padding(12.dp),
+            .padding(8.dp),
         contentAlignment = Alignment.Center
     ) {
         Column(

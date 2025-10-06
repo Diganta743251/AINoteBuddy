@@ -1,0 +1,295 @@
+Initialized native services in: C:\Users\Diganta1\.gradle\native
+Initialized jansi services in: C:\Users\Diganta1\.gradle\native
+Found daemon DaemonInfo{pid=19932, address=[aaf8142a-a9cf-4c90-9c71-1d867867d2f7 port:63755, addresses:[/127.0.0.1]], state=Idle, lastBusy=1759726032022, context=DefaultDaemonContext[uid=b16317b6-2bee-4291-a7f7-35c9132b407c,javaHome=C:\Program Files\Eclipse Adoptium\jdk-17.0.15.6-hotspot,javaVersion=17,javaVendor=Eclipse Adoptium,daemonRegistryDir=C:\Users\Diganta1\.gradle\daemon,pid=19932,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-XX:MaxMetaspaceSize=768m,-XX:+UseParallelGC,-Xmx3072m,-Dfile.encoding=UTF-8,-Duser.country=IN,-Duser.language=en,-Duser.variant]} however its context does not match the desired criteria.
+At least one daemon option is different.
+Wanted: DaemonRequestContext{jvmCriteria=C:\Program Files\Eclipse Adoptium\jdk-17.0.15.6-hotspot (no JDK specified, using current Java home), daemonOpts=[-Xmx4096m, -Dfile.encoding=UTF-8, -Duser.country=IN, -Duser.language=en, -Duser.variant], applyInstrumentationAgent=true, nativeServicesMode=ENABLED, priority=NORMAL}
+Actual: DefaultDaemonContext[uid=b16317b6-2bee-4291-a7f7-35c9132b407c,javaHome=C:\Program Files\Eclipse Adoptium\jdk-17.0.15.6-hotspot,javaVersion=17,javaVendor=Eclipse Adoptium,daemonRegistryDir=C:\Users\Diganta1\.gradle\daemon,pid=19932,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-XX:MaxMetaspaceSize=768m,-XX:+UseParallelGC,-Xmx3072m,-Dfile.encoding=UTF-8,-Duser.country=IN,-Duser.language=en,-Duser.variant]
+
+  Looking for a different daemon...
+The client will now receive all logging from the daemon (pid: 19800). The daemon log file: C:\Users\Diganta1\.gradle\daemon\8.13\daemon-19800.out.log
+Starting 6th build in daemon [uptime: 11 mins 18.894 secs, performance: 98%, GC rate: 0.00/s, heap usage: 0% of 4 GiB]
+Using 6 worker leases.
+Now considering [C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy] as hierarchies to watch
+Reusing configuration cache.
+Now considering [C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Using local directory build cache for the root build (location = C:\Users\Diganta1\.gradle\caches\build-cache-1, remove unused entries = after 7 days).
+Tasks to be executed: [task ':app:preBuild', task ':app:preDebugBuild', task ':app:mergeDebugNativeDebugMetadata', task ':app:checkKotlinGradlePluginConfigurationErrors', task ':app:generateDebugBuildConfig', task ':app:checkDebugAarMetadata', task ':app:generateDebugResValues', task ':app:processDebugGoogleServices', task ':app:mapDebugSourceSetPaths', task ':app:generateDebugResources', task ':app:mergeDebugResources', task ':app:packageDebugResources', task ':app:parseDebugLocalResources', task ':app:createDebugCompatibleScreenManifests', task ':app:extractDeepLinksDebug', task ':app:processDebugMainManifest', task ':app:processDebugManifest', task ':app:processDebugManifestForPackage', task ':app:processDebugResources', task ':app:kspDebugKotlin', task ':app:compileDebugKotlin', task ':app:javaPreCompileDebug', task ':app:compileDebugJavaWithJavac', task ':app:mergeDebugShaders', task ':app:compileDebugShaders', task ':app:generateDebugAssets', task ':app:mergeDebugAssets', task ':app:compressDebugAssets', task ':app:desugarDebugFileDependencies', task ':app:hiltAggregateDepsDebug', task ':app:hiltJavaCompileDebug', task ':app:transformDebugClassesWithAsm', task ':app:dexBuilderDebug', task ':app:mergeDebugGlobalSynthetics', task ':app:processDebugJavaRes', task ':app:mergeDebugJavaResource', task ':app:checkDebugDuplicateClasses', task ':app:mergeExtDexDebug', task ':app:mergeLibDexDebug', task ':app:mergeProjectDexDebug', task ':app:mergeDebugJniLibFolders', task ':app:mergeDebugNativeLibs', task ':app:stripDebugDebugSymbols', task ':app:validateSigningDebug', task ':app:writeDebugAppMetadata', task ':app:writeDebugSigningConfigVersions', task ':app:packageDebug', task ':app:createDebugApkListingFileRedirect', task ':app:assembleDebug']
+Tasks that were excluded: []
+Resolve mutations for :app:preBuild (Thread[included builds,5,main]) started.
+:app:preBuild (Thread[included builds,5,main]) started.
+Resolve mutations for :app:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker,5,main]) started.
+:app:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker,5,main]) started.
+Resolve mutations for :app:processDebugGoogleServices (Thread[Execution worker Thread 5,5,main]) started.
+:app:processDebugGoogleServices (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:processDebugGoogleServices UP-TO-DATE
+Build cache key for task ':app:processDebugGoogleServices' is dc947736813c57c2db5b2c4a9331e307
+Skipping task ':app:processDebugGoogleServices' as it is up-to-date.
+
+> Task :app:preBuild UP-TO-DATE
+Skipping task ':app:preBuild' as it has no actions.
+Resolve mutations for :app:preDebugBuild (Thread[included builds,5,main]) started.
+:app:preDebugBuild (Thread[included builds,5,main]) started.
+
+> Task :app:preDebugBuild UP-TO-DATE
+Skipping task ':app:preDebugBuild' as it has no actions.
+Resolve mutations for :app:mergeDebugNativeDebugMetadata (Thread[included builds,5,main]) started.
+:app:mergeDebugNativeDebugMetadata (Thread[included builds,5,main]) started.
+
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+Skipping task ':app:mergeDebugNativeDebugMetadata' as it has no source files and no previous output files.
+Resolve mutations for :app:generateDebugBuildConfig (Thread[Execution worker Thread 5,5,main]) started.
+Resolve mutations for :app:checkDebugAarMetadata (Thread[included builds,5,main]) started.
+:app:generateDebugBuildConfig (Thread[included builds,5,main]) started.
+:app:checkDebugAarMetadata (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:generateDebugBuildConfig UP-TO-DATE
+Build cache key for task ':app:generateDebugBuildConfig' is 904cf747e5a12e61d3941aae12fd8f5f
+Skipping task ':app:generateDebugBuildConfig' as it is up-to-date.
+Resolve mutations for :app:generateDebugResValues (Thread[included builds,5,main]) started.
+:app:generateDebugResValues (Thread[included builds,5,main]) started.
+
+> Task :app:generateDebugResValues UP-TO-DATE
+Build cache key for task ':app:generateDebugResValues' is 9cb3c08669d3fd9619af3ddf02fe300c
+Skipping task ':app:generateDebugResValues' as it is up-to-date.
+Resolve mutations for :app:mapDebugSourceSetPaths (Thread[included builds,5,main]) started.
+:app:mapDebugSourceSetPaths (Thread[included builds,5,main]) started.
+
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+Caching disabled for task ':app:checkDebugAarMetadata' because:
+  Caching has been disabled for the task
+Skipping task ':app:checkDebugAarMetadata' as it is up-to-date.
+Resolve mutations for :app:generateDebugResources (Thread[Execution worker Thread 5,5,main]) started.
+:app:generateDebugResources (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+Caching disabled for task ':app:mapDebugSourceSetPaths' because:
+  Caching has been disabled for the task
+Skipping task ':app:mapDebugSourceSetPaths' as it is up-to-date.
+Resolve mutations for :app:createDebugCompatibleScreenManifests (Thread[included builds,5,main]) started.
+
+> Task :app:generateDebugResources UP-TO-DATE
+Build cache key for task ':app:generateDebugResources' is 13d97a835b341bcfc44ba222fe26bd82
+Skipping task ':app:generateDebugResources' as it is up-to-date.
+Resolve mutations for :app:mergeDebugResources (Thread[Execution worker Thread 5,5,main]) started.
+:app:mergeDebugResources (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':app:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :app:packageDebugResources (Thread[Execution worker,5,main]) started.
+:app:packageDebugResources (Thread[Execution worker,5,main]) started.
+
+> Task :app:mergeDebugResources UP-TO-DATE
+Build cache key for task ':app:mergeDebugResources' is 74095893390a6cd8140d500f968f0d60
+Skipping task ':app:mergeDebugResources' as it is up-to-date.
+
+> Task :app:packageDebugResources UP-TO-DATE
+Build cache key for task ':app:packageDebugResources' is 651275a90e4dbef6dfc42502c093c12b
+Skipping task ':app:packageDebugResources' as it is up-to-date.
+Resolve mutations for :app:extractDeepLinksDebug (Thread[Execution worker Thread 5,5,main]) started.
+Resolve mutations for :app:parseDebugLocalResources (Thread[Execution worker,5,main]) started.
+Resolve mutations for :app:javaPreCompileDebug (Thread[Execution worker Thread 2,5,main]) started.
+:app:parseDebugLocalResources (Thread[Execution worker,5,main]) started.
+:app:extractDeepLinksDebug (Thread[Execution worker Thread 5,5,main]) started.
+:app:javaPreCompileDebug (Thread[Execution worker Thread 2,5,main]) started.
+Resolve mutations for :app:mergeDebugShaders (Thread[Execution worker Thread 3,5,main]) started.
+:app:mergeDebugShaders (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+Build cache key for task ':app:extractDeepLinksDebug' is 97bb5ab9f90fc190c176147e8155e278
+Skipping task ':app:extractDeepLinksDebug' as it is up-to-date.
+Resolve mutations for :app:processDebugMainManifest (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:javaPreCompileDebug UP-TO-DATE
+Build cache key for task ':app:javaPreCompileDebug' is 2dbae9941fdf253e1504f2f8b9e8fcf1
+Skipping task ':app:javaPreCompileDebug' as it is up-to-date.
+
+> Task :app:mergeDebugShaders UP-TO-DATE
+Caching disabled for task ':app:mergeDebugShaders' because:
+  Simple merging task
+Skipping task ':app:mergeDebugShaders' as it is up-to-date.
+:app:processDebugMainManifest (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:parseDebugLocalResources UP-TO-DATE
+Build cache key for task ':app:parseDebugLocalResources' is ab724df310a4903588e468a62e185699
+Skipping task ':app:parseDebugLocalResources' as it is up-to-date.
+Resolve mutations for :app:compileDebugShaders (Thread[Execution worker Thread 3,5,main]) started.
+Resolve mutations for :app:desugarDebugFileDependencies (Thread[Execution worker,5,main]) started.
+Resolve mutations for :app:checkDebugDuplicateClasses (Thread[Execution worker Thread 2,5,main]) started.
+:app:desugarDebugFileDependencies (Thread[Execution worker,5,main]) started.
+:app:compileDebugShaders (Thread[Execution worker Thread 2,5,main]) started.
+:app:checkDebugDuplicateClasses (Thread[Execution worker Thread 3,5,main]) started.
+Resolve mutations for :app:mergeDebugJniLibFolders (Thread[Execution worker Thread 4,5,main]) started.
+:app:mergeDebugJniLibFolders (Thread[Execution worker Thread 4,5,main]) started.
+
+> Task :app:compileDebugShaders NO-SOURCE
+Skipping task ':app:compileDebugShaders' as it has no source files and no previous output files.
+Resolve mutations for :app:generateDebugAssets (Thread[Execution worker Thread 2,5,main]) started.
+:app:generateDebugAssets (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+Build cache key for task ':app:desugarDebugFileDependencies' is 634166fcb88624d49a0ce1b9eeddad38
+Skipping task ':app:desugarDebugFileDependencies' as it is up-to-date.
+
+> Task :app:generateDebugAssets UP-TO-DATE
+Skipping task ':app:generateDebugAssets' as it has no actions.
+Resolve mutations for :app:mergeDebugAssets (Thread[Execution worker Thread 2,5,main]) started.
+Resolve mutations for :app:validateSigningDebug (Thread[Execution worker,5,main]) started.
+:app:mergeDebugAssets (Thread[Execution worker Thread 2,5,main]) started.
+:app:validateSigningDebug (Thread[Execution worker,5,main]) started.
+
+> Task :app:validateSigningDebug UP-TO-DATE
+Caching disabled for task ':app:validateSigningDebug' because:
+  Caching has been disabled for the task
+Skipping task ':app:validateSigningDebug' as it is up-to-date.
+Resolve mutations for :app:writeDebugAppMetadata (Thread[Execution worker,5,main]) started.
+:app:writeDebugAppMetadata (Thread[Execution worker,5,main]) started.
+
+> Task :app:writeDebugAppMetadata UP-TO-DATE
+Caching disabled for task ':app:writeDebugAppMetadata' because:
+  Caching has been disabled for the task
+Skipping task ':app:writeDebugAppMetadata' as it is up-to-date.
+Resolve mutations for :app:writeDebugSigningConfigVersions (Thread[Execution worker,5,main]) started.
+:app:writeDebugSigningConfigVersions (Thread[Execution worker,5,main]) started.
+
+> Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+Caching disabled for task ':app:writeDebugSigningConfigVersions' because:
+  Caching has been disabled for the task
+Skipping task ':app:writeDebugSigningConfigVersions' as it is up-to-date.
+
+> Task :app:mergeDebugJniLibFolders UP-TO-DATE
+Caching disabled for task ':app:mergeDebugJniLibFolders' because:
+  Simple merging task
+Skipping task ':app:mergeDebugJniLibFolders' as it is up-to-date.
+Resolve mutations for :app:mergeDebugNativeLibs (Thread[Execution worker Thread 4,5,main]) started.
+:app:mergeDebugNativeLibs (Thread[Execution worker Thread 4,5,main]) started.
+:app:createDebugCompatibleScreenManifests (Thread[included builds,5,main]) started.
+
+> Task :app:checkDebugDuplicateClasses UP-TO-DATE
+Caching disabled for task ':app:checkDebugDuplicateClasses' because:
+  Caching has been disabled for the task
+Skipping task ':app:checkDebugDuplicateClasses' as it is up-to-date.
+Resolve mutations for :app:mergeExtDexDebug (Thread[Execution worker Thread 3,5,main]) started.
+Resolve mutations for :app:mergeLibDexDebug (Thread[Execution worker,5,main]) started.
+:app:mergeExtDexDebug (Thread[Execution worker Thread 3,5,main]) started.
+:app:mergeLibDexDebug (Thread[Execution worker,5,main]) started.
+
+> Task :app:mergeLibDexDebug UP-TO-DATE
+Build cache key for task ':app:mergeLibDexDebug' is c1923291947d91d517b1c14d2b4a60f2
+Skipping task ':app:mergeLibDexDebug' as it is up-to-date.
+
+> Task :app:mergeDebugAssets UP-TO-DATE
+Caching disabled for task ':app:mergeDebugAssets' because:
+  Simple merging task
+Skipping task ':app:mergeDebugAssets' as it is up-to-date.
+Resolve mutations for :app:compressDebugAssets (Thread[Execution worker Thread 2,5,main]) started.
+:app:compressDebugAssets (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :app:compressDebugAssets UP-TO-DATE
+Build cache key for task ':app:compressDebugAssets' is 0b216a869abd5819b25c07e79c6a6473
+Skipping task ':app:compressDebugAssets' as it is up-to-date.
+
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+Caching disabled for task ':app:createDebugCompatibleScreenManifests' because:
+  Caching has been disabled for the task
+Skipping task ':app:createDebugCompatibleScreenManifests' as it is up-to-date.
+
+> Task :app:mergeExtDexDebug UP-TO-DATE
+Build cache key for task ':app:mergeExtDexDebug' is 69587aadbc21d3ec8ea5e41f9776a0b2
+Skipping task ':app:mergeExtDexDebug' as it is up-to-date.
+
+> Task :app:processDebugMainManifest UP-TO-DATE
+Build cache key for task ':app:processDebugMainManifest' is c328c1f8a56a11b91ac954944b79fe2e
+Skipping task ':app:processDebugMainManifest' as it is up-to-date.
+Resolve mutations for :app:processDebugManifest (Thread[Execution worker Thread 5,5,main]) started.
+:app:processDebugManifest (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:processDebugManifest UP-TO-DATE
+Build cache key for task ':app:processDebugManifest' is fd116491097d605a4dcdba6e02b53c4d
+Skipping task ':app:processDebugManifest' as it is up-to-date.
+Resolve mutations for :app:processDebugManifestForPackage (Thread[Execution worker Thread 5,5,main]) started.
+:app:processDebugManifestForPackage (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+Build cache key for task ':app:processDebugManifestForPackage' is 8943484aacef4005898866a09f13ecd3
+Skipping task ':app:processDebugManifestForPackage' as it is up-to-date.
+Resolve mutations for :app:processDebugResources (Thread[Execution worker Thread 5,5,main]) started.
+:app:processDebugResources (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:mergeDebugNativeLibs UP-TO-DATE
+Caching disabled for task ':app:mergeDebugNativeLibs' because:
+  Caching has been disabled for the task
+Skipping task ':app:mergeDebugNativeLibs' as it is up-to-date.
+Resolve mutations for :app:stripDebugDebugSymbols (Thread[Execution worker Thread 4,5,main]) started.
+:app:stripDebugDebugSymbols (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :app:stripDebugDebugSymbols UP-TO-DATE
+Caching disabled for task ':app:stripDebugDebugSymbols' because:
+  Caching has been disabled for the task
+Skipping task ':app:stripDebugDebugSymbols' as it is up-to-date.
+
+> Task :app:processDebugResources UP-TO-DATE
+Build cache key for task ':app:processDebugResources' is 3ebabc6def93f6f24939e4caa50801fd
+Skipping task ':app:processDebugResources' as it is up-to-date.
+Resolve mutations for :app:kspDebugKotlin (Thread[Execution worker Thread 5,5,main]) started.
+:app:kspDebugKotlin (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:kspDebugKotlin UP-TO-DATE
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\main\kotlin', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\src\debug\java', not found
+Build cache key for task ':app:kspDebugKotlin' is e7c43ca55344e41e364207015da56c12
+Skipping task ':app:kspDebugKotlin' as it is up-to-date.
+Resolve mutations for :app:compileDebugKotlin (Thread[Execution worker Thread 5,5,main]) started.
+:app:compileDebugKotlin (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:compileDebugKotlin UP-TO-DATE
+Build cache key for task ':app:compileDebugKotlin' is fd2856fcf6c058c22e42ce62d1d8b0d0
+Skipping task ':app:compileDebugKotlin' as it is up-to-date.
+Resolve mutations for :app:compileDebugJavaWithJavac (Thread[Execution worker Thread 5,5,main]) started.
+:app:compileDebugJavaWithJavac (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :app:compileDebugJavaWithJavac UP-TO-DATE
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\generated\ksp\debug\classes', not found
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\generated\ksp\debug\classes', not found
+Build cache key for task ':app:compileDebugJavaWithJavac' is 4282bc148be24aa62c919fba9e1cb63c
+Skipping task ':app:compileDebugJavaWithJavac' as it is up-to-date.
+No compile result for :app:compileDebugJavaWithJavac
+No compile result for :app:compileDebugJavaWithJavac
+Resolve mutations for :app:hiltAggregateDepsDebug (Thread[Execution worker Thread 3,5,main]) started.
+:app:hiltAggregateDepsDebug (Thread[Execution worker Thread 3,5,main]) started.
+
+> Task :app:hiltAggregateDepsDebug FAILED
+file or directory 'C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\generated\ksp\debug\classes', not found
+Build cache key for task ':app:hiltAggregateDepsDebug' is 1d38809a7f3bdcae62b3cb798759d385
+Task ':app:hiltAggregateDepsDebug' is not up-to-date because:
+  Input property 'compileClasspath' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\javac\debug\compileDebugJavaWithJavac\classes\dagger\hilt\internal\aggregatedroot\codegen\_com_ainotebuddy_app_AINoteBuddyApplication.class has been added.
+  Input property 'compileClasspath' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\javac\debug\compileDebugJavaWithJavac\classes\hilt_aggregated_deps\_com_ainotebuddy_app_AINoteBuddyApplication_GeneratedInjector.class has been added.
+  Input property 'compileClasspath' file C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy\app\build\intermediates\javac\debug\compileDebugJavaWithJavac\classes\hilt_aggregated_deps\_com_ainotebuddy_app_MainActivity_GeneratedInjector.class has been added.
+  and more...
+The input changes require a full rebuild for incremental task ':app:hiltAggregateDepsDebug'.
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:hiltAggregateDepsDebug'.
+> A failure occurred while executing dagger.hilt.android.plugin.task.AggregateDepsTask$WorkerAction
+   > 'java.lang.String com.squareup.javapoet.ClassName.canonicalName()'
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 2s
+33 actionable tasks: 1 executed, 32 up-to-date
+Watched directory hierarchies: [C:\Users\Diganta1\AndroidStudioProjects\AINoteBuddy]
+Configuration cache entry reused.

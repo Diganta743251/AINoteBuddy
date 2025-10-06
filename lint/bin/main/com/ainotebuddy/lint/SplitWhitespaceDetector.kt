@@ -248,3 +248,4 @@ class SplitWhitespaceDetector : Detector(), SourceCodeScanner {
             )
         ).setAndroidSpecific(true)
     }
+}

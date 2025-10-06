@@ -6,15 +6,20 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ainotebuddy.app.repository.NoteRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SimpleSettingsViewModel(private val context: Context) : ViewModel() {
+@HiltViewModel
+class SimpleSettingsViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
+    private val noteRepository: NoteRepository
+) : ViewModel() {
     
     private val sharedPrefs: SharedPreferences = 
         context.getSharedPreferences("app_settings", Context.MODE_PRIVATE)
-    
-    private val noteRepository = NoteRepository(context)
     
     private val _uiState = MutableStateFlow(
         SimpleSettingsUiState(

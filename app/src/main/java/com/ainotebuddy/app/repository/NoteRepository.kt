@@ -1,14 +1,19 @@
 package com.ainotebuddy.app.repository
 
-import android.content.Context
-import com.ainotebuddy.app.data.AppDatabase
 import com.ainotebuddy.app.data.NoteDao
 import com.ainotebuddy.app.data.NoteEntity
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class NoteRepository(private val context: Context) {
-    private val database = AppDatabase.getInstance(context)
-    private val noteDao = database.noteDao()
+/**
+ * Repository for note operations - properly uses DI
+ * This is the main repository used throughout the app
+ */
+@Singleton
+class NoteRepository @Inject constructor(
+    private val noteDao: NoteDao
+) {
     
     fun getAllNotes(): Flow<List<NoteEntity>> = noteDao.getAllNotes()
     

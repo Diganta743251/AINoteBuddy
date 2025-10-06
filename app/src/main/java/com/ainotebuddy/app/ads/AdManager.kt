@@ -20,10 +20,10 @@ class AdManager private constructor(private val context: Context) {
     val adMetrics: StateFlow<Map<AdType, AdMetrics>> = _adMetrics.asStateFlow()
     
     // Ad managers
-    lateinit var bannerAdManager: BannerAdManager
-    lateinit var interstitialAdManager: InterstitialAdManager
-    lateinit var rewardedAdManager: RewardedAdManager
-    lateinit var appOpenAdManager: AppOpenAdManager
+    var bannerAdManager: BannerAdManager? = null
+    var interstitialAdManager: InterstitialAdManager? = null
+    var rewardedAdManager: RewardedAdManager? = null
+    var appOpenAdManager: AppOpenAdManager? = null
     
     // Session tracking
     private var interstitialCount = 0
@@ -103,8 +103,9 @@ class AdManager private constructor(private val context: Context) {
     }
     
     fun canShowInterstitial(): Boolean {
+        val manager = interstitialAdManager ?: return false
         val timeSinceLastInterstitial = System.currentTimeMillis() - 
-            (interstitialAdManager.lastShownTime ?: 0)
+            (manager.lastShownTime ?: 0)
         return interstitialCount < AdConstants.MAX_INTERSTITIAL_PER_SESSION &&
                 timeSinceLastInterstitial >= AdConstants.INTERSTITIAL_MIN_INTERVAL_MS
     }
@@ -123,5 +124,9 @@ class AdManager private constructor(private val context: Context) {
         interstitialCount = 0
         appOpenCount = 0
         sessionStartTime = System.currentTimeMillis()
+    }
+    
+    fun retrieveInterstitialAdManager(): InterstitialAdManager? {
+        return interstitialAdManager
     }
 }

@@ -1,15 +1,18 @@
 package com.ainotebuddy.app.viewmodel
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ainotebuddy.app.data.NoteEntity
 import com.ainotebuddy.app.repository.NoteRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel(private val context: Context) : ViewModel() {
-    private val noteRepository = NoteRepository(context)
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    private val noteRepository: NoteRepository
+) : ViewModel() {
     
     private val _uiState = MutableStateFlow(MainUiState())
     val uiState: StateFlow<MainUiState> = _uiState.asStateFlow()

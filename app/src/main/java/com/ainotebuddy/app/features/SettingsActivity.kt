@@ -24,7 +24,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ainotebuddy.app.ui.theme.AINoteBuddyTheme
 import com.ainotebuddy.app.viewmodel.SimpleSettingsViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SettingsActivity : ComponentActivity() {
     
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +43,7 @@ class SettingsActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun SettingsScreen() {
-        val viewModel: SimpleSettingsViewModel = viewModel { SimpleSettingsViewModel(this@SettingsActivity) }
+        val viewModel: SimpleSettingsViewModel = hiltViewModel()
         val uiState by viewModel.uiState.collectAsState()
 
         Column(

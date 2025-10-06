@@ -1,0 +1,67 @@
+Reusing configuration cache.
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:generateDebugBuildConfig UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:processDebugGoogleServices UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:kspDebugKotlin UP-TO-DATE
+> Task :app:compileDebugKotlin
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/MainActivity.kt:45:36 Unresolved reference 'size'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/NoteEditorActivity.kt:161:41 Argument type mismatch: actual type is 'com.ainotebuddy.app.features.NoteEditorActivity', but 'com.ainotebuddy.app.repository.NoteRepository' was expected.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/NoteEditorActivity.kt:161:41 No value passed for parameter 'context'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:38:12 Unresolved reference 'ExperimentalMaterial3Api'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:38:12 Annotation argument must be a compile-time constant.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:47:9 Unresolved reference 'Scaffold'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:49:17 Unresolved reference 'TopAppBar'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:50:31 Unresolved reference 'Text'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:52:25 Unresolved reference 'IconButton'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:55:29 Unresolved reference 'Icon'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:60:13 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:61:13 @Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:67:17 Unresolved reference 'OutlinedTextField'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:69:39 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:73:31 Unresolved reference 'Text'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:75:25 Unresolved reference 'Icon'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:79:29 Unresolved reference 'IconButton'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:85:33 Unresolved reference 'Icon'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:129:37 Unresolved reference 'Icon'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:133:48 Unresolved reference 'MaterialTheme'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:136:37 Unresolved reference 'Text'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:138:49 Unresolved reference 'MaterialTheme'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:142:37 Unresolved reference 'Text'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:144:49 Unresolved reference 'MaterialTheme'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SearchActivity.kt:145:49 Unresolved reference 'MaterialTheme'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/features/SettingsActivity.kt:43:86 No value passed for parameter 'noteRepository'.
+e: file:///C:/Users/Diganta1/AndroidStudioProjects/AINoteBuddy/app/src/main/java/com/ainotebuddy/app/services/EnhancedAutoSaveService.kt:431:45 Argument type mismatch: actual type is 'android.content.Context', but 'com.ainotebuddy.app.data.NoteDao' was expected.
+
+> Task :app:compileDebugKotlin FAILED
+17 actionable tasks: 1 executed, 16 up-to-date
+Configuration cache entry reused.
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileDebugKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 1m 4s

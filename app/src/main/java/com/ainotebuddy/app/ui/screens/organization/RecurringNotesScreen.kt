@@ -29,6 +29,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.ainotebuddy.app.R
 import com.ainotebuddy.app.data.model.organization.NoteTemplate
 import com.ainotebuddy.app.data.model.organization.RecurringNote
@@ -51,16 +52,16 @@ fun RecurringNotesScreen(
     onNoteClick: (String) -> Unit,
     viewModel: RecurringNotesViewModel = hiltViewModel()
 ) {
-    val uiState by viewModel.uiState.collectAsState()
-    val showCreateDialog by viewModel.showCreateDialog.collectAsState()
-    val availableTemplates by viewModel.availableTemplates.collectAsState()
-    val allNotes by viewModel.allNotes.collectAsState()
-    val selectedPatternIds by viewModel.selectedPatterns.collectAsState()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val showCreateDialog by viewModel.showCreateDialog.collectAsStateWithLifecycle()
+    val availableTemplates by viewModel.availableTemplates.collectAsStateWithLifecycle()
+    val allNotes by viewModel.allNotes.collectAsStateWithLifecycle()
+    val selectedPatternIds by viewModel.selectedPatterns.collectAsStateWithLifecycle()
     
     var showDeleteConfirm by remember { mutableStateOf(false) }
     
     // Process due notes when the screen is first shown
-    LaunchedEffect(Unit) {
+    LaunchedEffect(viewModel) {
         viewModel.processDueNotes()
     }
     
@@ -71,7 +72,7 @@ fun RecurringNotesScreen(
     val scope = rememberCoroutineScope()
 
     // Collect one-shot UI events for snackbar + haptic + highlight + undo
-    LaunchedEffect(Unit) {
+    LaunchedEffect(viewModel) {
         viewModel.events.collect { event ->
             when (event) {
                 is RecurringNotesViewModel.UiEvent.ShowMessage -> {

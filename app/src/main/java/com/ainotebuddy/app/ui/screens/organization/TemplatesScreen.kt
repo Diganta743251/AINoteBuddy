@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.ainotebuddy.app.R
 import com.ainotebuddy.app.ui.components.LoadingIndicator
 import com.ainotebuddy.app.ui.theme.LocalSpacing
@@ -45,11 +46,11 @@ fun TemplatesScreen(
     onTemplateClick: (String) -> Unit,
     viewModel: TemplatesViewModel = hiltViewModel()
 ) {
-    val uiState by viewModel.uiState.collectAsState()
-    val selectedTemplates by viewModel.selectedTemplates.collectAsState()
-    val showCreateDialog by viewModel.showCreateDialog.collectAsState()
-    val categories by viewModel.categories.collectAsState()
-    val selectedCategory by viewModel.selectedCategory.collectAsState()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val selectedTemplates by viewModel.selectedTemplates.collectAsStateWithLifecycle()
+    val showCreateDialog by viewModel.showCreateDialog.collectAsStateWithLifecycle()
+    val categories by viewModel.categories.collectAsStateWithLifecycle()
+    val selectedCategory by viewModel.selectedCategory.collectAsStateWithLifecycle()
     
     var showDeleteConfirm by remember { mutableStateOf(false) }
     var showCategoryMenu by remember { mutableStateOf(false) }
@@ -70,7 +71,7 @@ fun TemplatesScreen(
     val haptic = LocalHapticFeedback.current
     var highlightedTemplateId by remember { mutableStateOf<String?>(null) }
 
-    LaunchedEffect(Unit) {
+    LaunchedEffect(viewModel) {
         viewModel.events.collect { event ->
             when (event) {
                 is TemplatesViewModel.UiEvent.ShowMessage -> {
